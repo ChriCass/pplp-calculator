@@ -1,174 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test PPLP</title>
-  <link rel="stylesheet" href="./css/fonts.css">
-  <link rel="stylesheet" href="./css/style.css">
-  <script src="./js/script.js" defer></script>
-</head>
-<body class="body">
-  <main class="main">
-    <!-- Barra de estado -->
-    <section class="section__main section__status-bar">
-      <div class="status__bar__principal container">
-        <div class="status__bar__container">
-          <div class="status__content status__content--active">
-            <span class="status__text">Basic Pergola Setup</span>
-            <span class="flex-c-c status__count">1</span>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test PPLP</title>
+    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/script.js" defer></script>
+  </head>
+  <body class="body">
+    <main class="main">
+      <!-- Barra de estado -->
+      <section class="section__main section__status-bar">
+        <div class="status__bar__principal container">
+          <div class="status__bar__container">
+            <div class="status__content status__content--active">
+              <span class="status__text">Basic Pergola Setup</span>
+              <span class="flex-c-c status__count">1</span>
+            </div>
+            <div class="status__content">
+              <span class="status__text">Design Preferences</span>
+              <span class="flex-c-c status__count">2</span>
+            </div>
+            <div class="status__content">
+              <span class="status__text">Screen Options</span>
+              <span class="flex-c-c status__count">3</span>
+            </div>
+            <div class="status__content">
+              <span class="status__text">Climate Control Options</span>
+              <span class="flex-c-c status__count">4</span>
+            </div>
+            <div class="status__content status__content--last">
+              <span class="status__text">Resume</span>
+              <span class="flex-c-c status__count">5</span>
+            </div>
+            <div class="status__bar status__step-1"></div>
           </div>
-          <div class="status__content">
-            <span class="status__text">Design Preferences</span>
-            <span class="flex-c-c status__count">2</span>
-          </div>
-          <div class="status__content">
-            <span class="status__text">Screen Options</span>
-            <span class="flex-c-c status__count">3</span>
-          </div>
-          <div class="status__content">
-            <span class="status__text">Climate Control Options</span>
-            <span class="flex-c-c status__count">4</span>
-          </div>
-          <div class="status__content status__content--last">
-            <span class="status__text">Resume</span>
-            <span class="flex-c-c status__count">5</span>
-          </div>
-          <div class="status__bar status__step-1"></div>
         </div>
-      </div>
-    </section>
-    <!-- Formulario de diseño -->
-    <section class="section__main section__design">
-      <div class="design__container container">
-        <div class="design__content">
-          <form class="form form__design">
-            <section class="section__form">
-              <div class="form__title">
-                <h2>What are the dimensions of your pergola?</h2>
-                <div class="form__title__svg">
-                  <svg
-                    class="form__title__icon"
-                    width="24px"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    fill="#fff">
-                      <path
-                        d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
-                      />
-                  </svg>
-                </div>
-              </div>
-              <div class="form__options">
-                <article class="flex-c-c form__article">
-                  <div class="scene__table">
-                    <div class="table">
-                      <div class="table__top">
-                        <div class="side edge edge__top side__length"></div>
-                        <div class="side edge edge__right side__depth"></div>
-                        <div class="side edge edge__bottom side__length"></div>
-                        <div class="side edge edge__left side__depth"></div>
-                      </div>
-                      <div class="table__legs">
-                        <div class="side leg leg__front__left side__height"></div>
-                        <div class="side leg leg__front__right side__height"></div>
-                        <div class="side leg leg__back__left side__height"></div>
-                        <div class="side leg leg__back__right side__height"></div>
-                      </div>
-                      <!-- <svg width="400" height="400" viewBox="0 0 400 400">
-                        <!-- Superficie de la mesa 
-                        <polygon points="100,100 300,100 250,150 150,150" fill="none" stroke="black" class="edge edge__top" />
-                        <polygon points="150,150 250,150 250,200 150,200" fill="none" stroke="black" class="edge edge__bottom" />
-                      
-                        <!-- Aristas superiores 
-                        <line x1="100" y1="100" x2="150" y2="150" stroke="black" class="edge edge__left" />
-                        <line x1="300" y1="100" x2="250" y2="150" stroke="black" class="edge edge__right" />
-                      
-                        <!-- Patas 
-                        <line x1="100" y1="100" x2="100" y2="300" stroke="black" class="leg leg__back__left" />
-                        <line x1="300" y1="100" x2="300" y2="300" stroke="black" class="leg leg__back__right" />
-                        <line x1="150" y1="150" x2="150" y2="350" stroke="black" class="leg leg__front__left" />
-                        <line x1="250" y1="150" x2="250" y2="350" stroke="black" class="leg leg__front__right" />
-                      </svg> -->
-                    </div>
+      </section>
+      <!-- Formulario de diseño -->
+      <section class="section__main section__design">
+        <div class="design__container container">
+          <div class="design__content">
+            <form class="form form__design">
+              <section class="section__form">
+                <div class="form__title">
+                  <h2>What are the dimensions of your pergola?</h2>
+                  <div class="form__title__svg">
+                    <svg
+                      class="form__title__icon"
+                      width="24px"
+                      height="24px"
+                      viewBox="0 -960 960 960"
+                      fill="#fff">
+                        <path
+                          d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+                        />
+                    </svg>
                   </div>
-                </article>
-                <article class="form__article">
-                  <div class="form__info">
-                    <div class="form__btns">
-                      <button type="button" class="btn btn__measure measure__feet btn--selected">
-                        <span class="measure__span">Feet</span>
-                      </button>
-                      <button type="button" class="btn btn__measure measure__inch">
-                        <span class="measure__span">Inches</span>
-                      </button>
-                    </div>
-                    <div class="form__inputs">
-                      <div class="input__bg">
-                        <article class="input__container">
-                          <div class="input__content">
-                            <label for="input-length" class="label__input">Length</label>
-                            <div class="input__measure">
-                              <input type="text" class="form__input" data-mesurance="length" id="input-length" placeholder="x" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
-                              <span class="input__unit">feet</span>
-                            </div>
+                </div>
+                <div class="form__options">
+                  <article class="form__article">
+                    <div class="flex-c-c scene__table__container">
+                      <div class="scene__table">
+                        <div class="table">
+                          <div class="table__top">
+                            <div class="side edge edge__top side__length"></div>
+                            <div class="side edge edge__right side__depth"></div>
+                            <div class="side edge edge__bottom side__length"></div>
+                            <div class="side edge edge__left side__depth"></div>
                           </div>
-                        </article>
-                      </div>
-                      <div class="input__bg">
-                        <article class="input__container">
-                          <div class="input__content">
-                            <label for="input-depth" class="label__input">Depth</label>
-                            <div class="input__measure">
-                              <input type="text" class="form__input" data-mesurance="depth" id="input-depth" placeholder="x" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
-                              <span class="input__unit">feet</span>
-                            </div>
-                          </div>
-                        </article>
-                      </div>
-                      <div class="input__bg">
-                        <article class="input__container">
-                          <div class="input__content">
-                            <label for="input-height" class="label__input">Height</label>
-                            <div class="input__measure">
-                              <input type="text" class="form__input" data-mesurance="height" id="input-height" placeholder="x" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
-                              <span class="input__unit">feet</span>
-                            </div>
-                          </div>
-                        </article>
-                      </div>
-                      <div class="alert__recomendation">
-                        <div class="alert__container">
-                          <div class="alert__title">
-                            <div class="alert__svg">
-                              <svg class="alert__svg__icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff">
-                                <path
-                                  d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
-                              </svg>
-                            </div>
-                            <h4 class="alert__title__text">Recommended Height</h4>
-                          </div>
-                          <div class="alert__paragraph">
-                            <p class="paragraph__text">
-                              Height measures the total height, not the internal clearance. 8' to 10' is recommended. Max height can be 140" or 11.67'.
-                            </p>
+                          <div class="table__legs">
+                            <div class="side leg leg__front__left side__height"></div>
+                            <div class="side leg leg__front__right side__height"></div>
+                            <div class="side leg leg__back__left side__height"></div>
+                            <div class="side leg leg__back__right side__height"></div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </article>
-                <article class="form__article">
-                  <div class="form__input__checkbox">
-
-                  </div>
-                </article>
-              </div>
-            </section>
-          </form>
+                    <div class="form__info">
+                      <div class="form__btns btns__group--bg">
+                        <button type="button" class="btn btn__bg btn__measure measure__feet btn--selected">
+                          <span class="measure__span text__clean">Feet</span>
+                        </button>
+                        <button type="button" class="btn btn__bg btn__measure measure__inch">
+                          <span class="measure__span text__clean">Inches</span>
+                        </button>
+                      </div>
+                      <div class="form__inputs">
+                        <div class="input__bg">
+                          <article class="input__container">
+                            <div class="input__content">
+                              <label for="input-length" class="label__input">Length</label>
+                              <div class="input__measure">
+                                <input type="text" class="form__input" data-mesurance="length" id="input-length" placeholder="x" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                <span class="input__unit">feet</span>
+                              </div>
+                            </div>
+                          </article>
+                        </div>
+                        <div class="input__bg">
+                          <article class="input__container">
+                            <div class="input__content">
+                              <label for="input-depth" class="label__input">Depth</label>
+                              <div class="input__measure">
+                                <input type="text" class="form__input" data-mesurance="depth" id="input-depth" placeholder="x" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                <span class="input__unit">feet</span>
+                              </div>
+                            </div>
+                          </article>
+                        </div>
+                        <div class="input__bg">
+                          <article class="input__container">
+                            <div class="input__content">
+                              <label for="input-height" class="label__input">Height</label>
+                              <div class="input__measure">
+                                <input type="text" class="form__input" data-mesurance="height" id="input-height" placeholder="x" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                <span class="input__unit">feet</span>
+                              </div>
+                            </div>
+                          </article>
+                        </div>
+                        <div class="alert__recomendation">
+                          <div class="alert__container">
+                            <div class="alert__title">
+                              <div class="alert__svg">
+                                <svg class="alert__svg__icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff">
+                                  <path
+                                    d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                                </svg>
+                              </div>
+                              <h4 class="alert__title__text">Recommended Height</h4>
+                            </div>
+                            <div class="alert__paragraph">
+                              <p class="paragraph__text">
+                                Height measures the total height, not the internal clearance. 8' to 10' is recommended. Max height can be 140" or 11.67'.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="form__article">
+                    <div class="form__input__checkbox">
+                      <input type="checkbox" id="input-checkbox-form-contact" class="input__checkbox" />
+                      <label for="input-checkbox-form-contact" class="label__input">I have an irregular shape on mind</label>
+                    </div>
+                  </article>
+                  <article class="form__article" id="form-footer">
+                    <div class="election__contact">
+                      <div class="election__contact__container">
+                        <div class="election__contact__content">
+                          <div class="contact__title">
+                            <h3 class="contact__title__text">Let's talk about your design idea</h3>
+                          </div>
+                          <div class="contact__btn">
+                            <button type="button" class="btn btn__contact btn--selected">
+                              <span class="text__clean">
+                                Book a Call
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="election__pergola element--show">
+                      <div class="election__container">
+                        <div class="election__content">
+                          <div class="election__title">
+                            <h3 class="election__title__text">Is your pergola going to be freestanding or attached?</h3>
+                            <div class="election__title__svg">
+                              <svg class="election__title__svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+                            </div>
+                          </div>
+                          <div class="election__btns btns__group--bg">
+                            <button type="button" class="btn btn__bg btn__election btn--selected data-election="freestanding">
+                              <span class="text__clean">Freestanding</span>
+                            </button>
+                            <button type="button" class="btn btn__bg btn__election" data-election="attached">
+                              <span class="text__clean">Attached</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="election__attached">
+                      <div class="election__attached__container">
+                        <article class="election__attached__content">
+                          <div class="attached__title">
+                            <span class="text__clean">Which side(s) will attach?</span>
+                          </div>
+                          <div class="attached__content">
+                            <div class="attached__table">
+                              <div class="flex-c-c scene__table__container">
+                                <div class="scene__table">
+                                  <div class="table">
+                                    <div class="table__top">
+                                      <div class="side edge edge__top side__length"></div>
+                                      <div class="side edge edge__right side__depth"></div>
+                                      <div class="side edge edge__bottom side__length"></div>
+                                      <div class="side edge edge__left side__depth"></div>
+                                    </div>
+                                    <div class="table__legs">
+                                      <div class="side leg leg__front__left side__height"></div>
+                                      <div class="side leg leg__front__right side__height"></div>
+                                      <div class="side leg leg__back__left side__height"></div>
+                                      <div class="side leg leg__back__right side__height"></div>
+                                    </div>
+                                    <div class="flex-c-c table__attached table__attached__a1">A1</div>
+                                    <div class="flex-c-c table__attached table__attached__a2">A2</div>
+                                    <div class="flex-c-c table__attached table__attached__b1">B1</div>
+                                    <div class="flex-c-c table__attached table__attached__b2">B2</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="attached__measures">
+                              <div class="attached__measures__container">
+                                <div class="attached__measures__content">
+                                  <ul class="attached__list">
+                                    <li class="attached__measure">
+                                      <div class="bg__gradient">
+                                        <div class="attached__measure__content">
+                                          <input type="checkbox" id="input-measure-a1" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="a1">
+                                          <label for="input-measure-a1" class="label__input">A1 = 12 feet</label>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li class="attached__measure">
+                                      <div class="bg__gradient">
+                                        <div class="attached__measure__content">
+                                          <input type="checkbox" id="input-measure-a2" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="a2">
+                                          <label for="input-measure-a1" class="label__input">A2 = 12 feet</label>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li class="attached__measure">
+                                      <div class="bg__gradient">
+                                        <div class="attached__measure__content">
+                                          <input type="checkbox" id="input-measure-b1" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="b1">
+                                          <label for="input-measure-a1" class="label__input">B1 = 15 feet</label>
+                                        </div>
+                                      </div>
+                                    </li>
+                                    <li class="attached__measure">
+                                      <div class="bg__gradient">
+                                        <div class="attached__measure__content">
+                                          <input type="checkbox" id="input-measure-b2" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="b2">
+                                          <label for="input-measure-a1" class="label__input">B2 = 15 feet</label>
+                                        </div>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                    <div class="form__btns__footer element--show">
+                      <div class="btns__footer__container">
+                        <div class="btns__footer__content btns__group--bg">
+                          <button type="button" class="btn btn__bg btn__footer">
+                            <span class="text__clean">Previous</span>
+                          </button>
+                          <button type="button" class="btn btn__bg btn__footer btn--selected">
+                            <span class="text__clean">Continue</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </section>
+            </form>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
-</body>
+      </section>
+    </main>
+  </body>
 </html>
