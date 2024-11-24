@@ -2,6 +2,7 @@ console.log("Corriendo en el puerto 5500");
 
 document.addEventListener("DOMContentLoaded", () => {
   // DOM
+  const main = document.querySelector(".main");
   const btnsFormMeasure = document.querySelectorAll(".btn__measure"); 
   const inputUnits = document.querySelectorAll(".input__unit");
   const formInputs = document.querySelectorAll(".form__input");
@@ -22,105 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const electionAttached = document.querySelector(".election__attached");
   const btnAttached = document.querySelector('.btn__election[data-election="attached"]');
 
-  /* // Eventos
-  btnsFormMeasure.forEach((btn) => {
-    // Remueve la clase "btn--selected" de todos los botones y la asigna al clickeado
-    btn.addEventListener("click", () => {
-      btnsMeasure.forEach(btn => btn.classList.remove("btn--selected"));
-      btnMeasureSelected?.classList.remove("btn--selected");
-      btn.classList.add("btn--selected");
+  const colorSelects = document.querySelectorAll(".color__select__content");
+  const inputColor = document.getElementById("color-picker");
+  const sidesColor = document.querySelectorAll(".side__color");
 
-      const unitText = btn.textContent.toLowerCase();
-
-      inputUnits.forEach(input => input.textContent = unitText);
-    });
-  });
-
-  // Agregar clase bg--active al focus del input actual
-  formInputs.forEach((input) => {
-    input.addEventListener("focus", (e) => {
-      const dataId = e.target.dataset.mesurance;
-
-      sides.forEach((side) => {
-        if (side.classList.contains(`side__${dataId}--active`)) {
-          return;
-        }
-        if (side.classList.contains(`side__${dataId}`)) {
-          side.classList.add(`side__${dataId}--active`);
-        }
-      });
-
-      const element = input.closest(".input__bg");
-      element.classList.add("bg--active");
-    });
-    input.addEventListener("blur", e => {
-      const dataId = e.target.dataset.mesurance;
-
-      sides.forEach((side) => {
-        if (side.classList.contains(`side__${dataId}--active`)) {
-          side.classList.remove(`side__${dataId}--active`);
-        }
-        console.log("Removiendo estilos...");
-      });
-
-      const element = input.closest(".input__bg");
-      element.classList.remove("bg--active");
-    })
-  });
-
-  // Change bg-button
-  btnsGroup.forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      const btnGroup = e.target.closest(".btns__group--bg");
-      const currentBtn = btnGroup.querySelectorAll(".btn__bg");
-      currentBtn.forEach(btn => btn.classList.remove("btn--selected"));
-      if (e.target.matches(".btn__bg")) {
-        e.target.classList.add("btn--selected");
-        if (e.target.dataset.election === "attached") {
-          if (!electionAttached.classList.contains("element--show")) {
-            electionAttached.classList.add("element--show");
-          }
-        } else {
-          electionAttached.classList.remove("element--show");
-        }
-      } else if (e.target.matches(".text__clean")){
-        e.target.parentElement.classList.add("btn--selected");
-        if (e.target.parentElement.dataset.election === "attached") {
-          if (!electionAttached.classList.contains("element--show")) {
-            electionAttached.classList.add("element--show");
-          }
-        } else {
-          electionAttached.classList.remove("element--show");
-        }
-      }
-    });
-  });
-
-  // Change checked
-  inputCheckboxContact.addEventListener("change", (e) => {
-    if (e.target.checked) {
-      electionContact.classList.add("element--show");
-      electionPergola.classList.remove("element--show");
-      btnsFooter.classList.remove("element--show");
-      electionAttached.classList.remove("element--show");
-    } else {
-      electionContact.classList.remove("element--show");
-      electionPergola.classList.add("element--show");
-      btnsFooter.classList.add("element--show");
-      if (btnAttached.classList.contains("btn--selected")) {
-        electionAttached.classList.add("element--show");
-      }
-    }
-  });
-
-  // Attached
-  attachedMeasures.forEach((measure) => {
-    measure.addEventListener("click", (e) => {
-      const checkBoxContainer = e.target.closest(".attached__measure");
-      const checkBoxMeasure = checkBoxContainer.querySelector(".input__checkbox__attached__measure");
-      checkBoxMeasure.checked = !checkBoxMeasure.checked;
-    });
-  }); */
+  const btnFormPrevious = document.querySelectorAll(".btn-form-previous");
+  const btnFormContinue = document.querySelectorAll(".btn-form-continue");
 
   // Helper para togglear clases
   const toggleClass = (element, className, condition) => {
@@ -178,6 +86,35 @@ document.addEventListener("DOMContentLoaded", () => {
     checkbox.checked = !checkbox.checked;
   };
 
+  const handleColorSelect = e => {
+    const colorSelect = e.target.matches(".color__select__content") ? e.target : e.target.closest(".color__select__content");
+    if (!colorSelect) return;
+
+    // Remover selecciones
+    colorSelects.forEach(item => item.classList.remove("color--selected"));
+
+    // Seleccionar
+    colorSelect.classList.add("color--selected");
+
+    // Obtener color
+    const color = colorSelect.dataset.color;
+
+    if (color) updateColor(color);
+  }
+
+  const updateColor = color => {
+    sidesColor.forEach(side => side.style.backgroundColor = color);
+  };
+
+  const handleInputColor = e => {
+    const color = e.target.value;
+    updateColor(color);
+
+    colorSelects.forEach(item => item.classList.remove("color--selected"));
+    const customColor = inputColor.closest(".color__select__content");
+    customColor.classList.add("color--selected");
+  }
+
   // Eventos
   btnsMeasure.forEach(btn => btn.addEventListener("click", e => handleMeasureBtn(e)));
 
@@ -191,5 +128,33 @@ document.addEventListener("DOMContentLoaded", () => {
   inputCheckboxContact.addEventListener("change", e => handleCheckboxChange(e.target.checked));
 
   attachedMeasures.forEach(measure => measure.addEventListener("click", e => toggleCheckBox(e.target.closest(".attached__measure"))));
+
+  colorSelects.forEach(select => {
+    select.addEventListener("click", e => handleColorSelect(e))
+  });
+
+  inputColor.addEventListener("input", e => handleInputColor(e));
+
+  btnFormPrevious.forEach(btn => {
+    btn.addEventListener("click", e => {
+      if (e.target.matches(".btn__bg, .text__clean")) {
+        const btn = e.target.matches(".btn__bg") ? e.target : e.target.parentElement;
+        btn.addEventListener("click", e => {
+          main.classList.remove("step-two");
+        });
+      };
+    });
+  });
+
+  btnFormContinue.forEach(btn => {
+    btn.addEventListener("click", e => {
+      if (e.target.matches(".btn__bg, .text__clean")) {
+        const btn = e.target.matches(".btn__bg") ? e.target : e.target.parentElement;
+        btn.addEventListener("click", e => {
+          main.classList.add("step-two");
+        });
+      };
+    });
+  });
 
 });

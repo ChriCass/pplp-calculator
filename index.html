@@ -43,7 +43,7 @@
         <div class="design__container container">
           <div class="design__content">
             <form class="form form__design">
-              <section class="section__form">
+              <section class="section__form section__form--uno" id="form-uno">
                 <div class="form__title">
                   <h2>What are the dimensions of your pergola?</h2>
                   <div class="form__title__svg">
@@ -149,7 +149,7 @@
                       <label for="input-checkbox-form-contact" class="label__input">I have an irregular shape on mind</label>
                     </div>
                   </article>
-                  <article class="form__article" id="form-footer">
+                  <article class="form__article" id="form-footer-uno">
                     <div class="election__contact">
                       <div class="election__contact__container">
                         <div class="election__contact__content">
@@ -264,10 +264,111 @@
                     <div class="form__btns__footer element--show">
                       <div class="btns__footer__container">
                         <div class="btns__footer__content btns__group--bg">
-                          <button type="button" class="btn btn__bg btn__footer">
+                          <button type="button" class="btn btn__bg btn__footer btn-form-previous">
                             <span class="text__clean">Previous</span>
                           </button>
-                          <button type="button" class="btn btn__bg btn__footer btn--selected">
+                          <button type="button" class="btn btn__bg btn__footer btn--selected btn-form-continue">
+                            <span class="text__clean">Continue</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </section>
+              <section class="section__form section__form--dos" id="form-dos">
+                <div class="form__title">
+                  <h2>What color would you like the structure of your pergola to be?</h2>
+                  <div class="form__title__svg">
+                    <svg
+                      class="form__title__icon"
+                      width="24px"
+                      height="24px"
+                      viewBox="0 -960 960 960"
+                      fill="#fff">
+                        <path
+                          d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+                        />
+                    </svg>
+                  </div>
+                </div>
+                <div class="form__options">
+                  <article class="form__article article__color__base">
+                    <div class="color__base__container">
+                      <div class="color__base__content">
+                        <div class="color__select__container">
+                          <div class="flex-c-c color__select__content color__white" data-color="#fff">
+                            <article class="color__content">
+                              <span class="span__color">Traffic White</span>
+                              <div class="color__icon"></div>
+                              <span class="color__code">RAL-9016</span>
+                            </article>
+                          </div>
+                          <div class="flex-c-c color__select__content color__black color--selected" data-color="#000">
+                            <article class="color__content">
+                              <span class="span__color">Jet Black</span>
+                              <div class="color__icon"></div>
+                              <span class="color__code">RAL-9005</span>
+                            </article>
+                          </div>
+                          <div class="flex-c-c color__select__content color__grey" data-color="#555">
+                            <article class="color__content">
+                              <span class="span__color">Anthracite Grey</span>
+                              <div class="color__icon"></div>
+                              <span class="color__code">RAL-7016</span>
+                            </article>
+                          </div>
+                          <div class="flex-c-c color__select__content custom__color" data-color>
+                            <article class="color__content">
+                              <div class="custom__color__container">
+                                <input type="color" name="color" id="color-picker" class="input__color" value="#555555" />
+                                <label for="color-picker" class="label__color">Custom</label>
+                              </div>
+                            </article>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="scene__table__color">
+                      <div class="table__color__container">
+                        <article class="table__color">
+                          <div class="scene__table">
+                            <div class="table">
+                              <div class="table__top">
+                                <div class="side edge side__color edge__top side__length"></div>
+                                <div class="side edge side__color edge__right side__depth"></div>
+                                <div class="side edge side__color edge__bottom side__length"></div>
+                                <div class="side edge side__color edge__left side__depth"></div>
+                              </div>
+                              <div class="table__legs">
+                                <div class="side leg side__color leg__front__left side__height"></div>
+                                <div class="side leg side__color leg__front__right side__height"></div>
+                                <div class="side leg side__color leg__back__left side__height"></div>
+                                <div class="side leg side__color leg__back__right side__height"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                      <div class="input__checkbox__color">
+                        <div class="checkbox__color__container">
+                          <input type="checkbox" id="input-checkbox-color" class="input__checkbox__color">
+                          <label for="input-checkbox-color" class="label__input">I want the louvers to be the same color</label>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="form__article article__color__louvers">
+                    <!-- Aquí va el bloque para el louver -->
+                  </article>
+                  <article class="form__article form__footer" id="form-footer-dos">
+                    <div class="form__btns__footer element--show">
+                      <div class="btns__footer__container">
+                        <div class="btns__footer__content btns__group--bg">
+                          <button type="button" class="btn btn__bg btn__footer btn-form-previous">
+                            <span class="text__clean">Previous</span>
+                          </button>
+                          <button type="button" class="btn btn__bg btn__footer btn--selected btn-form-continue">
                             <span class="text__clean">Continue</span>
                           </button>
                         </div>

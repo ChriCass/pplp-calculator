@@ -208,8 +208,10 @@ input[type="number"]::-webkit-outer-spin-button{
   border-left: none;
   border-right: none;
   z-index: 1;
+  transition: all 0.3s ease;
 
   &.status__step-1::after{
+    transition: all 0.3s ease;
     content: "";
     position: absolute;
     height: 100%;
@@ -799,6 +801,126 @@ input[type="number"]::-webkit-outer-spin-button{
 .bg__gradient{
   background-image: linear-gradient(to right, var(--color-principal) 30%, var(--color-secundario));
   padding: 1px;
+}
+
+/*********** FORM-2 ***********/
+.body:not(:has(.main.step-two)){
+  & .section__form--dos{
+    display: none;
+  }
+
+  & .section__form--uno{
+    display: block;
+  }
+}
+
+.body:has(.main.step-two){
+  & .main.step-two{
+    & .status__bar.status__step-1::after{
+      width: calc(40%);
+    }
+  
+    & .section__form--uno{
+      display: none;
+    }
+
+    & .section__form--dos{
+      display: block;
+    }
+  }
+}
+
+.article__color__base{
+  gap: 2rem;
+}
+
+.color__base__container{
+  width: 100%;
+  overflow: hidden;
+}
+
+.color__select__container{
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 5rem), 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(min(100%, 5rem), 1fr));
+  gap: 1rem;
+}
+
+.color__select__content{
+  cursor: pointer;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  background-color: #eff;
+  border: thin solid transparent;
+
+  &.color--selected{
+    border-color: var(--color-secundario);
+  }
+}
+
+.color__content{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.span__color,
+.color__code{
+  font-size: 0.8rem;
+  text-align: center;
+  color: #000;
+}
+
+.color__icon{
+  width: 80%;
+  max-width: 2rem;
+  height: auto;
+  aspect-ratio: 1/1;
+  background-color: #fff;
+  border-radius: 50%;
+  border: thin solid #000;
+}
+
+.color__black .color__icon{
+  background-color: #000;
+}
+
+.color__white .color__icon{
+  background-color: #fff;
+}
+
+.color__grey .color__icon{
+  background-color: #555;
+}
+
+.custom__color__container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & input{
+    width: 2rem;
+    height: 2rem;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    color: #000;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+}
+
+.input__checkbox__color{
+  padding-top: 1rem;
+}
+
+.checkbox__color__container{
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 @media screen and (width >= 768px) {
