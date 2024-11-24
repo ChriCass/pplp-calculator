@@ -25,7 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const colorSelects = document.querySelectorAll(".color__select__content");
   const inputColor = document.getElementById("color-picker");
-  const sidesColor = document.querySelectorAll(".side__color");
+  const colorInput = document.querySelectorAll(".input__color");
+  const louvers = document.querySelectorAll(".louver__color");
 
   const btnFormPrevious = document.querySelectorAll(".btn-form-previous");
   const btnFormContinue = document.querySelectorAll(".btn-form-continue");
@@ -87,7 +88,14 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const handleColorSelect = e => {
-    const colorSelect = e.target.matches(".color__select__content") ? e.target : e.target.closest(".color__select__content");
+    const parent = e.target.closest(".form__article");
+    console.log("Parent", parent);
+    const colorSelect = e.target.matches(".color__select__content")
+      ? e.target
+      : e.target.closest(".color__select__content");
+
+    console.log("ColorSelect", colorSelect);
+
     if (!colorSelect) return;
 
     // Remover selecciones
@@ -99,21 +107,35 @@ document.addEventListener("DOMContentLoaded", () => {
     // Obtener color
     const color = colorSelect.dataset.color;
 
-    if (color) updateColor(color);
+    if (color) {
+      if (!parent.classList.contains("article__color__louvers")) {
+        updateColor(color);
+      } else {
+        updateColorLouvers(color);
+      }
+    }
   }
 
-  const updateColor = color => {
-    sidesColor.forEach(side => side.style.backgroundColor = color);
-  };
+  const updateColor = color => sides.forEach(side => side.style.backgroundColor = color);
+
+  const updateColorLouvers = color => louvers.forEach(louver => louver.style.backgroundColor = color);
 
   const handleInputColor = e => {
     const color = e.target.value;
-    updateColor(color);
+    const parent = e.target.closest(".form__article");
+    if (parent.classList.contains("article__color__louvers")) {
+      updateColorLouvers(color);
+    } else {
+      updateColor(color);
+    }
 
     colorSelects.forEach(item => item.classList.remove("color--selected"));
-    const customColor = inputColor.closest(".color__select__content");
-    customColor.classList.add("color--selected");
+    colorInput.forEach(input => {
+      const customColor = input.closest(".color__select__content");
+      customColor.classList.add("color--selected");
+    });
   }
+
 
   // Eventos
   btnsMeasure.forEach(btn => btn.addEventListener("click", e => handleMeasureBtn(e)));
@@ -129,31 +151,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   attachedMeasures.forEach(measure => measure.addEventListener("click", e => toggleCheckBox(e.target.closest(".attached__measure"))));
 
-  colorSelects.forEach(select => {
-    select.addEventListener("click", e => handleColorSelect(e))
-  });
+  colorSelects.forEach(select => select.addEventListener("click", e => handleColorSelect(e)));
 
-  inputColor.addEventListener("input", e => handleInputColor(e));
+  colorInput.forEach(input => input.addEventListener("input", e => handleInputColor(e)));
 
   btnFormPrevious.forEach(btn => {
-    btn.addEventListener("click", e => {
-      if (e.target.matches(".btn__bg, .text__clean")) {
-        const btn = e.target.matches(".btn__bg") ? e.target : e.target.parentElement;
-        btn.addEventListener("click", e => {
-          main.classList.remove("step-two");
-        });
-      };
+    btn.addEventListener("click", () => {
+      main.classList.remove("step-two");
     });
   });
 
   btnFormContinue.forEach(btn => {
-    btn.addEventListener("click", e => {
-      if (e.target.matches(".btn__bg, .text__clean")) {
-        const btn = e.target.matches(".btn__bg") ? e.target : e.target.parentElement;
-        btn.addEventListener("click", e => {
-          main.classList.add("step-two");
-        });
-      };
+    btn.addEventListener("click", () => {
+      main.classList.add("step-two");
     });
   });
 

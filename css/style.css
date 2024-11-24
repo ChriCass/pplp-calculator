@@ -85,7 +85,9 @@ input[type="number"]::-webkit-outer-spin-button{
 .container{
   width: 95%;
   max-width: 64rem;
+  max-width: 75rem;
   margin-inline: auto;
+  overflow: hidden;
 }
 
 .flex-c-c{
@@ -99,26 +101,22 @@ input[type="number"]::-webkit-outer-spin-button{
   padding-block: 1rem;
 }
 
-.text__clean{
-  background-image: linear-gradient(to right, var(--color-principal) 20%, var(--color-secundario));
+.btn{
+  background-image: linear-gradient(to right, var(--color-principal) 30%, var(--color-secundario));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: transparent;
   font-weight: 400;
+  background-color: #fff;
 }
 
 .btn--selected{
-  background-image: linear-gradient(to right, var(--color-principal) 20%, var(--color-secundario));
   border: none;
-
-  & .text__clean{
-    background-image: none;
-    color: #fff;
-    -webkit-background-clip: unset;
-    background-clip: unset;
-    -webkit-text-fill-color: #fff;
-  }
+  color: #fff;
+  background-color: transparent;
+  background-clip: unset;
+  -webkit-text-fill-color: #fff;
 }
 
 /***************** KEYFRAMES *****************/
@@ -146,6 +144,15 @@ input[type="number"]::-webkit-outer-spin-button{
   }
   50%{
     transform: scaleY(1.1);
+  }
+}
+
+@keyframes rotate-circle{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
   }
 }
 
@@ -257,7 +264,7 @@ input[type="number"]::-webkit-outer-spin-button{
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: height 0.3s ease;
+  transition: height 0.3s ease opacity 0.5s ease;
   interpolate-size: allow-keywords;
 }
 
@@ -566,7 +573,7 @@ input[type="number"]::-webkit-outer-spin-button{
 
 .election__contact.element--show,
 .election__pergola.element--show,
-.form__btns__footer.element--show,
+.form__footer.element--show,
 .election__attached.element--show{
   display: block;
   opacity: 1;
@@ -579,7 +586,7 @@ input[type="number"]::-webkit-outer-spin-button{
 
 .election__contact,
 .election__pergola,
-.form__btns__footer,
+.form__footer,
 .election__attached{
   transition: opacity 0.3s ease;
   opacity: 0;
@@ -590,6 +597,10 @@ input[type="number"]::-webkit-outer-spin-button{
   display: flex;
   flex-direction: column;
   gap: 3rem;
+}
+
+.form__btns__footer{
+  width: 100%;
 }
 
 .election__contact__container{
@@ -807,10 +818,16 @@ input[type="number"]::-webkit-outer-spin-button{
 .body:not(:has(.main.step-two)){
   & .section__form--dos{
     display: none;
+    opacity: 0;
   }
 
   & .section__form--uno{
     display: block;
+    opacity: 1;
+
+    @starting-style{
+      opacity: 0;
+    }
   }
 }
 
@@ -860,11 +877,15 @@ input[type="number"]::-webkit-outer-spin-button{
 }
 
 .color__content{
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
   justify-content: center;
+
+  position: relative;
 }
 
 .span__color,
@@ -881,7 +902,7 @@ input[type="number"]::-webkit-outer-spin-button{
   aspect-ratio: 1/1;
   background-color: #fff;
   border-radius: 50%;
-  border: thin solid #000;
+  border: thin solid transparent;
 }
 
 .color__black .color__icon{
@@ -890,10 +911,28 @@ input[type="number"]::-webkit-outer-spin-button{
 
 .color__white .color__icon{
   background-color: #fff;
+  border-color: #000;
 }
 
 .color__grey .color__icon{
   background-color: #555;
+}
+
+.custom__color__bg{
+  width: 100%;
+}
+
+.custom__color__circle{
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.circle__color{
+  position: absolute;
+  inset: 0;
+  background-image: conic-gradient(red, magenta, blue, aqua, lime, yellow, red);
+  animation: rotate-circle 10s linear infinite;
 }
 
 .custom__color__container{
@@ -903,13 +942,12 @@ input[type="number"]::-webkit-outer-spin-button{
   align-items: center;
 
   & input{
-    width: 2rem;
-    height: 2rem;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-    color: #000;
-    font-size: 0.8rem;
-    text-align: center;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transition: none;
+    opacity: 0;
   }
 }
 
@@ -921,6 +959,38 @@ input[type="number"]::-webkit-outer-spin-button{
   display: flex;
   gap: 0.5rem;
   align-items: center;
+}
+
+.form__article.article__color__louvers{
+  align-items: stretch;
+  gap: 2rem;
+}
+
+.color__louvers__title{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.color__louver__container{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.louvers{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-evenly;
+  padding-inline: 6px;
+}
+
+.louver{
+  width: 5px;
+  height: 100%;
+  background-color: #5558;
+  border-radius: 1rem;
 }
 
 @media screen and (width >= 768px) {
@@ -950,7 +1020,7 @@ input[type="number"]::-webkit-outer-spin-button{
   }
 
   .section__form{
-    padding: 2rem;
+    padding: 2rem 4rem;
   }
 
   .form__article:first-child{
@@ -1008,5 +1078,9 @@ input[type="number"]::-webkit-outer-spin-button{
     & .scene__table{
       margin: 0;
     }
+  }
+
+  .article__color__base:first-child{
+    flex-direction: column;
   }
 }
