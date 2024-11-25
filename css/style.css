@@ -28,6 +28,98 @@ body{
   margin: 0;
   width: 100%;
   overflow-x: hidden;
+
+  &:not(:has(.main.step-two)){
+    & .section__form--dos{
+      display: none;
+      opacity: 0;
+    }
+
+    & .section__form--uno{
+      display: block;
+      opacity: 1;
+
+      @starting-style{
+        opacity: 0;
+      }
+    }
+
+    & .section__form--tres{
+      display: none;
+      opacity: 0;
+    }
+
+    & .section__form--cuatro{
+      display: none;
+      opacity: 0;
+    }
+  }
+
+  &:has(.main.step-two){
+    & .main.step-two{
+      & .status__bar.status__step-1::after{
+        width: 40%;
+      }
+    
+      & .section__form--uno{
+        display: none;
+        opacity: 0;
+      }
+
+      & .section__form--dos{
+        display: block;
+        opacity: 1;
+
+        @starting-style{
+          opacity: 0;
+        }
+      }
+
+      & .section__form--tres{
+        display: none;
+        opacity: 0;
+      }
+
+      & .section__form--cuatro{
+        display: none;
+        opacity: 0;
+      }
+    }
+  }
+
+  &:not(:has(.main.step-three)){
+    & .options__step__three{
+      display: none;
+      opacity: 0;
+    }
+  }
+
+  &:has(.main.step-three){
+    & main.step-three{
+      & .status__bar.status__step-1::after{
+        width: 62%;
+      }
+
+      & .section__form--uno{
+        display: none;
+        opacity: 0;
+      }
+
+      & .section__form--dos{
+        display: none;
+        opacity: 0;
+      }
+
+      & .section__form--tres{
+        display: block;
+        opacity: 1;
+
+        @starting-style{
+          opacity: 0;
+        }
+      }
+    }
+  }
 }
 
 button,
@@ -84,8 +176,8 @@ input[type="number"]::-webkit-outer-spin-button{
 /***************** UTILITIES *****************/
 .container{
   width: 95%;
-  max-width: 64rem;
   max-width: 75rem;
+  max-width: 64rem;
   margin-inline: auto;
   overflow: hidden;
 }
@@ -161,6 +253,10 @@ input[type="number"]::-webkit-outer-spin-button{
 .status__bar__principal{
   padding-block: 1rem;
   overflow: auto;
+
+  &.container{
+    width: 95%;
+  }
 }
 
 .status__bar__container{
@@ -172,6 +268,7 @@ input[type="number"]::-webkit-outer-spin-button{
 
   &.container{
     width: 95%;
+    max-width: 75rem;
   }
 }
 
@@ -305,8 +402,8 @@ input[type="number"]::-webkit-outer-spin-button{
 }
 
 .scene__table{
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   aspect-ratio: 1/1;
   margin: auto;
   max-width: 20rem;
@@ -403,7 +500,7 @@ input[type="number"]::-webkit-outer-spin-button{
 
 .leg__front__left {
   top: 25%;
-  left: 0.7%;
+  left: 0.8%;
 }
 
 .leg__front__right {
@@ -573,7 +670,7 @@ input[type="number"]::-webkit-outer-spin-button{
 
 .election__contact.element--show,
 .election__pergola.element--show,
-.form__footer.element--show,
+.form__btns__footer.element--show,
 .election__attached.element--show{
   display: block;
   opacity: 1;
@@ -586,7 +683,7 @@ input[type="number"]::-webkit-outer-spin-button{
 
 .election__contact,
 .election__pergola,
-.form__footer,
+.form__btns__footer,
 .election__attached{
   transition: opacity 0.3s ease;
   opacity: 0;
@@ -815,7 +912,7 @@ input[type="number"]::-webkit-outer-spin-button{
 }
 
 /*********** FORM-2 ***********/
-.body:not(:has(.main.step-two)){
+/* .body:not(:has(.main.step-two)){
   & .section__form--dos{
     display: none;
     opacity: 0;
@@ -845,7 +942,7 @@ input[type="number"]::-webkit-outer-spin-button{
       display: block;
     }
   }
-}
+} */
 
 .article__color__base{
   gap: 2rem;
@@ -973,6 +1070,13 @@ input[type="number"]::-webkit-outer-spin-button{
 }
 
 .color__louver__container{
+  display: none;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.color__louver__container.element--show{
+  opacity: 1;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -989,8 +1093,42 @@ input[type="number"]::-webkit-outer-spin-button{
 .louver{
   width: 5px;
   height: 100%;
-  background-color: #5558;
+  background-color: #000;
   border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.section__form--dos .form__btns__footer{
+  opacity: 1;
+  display: block;
+}
+
+/*********** FORM-3 ***********/
+.body:has(.main.step-three){
+  & .section__form--tres{
+    display: block;
+    opacity: 1;
+
+    @starting-style{
+      opacity: 0;
+    }
+  }
+
+  & .section__form--uno{
+    display: none;
+    opacity: 0;
+  }
+
+  & .section__form--dos{
+    display: none;
+    opacity: 0;
+  }
+}
+
+.body:not(:has(.main.step-three)){
+  & .options__step__three{
+    display: none;
+  }
 }
 
 @media screen and (width >= 768px) {
@@ -1016,7 +1154,7 @@ input[type="number"]::-webkit-outer-spin-button{
 
 @media screen and (width >= 1024px){
   .container{
-    width: 90%;
+    width: 80%;
   }
 
   .section__form{
@@ -1039,10 +1177,6 @@ input[type="number"]::-webkit-outer-spin-button{
     width: 80%;
     height: 80%;
     margin: auto;
-  }
-
-  .design__content{
-    width: 90%;
   }
 
   .attached__content{

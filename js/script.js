@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnsGroup = document.querySelectorAll(".btn__bg");
   const btnsGroupBg = document.querySelectorAll(".btns__group--bg");
   const btnsMeasure = document.querySelectorAll(".btn__measure");
-  const btnMeasureSelected = document.querySelector(".btn--selected");
+  const statusCount = document.querySelectorAll(".status__content");
 
   const inputCheckboxContact = document.getElementById("input-checkbox-form-contact");
   
@@ -30,6 +30,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const btnFormPrevious = document.querySelectorAll(".btn-form-previous");
   const btnFormContinue = document.querySelectorAll(".btn-form-continue");
+
+  const checkboxInputColor = document.getElementById("input-checkbox-color");
+  const colorLouverContainer = document.querySelector(".color__louver__container");
+
+  const previousBtn1 = document.getElementById("btn-form-previous-1");
+  const continueBtn1 = document.getElementById("btn-form-continue-1");
+
+  const previousBtn2 = document.getElementById("btn-form-previous-2");
+  const continueBtn2 = document.getElementById("btn-form-continue-2");
+
+  const previousBtn3 = document.getElementById("btn-form-previous-3");
+  const continueBtn3 = document.getElementById("btn-form-continue-3");
 
   // Helper para togglear clases
   const toggleClass = (element, className, condition) => {
@@ -89,12 +101,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const handleColorSelect = e => {
     const parent = e.target.closest(".form__article");
-    console.log("Parent", parent);
     const colorSelect = e.target.matches(".color__select__content")
       ? e.target
       : e.target.closest(".color__select__content");
-
-    console.log("ColorSelect", colorSelect);
 
     if (!colorSelect) return;
 
@@ -113,20 +122,36 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         updateColorLouvers(color);
       }
+
+      if (checkboxInputColor.checked) {
+        updateColorLouvers(color);
+      }
     }
   }
 
   const updateColor = color => sides.forEach(side => side.style.backgroundColor = color);
 
-  const updateColorLouvers = color => louvers.forEach(louver => louver.style.backgroundColor = color);
+  const updateColorLouvers = color => {
+    louvers.forEach(louver => louver.style.backgroundColor = color);
+  }
 
   const handleInputColor = e => {
     const color = e.target.value;
     const parent = e.target.closest(".form__article");
     if (parent.classList.contains("article__color__louvers")) {
-      updateColorLouvers(color);
+      if (checkboxInputColor.checked) {
+        updateColorLouvers(color);
+        updateColor(color);
+      } else {
+        updateColorLouvers(color);
+      }
     } else {
-      updateColor(color);
+      if (checkboxInputColor.checked) {
+        updateColorLouvers(color);
+        updateColor(color);
+      } else {
+        updateColor(color);
+      }
     }
 
     colorSelects.forEach(item => item.classList.remove("color--selected"));
@@ -136,6 +161,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const handleCheckboxColor = e => {
+    louvers.forEach(louver => {
+      louver.style.backgroundColor = e.target.checked ? sides[0].style.backgroundColor : "#000";
+    });
+
+    e.target.checked ? colorLouverContainer.classList.remove("element--show") : colorLouverContainer.classList.add("element--show");
+  }
 
   // Eventos
   btnsMeasure.forEach(btn => btn.addEventListener("click", e => handleMeasureBtn(e)));
@@ -155,6 +187,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   colorInput.forEach(input => input.addEventListener("input", e => handleInputColor(e)));
 
+  checkboxInputColor.addEventListener("change", e => handleCheckboxColor(e));
+
   btnFormPrevious.forEach(btn => {
     btn.addEventListener("click", () => {
       main.classList.remove("step-two");
@@ -165,6 +199,49 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", () => {
       main.classList.add("step-two");
     });
+  });
+
+  previousBtn1.addEventListener("click", () => {
+    previousBtn1.classList.remove("btn--selected");
+    console.log("Removiendo clase");
+  });
+
+  continueBtn1.addEventListener("click", () => {
+    main.classList.add("step-two");
+    previousBtn1.classList.remove("btn--selected");
+    statusCount[1].classList.add("status__content--active");
+    statusCount[2].classList.remove("status__content--active");
+    statusCount[3].classList.remove("status__content--active");
+  })
+
+  previousBtn2.addEventListener("click", () => {
+    previous.classList.remove("btn--selected");
+    main.className = "main";
+    statusCount[1].classList.remove("status__content--active");
+    statusCount[2].classList.remove("status__content--active");
+    statusCount[3].classList.remove("status__content--active");
+  });
+
+  continueBtn2.addEventListener("click", () => {
+    main.className = "main step-three";
+    statusCount[1].classList.add("status__content--active");
+    statusCount[2].classList.add("status__content--active");
+    statusCount[3].classList.remove("status__content--active");
+  });
+
+  previousBtn3.addEventListener("click", () => {
+    previous.classList.remove("btn--selected");
+    main.className = "main step-two";
+    statusCount[1].classList.add("status__content--active");
+    statusCount[2].classList.remove("status__content--active");
+    statusCount[3].classList.remove("status__content--active");
+  });
+
+  continueBtn3.addEventListener("click", () => {
+    main.className = "main step-four";
+    statusCount[1].classList.add("status__content--active");
+    statusCount[2].classList.add("status__content--active");
+    statusCount[3].classList.add("status__content--active");
   });
 
 });
