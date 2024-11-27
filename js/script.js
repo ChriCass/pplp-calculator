@@ -2,7 +2,7 @@ console.log("Corriendo en el puerto 5500");
 
 document.addEventListener("DOMContentLoaded", () => {
   // DOM
-  const main = document.querySelector(".main");
+  const sectionCalculatorForm = document.querySelector(".section__calculator__content");
   const btnsFormMeasure = document.querySelectorAll(".btn__measure"); 
   const inputUnits = document.querySelectorAll(".input__unit");
   const formInputs = document.querySelectorAll(".form__input");
@@ -43,6 +43,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const previousBtn3 = document.getElementById("btn-form-previous-3");
   const continueBtn3 = document.getElementById("btn-form-continue-3");
 
+  const previousBtn4 = document.getElementById("btn-form-previous-4");
+  const continueBtn4 = document.getElementById("btn-form-continue-4");
+
+  const chooseHeaderAccesory = document.querySelectorAll(".choose__header");
+
+  const cardMaterial = document.querySelectorAll(".accesory__card__material__element");
+
   // Helper para togglear clases
   const toggleClass = (element, className, condition) => {
     element.classList.toggle(className, condition);
@@ -52,9 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const handleMeasureBtn = e => {
     const btnsGroup = e.target.closest(".form__btns");
     const currentBtn = btnsGroup.querySelectorAll(".btn__measure");
-    currentBtn.forEach(btn => btn.classList.remove("btn--selected"));
+    currentBtn.forEach(btn => btn.classList.remove("action__btn--selected"));
     if (e.target.matches(".btn__measure")) {
-      e.target.classList.add("btn--selected");
+      e.target.classList.add("action__btn--selected");
     }
 
     const unitText = e.target.textContent.toLowerCase();
@@ -72,11 +79,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const handleGroupBtn = target => {
     const btnGroup = target.closest(".btns__group--bg");
-    btnGroup.querySelectorAll(".btn__bg").forEach(btn => btn.classList.remove("btn--selected"));
+    btnGroup.querySelectorAll(".btn__bg").forEach(btn => btn.classList.remove("action__btn--selected"));
 
     if (target.matches(".btn__bg, .text__clean")) {
       const btn = target.matches(".btn__bg") ? target : target.parentElement;
-      btn.classList.add("btn--selected");
+      btn.classList.add("action__btn--selected");
       const showAttached = btn.dataset.election === "attached";
       toggleClass(electionAttached, "element--show", showAttached);
     }
@@ -87,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleClass(electionPergola, "element--show", !checked);
     toggleClass(btnsFooter, "element--show", !checked);
 
-    if (!checked && btnAttached.classList.contains("btn--selected")) {
+    if (!checked && btnAttached.classList.contains("action__btn--selected")) {
       electionAttached.classList.add("element--show");
     } else {
       electionAttached.classList.remove("element--show");
@@ -169,6 +176,22 @@ document.addEventListener("DOMContentLoaded", () => {
     e.target.checked ? colorLouverContainer.classList.remove("element--show") : colorLouverContainer.classList.add("element--show");
   }
 
+  const handleAccesoryBtn = e => {
+    const containerAccesory = e.target.closest(".choose__accesory__options__content");
+    if (!containerAccesory) return;
+
+    const card = e.target.closest(".accesory__card__material__element") ? e.target.closest(".accesory__card__material__element") : e.target;
+
+    const material = card.dataset.material;
+
+    containerAccesory.querySelectorAll(".accesory__card__material__element").forEach(element => element.classList.remove("accesory__element--selected"));
+    card.classList.add("accesory__element--selected");
+    
+    const groups = containerAccesory.querySelectorAll(".group");
+
+    groups.forEach(group => group.classList.toggle("element--show", group.dataset.group === material));
+  }
+
   // Eventos
   btnsMeasure.forEach(btn => btn.addEventListener("click", e => handleMeasureBtn(e)));
 
@@ -191,57 +214,82 @@ document.addEventListener("DOMContentLoaded", () => {
 
   btnFormPrevious.forEach(btn => {
     btn.addEventListener("click", () => {
-      main.classList.remove("step-two");
+      sectionCalculatorForm.classList.remove("step-two");
     });
   });
 
   btnFormContinue.forEach(btn => {
     btn.addEventListener("click", () => {
-      main.classList.add("step-two");
+      sectionCalculatorForm.classList.add("step-two");
     });
   });
 
   previousBtn1.addEventListener("click", () => {
-    previousBtn1.classList.remove("btn--selected");
+    previousBtn1.classList.remove("action__btn--selected");
     console.log("Removiendo clase");
   });
 
   continueBtn1.addEventListener("click", () => {
-    main.classList.add("step-two");
-    previousBtn1.classList.remove("btn--selected");
+    sectionCalculatorForm.className = "section__calculator__content step-two";
+    previousBtn1.classList.remove("action__btn--selected");
     statusCount[1].classList.add("status__content--active");
     statusCount[2].classList.remove("status__content--active");
     statusCount[3].classList.remove("status__content--active");
+    statusCount[4].classList.remove("status__content--active");
   })
 
   previousBtn2.addEventListener("click", () => {
-    previous.classList.remove("btn--selected");
-    main.className = "main";
+    previousBtn2.classList.remove("action__btn--selected");
+    sectionCalculatorForm.className = "section__calculator__content step-one";
     statusCount[1].classList.remove("status__content--active");
     statusCount[2].classList.remove("status__content--active");
     statusCount[3].classList.remove("status__content--active");
+    statusCount[4].classList.remove("status__content--active");
   });
 
   continueBtn2.addEventListener("click", () => {
-    main.className = "main step-three";
+    sectionCalculatorForm.className = "section__calculator__content step-three";
     statusCount[1].classList.add("status__content--active");
     statusCount[2].classList.add("status__content--active");
     statusCount[3].classList.remove("status__content--active");
+    statusCount[4].classList.remove("status__content--active");
   });
 
   previousBtn3.addEventListener("click", () => {
-    previous.classList.remove("btn--selected");
-    main.className = "main step-two";
+    previousBtn3.classList.remove("action__btn--selected");
+    sectionCalculatorForm.className = "section__calculator__content step-two";
     statusCount[1].classList.add("status__content--active");
     statusCount[2].classList.remove("status__content--active");
     statusCount[3].classList.remove("status__content--active");
+    statusCount[4].classList.remove("status__content--active");
   });
 
   continueBtn3.addEventListener("click", () => {
-    main.className = "main step-four";
+    sectionCalculatorForm.className = "section__calculator__content step-four";
     statusCount[1].classList.add("status__content--active");
     statusCount[2].classList.add("status__content--active");
     statusCount[3].classList.add("status__content--active");
+    statusCount[4].classList.remove("status__content--active");
   });
 
+  previousBtn4.addEventListener("click", () => {
+    previousBtn4.classList.remove("action__btn--selected");
+    sectionCalculatorForm.className = "section__calculator__content step-three";
+    statusCount[1].classList.add("status__content--active");
+    statusCount[2].classList.add("status__content--active");
+    statusCount[3].classList.remove("status__content--active");
+    statusCount[4].classList.remove("status__content--active");
+  });
+
+  continueBtn4.addEventListener("click", () => {
+    sectionCalculatorForm.className = "section__calculator__content step-five";
+    statusCount[1].classList.add("status__content--active");
+    statusCount[2].classList.add("status__content--active");
+    statusCount[3].classList.add("status__content--active");
+    statusCount[4].classList.add("status__content--active");
+  });
+
+  chooseHeaderAccesory.forEach(header => header.addEventListener("click", () => header.classList.toggle("choose__header--active")));
+
+  cardMaterial.forEach(card => card.addEventListener("click", e => handleAccesoryBtn(e)));
 });

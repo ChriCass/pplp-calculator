@@ -9,447 +9,62 @@
     <script src="./js/script.js" defer></script>
   </head>
   <body class="body">
-    <main class="main">
-      <!-- Barra de estado -->
-      <section class="section__main section__status-bar">
-        <div class="status__bar__principal container">
-          <div class="status__bar__container">
-            <div class="status__content status__content--active">
-              <span class="status__text">Basic Pergola Setup</span>
-              <span class="flex-c-c status__count">1</span>
+    <section class="section__calculator section__calculator__form" id="section-calculator-form">
+      <section class="section__calculator__content step-one">
+        <!-- Barra de estado -->
+        <section class="section__main section__status-bar">
+          <div class="status__bar__principal container">
+            <div class="status__bar__container">
+              <div class="status__content status__content--active">
+                <span class="status__text">Basic Pergola Setup</span>
+                <span class="flex-c-c status__count">1</span>
+              </div>
+              <div class="status__content">
+                <span class="status__text">Design Preferences</span>
+                <span class="flex-c-c status__count">2</span>
+              </div>
+              <div class="status__content">
+                <span class="status__text">Screen Options</span>
+                <span class="flex-c-c status__count">3</span>
+              </div>
+              <div class="status__content">
+                <span class="status__text">Climate Control Options</span>
+                <span class="flex-c-c status__count">4</span>
+              </div>
+              <div class="status__content status__content--last">
+                <span class="status__text">Resume</span>
+                <span class="flex-c-c status__count">5</span>
+              </div>
+              <div class="status__bar status__step-1"></div>
             </div>
-            <div class="status__content">
-              <span class="status__text">Design Preferences</span>
-              <span class="flex-c-c status__count">2</span>
-            </div>
-            <div class="status__content">
-              <span class="status__text">Screen Options</span>
-              <span class="flex-c-c status__count">3</span>
-            </div>
-            <div class="status__content">
-              <span class="status__text">Climate Control Options</span>
-              <span class="flex-c-c status__count">4</span>
-            </div>
-            <div class="status__content status__content--last">
-              <span class="status__text">Resume</span>
-              <span class="flex-c-c status__count">5</span>
-            </div>
-            <div class="status__bar status__step-1"></div>
           </div>
-        </div>
-      </section>
-      <!-- Formulario de diseño -->
-      <section class="section__main section__design">
-        <div class="design__container container">
-          <div class="design__content">
-            <form class="form form__design">
-              <section class="section__form section__form--uno" id="form-uno">
-                <div class="form__title">
-                  <h2>What are the dimensions of your pergola?</h2>
-                  <div class="form__title__svg">
-                    <svg
-                      class="form__title__icon"
-                      width="24px"
-                      height="24px"
-                      viewBox="0 -960 960 960"
-                      fill="#fff">
-                        <path
-                          d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
-                        />
-                    </svg>
+        </section>
+        <!-- Formulario de diseño -->
+        <section class="section__main section__design">
+          <div class="design__container container">
+            <div class="design__content">
+              <form class="form form__design">
+
+                <!-- Inicio de la sección 1 -->
+                <section class="section__form section__form--uno" id="form-uno">
+                  <div class="form__title">
+                    <h2>What are the dimensions of your pergola?</h2>
+                    <div class="form__title__svg">
+                      <svg
+                        class="form__title__icon"
+                        width="24px"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        fill="#fff">
+                          <path
+                            d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+                          />
+                      </svg>
+                    </div>
                   </div>
-                </div>
-                <div class="form__options">
-                  <article class="form__article">
-                    <div class="flex-c-c scene__table__container">
-                      <div class="scene__table">
-                        <div class="table">
-                          <div class="table__top">
-                            <div class="side edge edge__top side__length"></div>
-                            <div class="side edge edge__right side__depth"></div>
-                            <div class="side edge edge__bottom side__length"></div>
-                            <div class="side edge edge__left side__depth"></div>
-                          </div>
-                          <div class="table__legs">
-                            <div class="side leg leg__front__left side__height"></div>
-                            <div class="side leg leg__front__right side__height"></div>
-                            <div class="side leg leg__back__left side__height"></div>
-                            <div class="side leg leg__back__right side__height"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form__info">
-                      <div class="form__btns btns__group--bg">
-                        <button type="button" class="btn btn__bg btn__measure measure__feet btn--selected">Feet</button>
-                        <button type="button" class="btn btn__bg btn__measure measure__inch">Inches</button>
-                      </div>
-                      <div class="form__inputs">
-                        <div class="input__bg">
-                          <article class="input__container">
-                            <div class="input__content">
-                              <label for="input-length" class="label__input">Length</label>
-                              <div class="input__measure">
-                                <input type="text" class="form__input" data-mesurance="length" id="input-length" placeholder="x" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
-                                <span class="input__unit">feet</span>
-                              </div>
-                            </div>
-                          </article>
-                        </div>
-                        <div class="input__bg">
-                          <article class="input__container">
-                            <div class="input__content">
-                              <label for="input-depth" class="label__input">Depth</label>
-                              <div class="input__measure">
-                                <input type="text" class="form__input" data-mesurance="depth" id="input-depth" placeholder="x" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
-                                <span class="input__unit">feet</span>
-                              </div>
-                            </div>
-                          </article>
-                        </div>
-                        <div class="input__bg">
-                          <article class="input__container">
-                            <div class="input__content">
-                              <label for="input-height" class="label__input">Height</label>
-                              <div class="input__measure">
-                                <input type="text" class="form__input" data-mesurance="height" id="input-height" placeholder="x" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
-                                <span class="input__unit">feet</span>
-                              </div>
-                            </div>
-                          </article>
-                        </div>
-                        <div class="alert__recomendation">
-                          <div class="alert__container">
-                            <div class="alert__title">
-                              <div class="alert__svg">
-                                <svg class="alert__svg__icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff">
-                                  <path
-                                    d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
-                                </svg>
-                              </div>
-                              <h4 class="alert__title__text">Recommended Height</h4>
-                            </div>
-                            <div class="alert__paragraph">
-                              <p class="paragraph__text">
-                                Height measures the total height, not the internal clearance. 8' to 10' is recommended. Max height can be 140" or 11.67'.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                  <article class="form__article">
-                    <div class="form__input__checkbox">
-                      <input type="checkbox" id="input-checkbox-form-contact" class="input__checkbox" />
-                      <label for="input-checkbox-form-contact" class="label__input">I have an irregular shape on mind</label>
-                    </div>
-                  </article>
-                  <article class="form__article" id="form-footer-uno">
-                    <div class="election__contact">
-                      <div class="election__contact__container">
-                        <div class="election__contact__content">
-                          <div class="contact__title">
-                            <h3 class="contact__title__text">Let's talk about your design idea</h3>
-                          </div>
-                          <div class="contact__btn">
-                            <a href="#" class="btn btn__contact btn--selected">Book a Call</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="election__pergola element--show">
-                      <div class="election__container">
-                        <div class="election__content">
-                          <div class="election__title">
-                            <h3 class="election__title__text">Is your pergola going to be freestanding or attached?</h3>
-                            <div class="election__title__svg">
-                              <svg class="election__title__svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
-                            </div>
-                          </div>
-                          <div class="election__btns btns__group--bg">
-                            <button type="button" class="btn btn__bg btn__election btn--selected data-election="freestanding">
-                              <span class="text__clean">Freestanding</span>
-                            </button>
-                            <button type="button" class="btn btn__bg btn__election" data-election="attached">
-                              <span class="text__clean">Attached</span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="election__attached">
-                      <div class="election__attached__container">
-                        <article class="election__attached__content">
-                          <div class="attached__title">
-                            <span class="text__clean">Which side(s) will attach?</span>
-                          </div>
-                          <div class="attached__content">
-                            <div class="attached__table">
-                              <div class="flex-c-c scene__table__container">
-                                <div class="scene__table">
-                                  <div class="table">
-                                    <div class="table__top">
-                                      <div class="side edge edge__top side__length"></div>
-                                      <div class="side edge edge__right side__depth"></div>
-                                      <div class="side edge edge__bottom side__length"></div>
-                                      <div class="side edge edge__left side__depth"></div>
-                                    </div>
-                                    <div class="table__legs">
-                                      <div class="side leg leg__front__left side__height"></div>
-                                      <div class="side leg leg__front__right side__height"></div>
-                                      <div class="side leg leg__back__left side__height"></div>
-                                      <div class="side leg leg__back__right side__height"></div>
-                                    </div>
-                                    <div class="flex-c-c table__attached table__attached__a1">A1</div>
-                                    <div class="flex-c-c table__attached table__attached__a2">A2</div>
-                                    <div class="flex-c-c table__attached table__attached__b1">B1</div>
-                                    <div class="flex-c-c table__attached table__attached__b2">B2</div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="attached__measures">
-                              <div class="attached__measures__container">
-                                <div class="attached__measures__content">
-                                  <ul class="attached__list">
-                                    <li class="attached__measure">
-                                      <div class="bg__gradient">
-                                        <div class="attached__measure__content">
-                                          <input type="checkbox" id="input-measure-a1" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="a1">
-                                          <label for="input-measure-a1" class="label__input">A1 = 12 feet</label>
-                                        </div>
-                                      </div>
-                                    </li>
-                                    <li class="attached__measure">
-                                      <div class="bg__gradient">
-                                        <div class="attached__measure__content">
-                                          <input type="checkbox" id="input-measure-a2" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="a2">
-                                          <label for="input-measure-a1" class="label__input">A2 = 12 feet</label>
-                                        </div>
-                                      </div>
-                                    </li>
-                                    <li class="attached__measure">
-                                      <div class="bg__gradient">
-                                        <div class="attached__measure__content">
-                                          <input type="checkbox" id="input-measure-b1" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="b1">
-                                          <label for="input-measure-a1" class="label__input">B1 = 15 feet</label>
-                                        </div>
-                                      </div>
-                                    </li>
-                                    <li class="attached__measure">
-                                      <div class="bg__gradient">
-                                        <div class="attached__measure__content">
-                                          <input type="checkbox" id="input-measure-b2" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="b2">
-                                          <label for="input-measure-a1" class="label__input">B2 = 15 feet</label>
-                                        </div>
-                                      </div>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </article>
-                      </div>
-                    </div>
-                    <div class="form__btns__footer element--show">
-                      <div class="btns__footer__container">
-                        <div class="btns__footer__content btns__group--bg">
-                          <button type="button" class="btn btn__bg btn__footer btn-form-previous" id="btn-form-previous-1">Previous</button>
-                          <button type="button" class="btn btn__bg btn__footer btn--selected btn-form-continue" id="btn-form-continue-1">Continue</button>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-              </section>
-              <section class="section__form section__form--dos" id="form-dos">
-                <div class="form__options">
-                  <section class="section__color__select">
-                    <article class="form__article article__color__base">
-                      <div class="color__base__container">
-                        <div class="form__title">
-                          <h2>What color would you like the structure of your pergola to be?</h2>
-                          <div class="form__title__svg">
-                            <svg
-                              class="form__title__icon"
-                              width="24px"
-                              height="24px"
-                              viewBox="0 -960 960 960"
-                              fill="#fff">
-                                <path
-                                  d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
-                                />
-                            </svg>
-                          </div>
-                        </div>
-                        <div class="color__base__content">
-                          <div class="color__select__container">
-                            <div class="flex-c-c color__select__content color__white" data-color="#fff">
-                              <article class="color__content">
-                                <span class="span__color">Traffic White</span>
-                                <div class="color__icon"></div>
-                                <span class="color__code">RAL-9016</span>
-                              </article>
-                            </div>
-                            <div class="flex-c-c color__select__content color__black color--selected" data-color="#000">
-                              <article class="color__content">
-                                <span class="span__color">Jet Black</span>
-                                <div class="color__icon"></div>
-                                <span class="color__code">RAL-9005</span>
-                              </article>
-                            </div>
-                            <div class="flex-c-c color__select__content color__grey" data-color="#555">
-                              <article class="color__content">
-                                <span class="span__color">Anthracite Grey</span>
-                                <div class="color__icon"></div>
-                                <span class="color__code">RAL-7016</span>
-                              </article>
-                            </div>
-                            <div class="color__select__content custom__color" data-color>
-                              <article class="color__content">
-                                <div class="flex-c-c custom__color__bg">
-                                  <div class="color__icon custom__color__circle">
-                                    <div class="circle__color"></div>
-                                  </div>
-                                </div>
-                                <div class="custom__color__container">
-                                  <input type="color" name="color" id="color-picker" class="input__color" value="#555555" />
-                                  <label for="color-picker" class="label__color color__code">Custom</label>
-                                </div>
-                              </article>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="scene__table__color">
-                        <div class="table__color__container">
-                          <article class="table__color">
-                            <div class="scene__table">
-                              <div class="table">
-                                <div class="table__top">
-                                  <div class="side edge side__color edge__top side__length" style="background-color: rgb(0, 0, 0);"></div>
-                                  <div class="side edge side__color edge__right side__depth" style="background-color: rgb(0, 0, 0);"></div>
-                                  <div class="side edge side__color edge__bottom side__length" style="background-color: rgb(0, 0, 0);"></div>
-                                  <div class="side edge side__color edge__left side__depth" style="background-color: rgb(0, 0, 0);"></div>
-                                </div>
-                                <div class="table__legs">
-                                  <div class="side leg side__color leg__front__left side__height" style="background-color: rgb(0, 0, 0);"></div>
-                                  <div class="side leg side__color leg__front__right side__height" style="background-color: rgb(0, 0, 0);"></div>
-                                  <div class="side leg side__color leg__back__left side__height" style="background-color: rgb(0, 0, 0);"></div>
-                                  <div class="side leg side__color leg__back__right side__height" style="background-color: rgb(0, 0, 0);"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </article>
-                        </div>
-                        <div class="input__checkbox__color">
-                          <div class="checkbox__color__container">
-                            <input type="checkbox" id="input-checkbox-color" class="input__checkbox__color">
-                            <label for="input-checkbox-color" class="label__input">I want the louvers to be the same color</label>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                    <article class="form__article article__color__louvers">
-                      <div class="color__base__container color__louver__container element--show">
-                        <div class="color__louvers__title">
-                          <h2 class="louver__title">And what color would you like the louvers to be?</h2>
-                          <div class="color__louvers__title__svg">
-                            <svg class="form__title__icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff">
-                              <path d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
-                            </svg>
-                          </div>
-                        </div>
-                        <div class="color__base__content">
-                          <div class="color__select__container">
-                            <div class="flex-c-c color__select__content color__white" data-color="#fff">
-                              <article class="color__content">
-                                <span class="span__color">Traffic White</span>
-                                <div class="color__icon"></div>
-                                <span class="color__code">RAL-9016</span>
-                              </article>
-                            </div>
-                            <div class="flex-c-c color__select__content color__black color--selected" data-color="#000">
-                              <article class="color__content">
-                                <span class="span__color">Jet Black</span>
-                                <div class="color__icon"></div>
-                                <span class="color__code">RAL-9005</span>
-                              </article>
-                            </div>
-                            <div class="flex-c-c color__select__content color__grey" data-color="#555">
-                              <article class="color__content">
-                                <span class="span__color">Anthracite Grey</span>
-                                <div class="color__icon"></div>
-                                <span class="color__code">RAL-7016</span>
-                              </article>
-                            </div>
-                            <div class="color__select__content custom__color" data-color>
-                              <article class="color__content">
-                                <div class="flex-c-c custom__color__bg">
-                                  <div class="color__icon custom__color__circle">
-                                    <div class="circle__color"></div>
-                                  </div>
-                                </div>
-                                <div class="custom__color__container">
-                                  <input type="color" name="color" id="color-picker" class="input__color" value="#555555" />
-                                  <label for="color-picker" class="label__color color__code">Custom</label>
-                                </div>
-                              </article>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="scene__table__color">
-                        <div class="table__color__container">
-                          <article class="table__color">
-                            <div class="scene__table">
-                              <div class="table">
-                                <div class="table__top">
-                                  <div class="side edge side__color edge__top side__length" style="background-color: rgb(0, 0, 0);"></div>
-                                  <div class="side edge side__color edge__right side__depth" style="background-color: rgb(0, 0, 0);"></div>
-                                  <div class="side edge side__color edge__bottom side__length" style="background-color: rgb(0, 0, 0);"></div>
-                                  <div class="side edge side__color edge__left side__depth" style="background-color: rgb(0, 0, 0);"></div>
-                                  <div class="louvers">
-                                    <div class="louver louver__color louver__one" style="background-color: rgb(0, 0, 0);"></div>
-                                    <div class="louver louver__color louver__two" style="background-color: rgb(0, 0, 0);"></div>
-                                    <div class="louver louver__color louver__three" style="background-color: rgb(0, 0, 0);"></div>
-                                    <div class="louver louver__color louver__four" style="background-color: rgb(0, 0, 0);"></div>
-                                    <div class="louver louver__color louver__five" style="background-color: rgb(0, 0, 0);"></div>
-                                    <div class="louver louver__color louver__six" style="background-color: rgb(0, 0, 0);"></div>
-                                  </div>
-                                </div>
-                                <div class="table__legs">
-                                  <div class="side leg side__color leg__front__left side__height" style="background-color: rgb(0, 0, 0);"></div>
-                                  <div class="side leg side__color leg__front__right side__height" style="background-color: rgb(0, 0, 0);"></div>
-                                  <div class="side leg side__color leg__back__left side__height" style="background-color: rgb(0, 0, 0);"></div>
-                                  <div class="side leg side__color leg__back__right side__height" style="background-color: rgb(0, 0, 0);"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </article>
-                        </div>
-                      </div>
-                    </article>
-                  </section>
-                  <article class="form__article form__footer element--show" id="form-footer-dos">
-                    <div class="form__btns__footer">
-                      <div class="btns__footer__container">
-                        <div class="btns__footer__content btns__group--bg">
-                          <button type="button" class="btn btn__bg btn__footer btn-form-previous" id="btn-form-previous-2">Previous</button>
-                          <button type="button" class="btn btn__bg btn__footer btn--selected btn-form-continue" id="btn-form-continue-2">Continue</button>
-                        </div>
-                      </div>
-                    </div>
-                  </article>
-                </div>
-              </section>
-              <section class="section__form section__form--tres" id="form-tres">
-                <div class="form__options">
-                  <div class="options__step__three options__table">
-                    <section class="scene__table__accesory">
-                      <div class="accesory__table__container">
+                  <div class="form__options">
+                    <article class="form__article">
+                      <div class="flex-c-c scene__table__container">
                         <div class="scene__table">
                           <div class="table">
                             <div class="table__top">
@@ -464,31 +79,691 @@
                               <div class="side leg leg__back__left side__height"></div>
                               <div class="side leg leg__back__right side__height"></div>
                             </div>
-                            <div class="flex-c-c table__attached table__attached__a1">A1</div>
-                            <div class="flex-c-c table__attached table__attached__a2">A2</div>
-                            <div class="flex-c-c table__attached table__attached__b1">B1</div>
-                            <div class="flex-c-c table__attached table__attached__b2">B2</div>
                           </div>
                         </div>
                       </div>
-                    </section>
-                    <section class="section__accesory">
-                      <div class="accesory__container">
-                        <div class="accesory__content">
-                          <article class="choose__accesory choose__accesory--a1"></article>
-                          <article class="choose__accesory choose__accesory--a2"></article>
-                          <article class="choose__accesory choose__accesory--b1"></article>
-                          <article class="choose__accesory choose__accesory--b2"></article>
+                      <div class="form__info">
+                        <div class="form__btns btns__group--bg">
+                          <button type="button" class="action__btn btn__bg btn__measure measure__feet action__btn--selected">Feet</button>
+                          <button type="button" class="action__btn btn__bg btn__measure measure__inch">Inches</button>
+                        </div>
+                        <div class="form__inputs">
+                          <div class="input__bg">
+                            <article class="input__container">
+                              <div class="input__content">
+                                <label for="input-length" class="label__input">Length</label>
+                                <div class="input__measure">
+                                  <input type="text" class="form__input" data-mesurance="length" id="input-length" placeholder="x" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                  <span class="input__unit">feet</span>
+                                </div>
+                              </div>
+                            </article>
+                          </div>
+                          <div class="input__bg">
+                            <article class="input__container">
+                              <div class="input__content">
+                                <label for="input-depth" class="label__input">Depth</label>
+                                <div class="input__measure">
+                                  <input type="text" class="form__input" data-mesurance="depth" id="input-depth" placeholder="x" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                  <span class="input__unit">feet</span>
+                                </div>
+                              </div>
+                            </article>
+                          </div>
+                          <div class="input__bg">
+                            <article class="input__container">
+                              <div class="input__content">
+                                <label for="input-height" class="label__input">Height</label>
+                                <div class="input__measure">
+                                  <input type="text" class="form__input" data-mesurance="height" id="input-height" placeholder="x" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                  <span class="input__unit">feet</span>
+                                </div>
+                              </div>
+                            </article>
+                          </div>
+                          <div class="alert__recomendation">
+                            <div class="alert__container">
+                              <div class="alert__title">
+                                <div class="alert__svg">
+                                  <svg class="alert__svg__icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff">
+                                    <path
+                                      d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                                  </svg>
+                                </div>
+                                <h4 class="alert__title__text">Recommended Height</h4>
+                              </div>
+                              <div class="alert__paragraph">
+                                <p class="paragraph__text">
+                                  Height measures the total height, not the internal clearance. 8' to 10' is recommended. Max height can be 140" or 11.67'.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </section>
+                    </article>
+                    <article class="form__article">
+                      <div class="form__input__checkbox">
+                        <input type="checkbox" id="input-checkbox-form-contact" class="input__checkbox" />
+                        <label for="input-checkbox-form-contact" class="label__input">I have an irregular shape on mind</label>
+                      </div>
+                    </article>
+                    <article class="form__article" id="form-footer-uno">
+                      <div class="election__contact">
+                        <div class="election__contact__container">
+                          <div class="election__contact__content">
+                            <div class="contact__title">
+                              <h3 class="contact__title__text">Let's talk about your design idea</h3>
+                            </div>
+                            <div class="contact__btn">
+                              <a href="#" class="action__btn btn__contact action__btn--selected">Book a Call</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="election__pergola element--show">
+                        <div class="election__container">
+                          <div class="election__content">
+                            <div class="election__title">
+                              <h3 class="election__title__text">Is your pergola going to be freestanding or attached?</h3>
+                              <div class="election__title__svg">
+                                <svg class="election__title__svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+                              </div>
+                            </div>
+                            <div class="election__btns btns__group--bg">
+                              <button type="button" class="action__btn btn__bg btn__election action__btn--selected data-election="freestanding">
+                                <span class="text__clean">Freestanding</span>
+                              </button>
+                              <button type="button" class="action__btn btn__bg btn__election" data-election="attached">
+                                <span class="text__clean">Attached</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="election__attached">
+                        <div class="election__attached__container">
+                          <article class="election__attached__content">
+                            <div class="attached__title">
+                              <span class="text__clean">Which side(s) will attach?</span>
+                            </div>
+                            <div class="attached__content">
+                              <div class="attached__table">
+                                <div class="flex-c-c scene__table__container">
+                                  <div class="scene__table">
+                                    <div class="table">
+                                      <div class="table__top">
+                                        <div class="side edge edge__top side__length"></div>
+                                        <div class="side edge edge__right side__depth"></div>
+                                        <div class="side edge edge__bottom side__length"></div>
+                                        <div class="side edge edge__left side__depth"></div>
+                                      </div>
+                                      <div class="table__legs">
+                                        <div class="side leg leg__front__left side__height"></div>
+                                        <div class="side leg leg__front__right side__height"></div>
+                                        <div class="side leg leg__back__left side__height"></div>
+                                        <div class="side leg leg__back__right side__height"></div>
+                                      </div>
+                                      <div class="flex-c-c table__attached table__attached__a1">A1</div>
+                                      <div class="flex-c-c table__attached table__attached__a2">A2</div>
+                                      <div class="flex-c-c table__attached table__attached__b1">B1</div>
+                                      <div class="flex-c-c table__attached table__attached__b2">B2</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="attached__measures">
+                                <div class="attached__measures__container">
+                                  <div class="attached__measures__content">
+                                    <ul class="attached__list">
+                                      <li class="attached__measure">
+                                        <div class="bg__gradient">
+                                          <div class="attached__measure__content">
+                                            <input type="checkbox" id="input-measure-a1" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="a1">
+                                            <label for="input-measure-a1" class="label__input">A1 = 12 feet</label>
+                                          </div>
+                                        </div>
+                                      </li>
+                                      <li class="attached__measure">
+                                        <div class="bg__gradient">
+                                          <div class="attached__measure__content">
+                                            <input type="checkbox" id="input-measure-a2" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="a2">
+                                            <label for="input-measure-a1" class="label__input">A2 = 12 feet</label>
+                                          </div>
+                                        </div>
+                                      </li>
+                                      <li class="attached__measure">
+                                        <div class="bg__gradient">
+                                          <div class="attached__measure__content">
+                                            <input type="checkbox" id="input-measure-b1" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="b1">
+                                            <label for="input-measure-a1" class="label__input">B1 = 15 feet</label>
+                                          </div>
+                                        </div>
+                                      </li>
+                                      <li class="attached__measure">
+                                        <div class="bg__gradient">
+                                          <div class="attached__measure__content">
+                                            <input type="checkbox" id="input-measure-b2" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="b2">
+                                            <label for="input-measure-a1" class="label__input">B2 = 15 feet</label>
+                                          </div>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                      <div class="form__btns__footer element--show">
+                        <div class="btns__footer__container">
+                          <div class="btns__footer__content btns__group--bg">
+                            <button type="button" class="action__btn btn__bg btn__footer action__btn-form-previous" id="btn-form-previous-1">Previous</button>
+                            <button type="button" class="action__btn btn__bg btn__footer action__btn--selected action__btn-form-continue" id="btn-form-continue-1">Continue</button>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
                   </div>
-                </div>
-              </section>
-            </form>
+                </section>
+                <!-- Fin de la sección 1 -->
+
+                <!-- Inicio de la sección 2 -->
+                <section class="section__form section__form--dos" id="form-dos">
+                  <div class="form__options">
+                    <section class="section__color__select">
+                      <article class="form__article article__color__base">
+                        <div class="color__base__container">
+                          <div class="form__title">
+                            <h2>What color would you like the structure of your pergola to be?</h2>
+                            <div class="form__title__svg">
+                              <svg
+                                class="form__title__icon"
+                                width="24px"
+                                height="24px"
+                                viewBox="0 -960 960 960"
+                                fill="#fff">
+                                  <path
+                                    d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+                                  />
+                              </svg>
+                            </div>
+                          </div>
+                          <div class="color__base__content">
+                            <div class="color__select__container">
+                              <div class="flex-c-c color__select__content color__white" data-color="#fff">
+                                <article class="color__content">
+                                  <span class="span__color">Traffic White</span>
+                                  <div class="color__icon"></div>
+                                  <span class="color__code">RAL-9016</span>
+                                </article>
+                              </div>
+                              <div class="flex-c-c color__select__content color__black color--selected" data-color="#000">
+                                <article class="color__content">
+                                  <span class="span__color">Jet Black</span>
+                                  <div class="color__icon"></div>
+                                  <span class="color__code">RAL-9005</span>
+                                </article>
+                              </div>
+                              <div class="flex-c-c color__select__content color__grey" data-color="#555">
+                                <article class="color__content">
+                                  <span class="span__color">Anthracite Grey</span>
+                                  <div class="color__icon"></div>
+                                  <span class="color__code">RAL-7016</span>
+                                </article>
+                              </div>
+                              <div class="color__select__content custom__color" data-color>
+                                <article class="color__content">
+                                  <div class="flex-c-c custom__color__bg">
+                                    <div class="color__icon custom__color__circle">
+                                      <div class="circle__color"></div>
+                                    </div>
+                                  </div>
+                                  <div class="custom__color__container">
+                                    <input type="color" name="color" id="color-picker" class="input__color" value="#555555" />
+                                    <label for="color-picker" class="label__color color__code">Custom</label>
+                                  </div>
+                                </article>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="scene__table__color">
+                          <div class="table__color__container">
+                            <article class="table__color">
+                              <div class="scene__table">
+                                <div class="table">
+                                  <div class="table__top">
+                                    <div class="side edge side__color edge__top side__length" style="background-color: rgb(0, 0, 0);"></div>
+                                    <div class="side edge side__color edge__right side__depth" style="background-color: rgb(0, 0, 0);"></div>
+                                    <div class="side edge side__color edge__bottom side__length" style="background-color: rgb(0, 0, 0);"></div>
+                                    <div class="side edge side__color edge__left side__depth" style="background-color: rgb(0, 0, 0);"></div>
+                                  </div>
+                                  <div class="table__legs">
+                                    <div class="side leg side__color leg__front__left side__height" style="background-color: rgb(0, 0, 0);"></div>
+                                    <div class="side leg side__color leg__front__right side__height" style="background-color: rgb(0, 0, 0);"></div>
+                                    <div class="side leg side__color leg__back__left side__height" style="background-color: rgb(0, 0, 0);"></div>
+                                    <div class="side leg side__color leg__back__right side__height" style="background-color: rgb(0, 0, 0);"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                          </div>
+                          <div class="input__checkbox__color">
+                            <div class="checkbox__color__container">
+                              <input type="checkbox" id="input-checkbox-color" class="input__checkbox__color">
+                              <label for="input-checkbox-color" class="label__input">I want the louvers to be the same color</label>
+                            </div>
+                          </div>
+                        </div>
+                      </article>
+                      <article class="form__article article__color__louvers">
+                        <div class="color__base__container color__louver__container element--show">
+                          <div class="color__louvers__title">
+                            <h2 class="louver__title">And what color would you like the louvers to be?</h2>
+                            <div class="color__louvers__title__svg">
+                              <svg class="form__title__icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff">
+                                <path d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                              </svg>
+                            </div>
+                          </div>
+                          <div class="color__base__content">
+                            <div class="color__select__container">
+                              <div class="flex-c-c color__select__content color__white" data-color="#fff">
+                                <article class="color__content">
+                                  <span class="span__color">Traffic White</span>
+                                  <div class="color__icon"></div>
+                                  <span class="color__code">RAL-9016</span>
+                                </article>
+                              </div>
+                              <div class="flex-c-c color__select__content color__black color--selected" data-color="#000">
+                                <article class="color__content">
+                                  <span class="span__color">Jet Black</span>
+                                  <div class="color__icon"></div>
+                                  <span class="color__code">RAL-9005</span>
+                                </article>
+                              </div>
+                              <div class="flex-c-c color__select__content color__grey" data-color="#555">
+                                <article class="color__content">
+                                  <span class="span__color">Anthracite Grey</span>
+                                  <div class="color__icon"></div>
+                                  <span class="color__code">RAL-7016</span>
+                                </article>
+                              </div>
+                              <div class="color__select__content custom__color" data-color>
+                                <article class="color__content">
+                                  <div class="flex-c-c custom__color__bg">
+                                    <div class="color__icon custom__color__circle">
+                                      <div class="circle__color"></div>
+                                    </div>
+                                  </div>
+                                  <div class="custom__color__container">
+                                    <input type="color" name="color" id="color-picker" class="input__color" value="#555555" />
+                                    <label for="color-picker" class="label__color color__code">Custom</label>
+                                  </div>
+                                </article>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="scene__table__color">
+                          <div class="table__color__container">
+                            <article class="table__color">
+                              <div class="scene__table">
+                                <div class="table">
+                                  <div class="table__top">
+                                    <div class="side edge side__color edge__top side__length" style="background-color: rgb(0, 0, 0);"></div>
+                                    <div class="side edge side__color edge__right side__depth" style="background-color: rgb(0, 0, 0);"></div>
+                                    <div class="side edge side__color edge__bottom side__length" style="background-color: rgb(0, 0, 0);"></div>
+                                    <div class="side edge side__color edge__left side__depth" style="background-color: rgb(0, 0, 0);"></div>
+                                    <div class="louvers">
+                                      <div class="louver louver__color louver__one" style="background-color: rgb(0, 0, 0);"></div>
+                                      <div class="louver louver__color louver__two" style="background-color: rgb(0, 0, 0);"></div>
+                                      <div class="louver louver__color louver__three" style="background-color: rgb(0, 0, 0);"></div>
+                                      <div class="louver louver__color louver__four" style="background-color: rgb(0, 0, 0);"></div>
+                                      <div class="louver louver__color louver__five" style="background-color: rgb(0, 0, 0);"></div>
+                                      <div class="louver louver__color louver__six" style="background-color: rgb(0, 0, 0);"></div>
+                                    </div>
+                                  </div>
+                                  <div class="table__legs">
+                                    <div class="side leg side__color leg__front__left side__height" style="background-color: rgb(0, 0, 0);"></div>
+                                    <div class="side leg side__color leg__front__right side__height" style="background-color: rgb(0, 0, 0);"></div>
+                                    <div class="side leg side__color leg__back__left side__height" style="background-color: rgb(0, 0, 0);"></div>
+                                    <div class="side leg side__color leg__back__right side__height" style="background-color: rgb(0, 0, 0);"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                          </div>
+                        </div>
+                      </article>
+                    </section>
+                    <article class="form__article form__footer element--show" id="form-footer-dos">
+                      <div class="form__btns__footer">
+                        <div class="btns__footer__container">
+                          <div class="btns__footer__content btns__group--bg">
+                            <button type="button" class="action__btn btn__bg btn__footer action__btn-form-previous" id="btn-form-previous-2">Previous</button>
+                            <button type="button" class="action__btn btn__bg btn__footer action__btn--selected action__btn-form-continue" id="btn-form-continue-2">Continue</button>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                </section>
+                <!-- Fin de la sección 2 -->
+
+                <!-- Inicio de la sección 3 -->
+                <section class="section__form section__form--tres" id="form-tres">
+                  <div class="form__options">
+                    <div class="options__step__three options__table table__material__color">
+                      <section class="scene__table__accesory">
+                        <div class="accesory__table__container">
+                          <div class="scene__table">
+                            <div class="table">
+                              <div class="table__top">
+                                <div class="side edge edge__top side__length"></div>
+                                <div class="side edge edge__right side__depth"></div>
+                                <div class="side edge edge__bottom side__length"></div>
+                                <div class="side edge edge__left side__depth"></div>
+                              </div>
+                              <div class="table__legs">
+                                <div class="side leg leg__front__left side__height"></div>
+                                <div class="side leg leg__front__right side__height"></div>
+                                <div class="side leg leg__back__left side__height"></div>
+                                <div class="side leg leg__back__right side__height"></div>
+                              </div>
+                              <div class="flex-c-c table__attached table__attached__a1">A1</div>
+                              <div class="flex-c-c table__attached table__attached__a2">A2</div>
+                              <div class="flex-c-c table__attached table__attached__b1">B1</div>
+                              <div class="flex-c-c table__attached table__attached__b2">B2</div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      <section class="section__accesory">
+                        <div class="accesory__container">
+                          <div class="accesory__content">
+                            <article class="choose__accesory choose__accesory--a1">
+                              <div class="choose__accesory__container">
+
+                                <!-- Duplicar esto de abajo -->
+                                <div class="choose__accesory__content">
+                                  <article class="choose__header choose__header--active">
+                                    <div class="choose__header__container">
+                                      <div class="choose__header__content">
+                                        <h3 class="choose__side">A1</h3>
+                                        <div class="choose__btn">
+                                          <span class="choose__header__span">Choose Accesory 01</span>
+                                          <div class="choose__header__btn">
+                                            <figure class="choose__header__figure">
+                                              <img src="./assets/icons/icon-play-white.svg" alt="Icon Arrow" class="choose__header__img">
+                                            </figure>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </article>
+                                  <article class="choose__accesory__options">
+                                    <div class="choose__accesory__options__container">
+                                      <div class="choose__accesory__options__content">
+                                        <article class="accesory__material">
+                                          <div class="accesory__card__container">
+                                            <div class="accesory__card__content">
+                                              <div class="accesory__card__material__element accesory__material__private accesory__element--selected" data-material="private">
+                                                <figure class="accesory__material__figure">
+                                                  <img src="./assets/img/image_9.webp" alt="" class="accesory__material__img">
+                                                </figure>
+                                                <span class="accesory__material__span">Private Screens</span>
+                                              </div>
+                                              <div class="accesory__card__material__element accesory__material__glass" data-material="glass">
+                                                <figure class="accesory__material__figure">
+                                                  <img src="./assets/img/image_10.webp" alt="" class="accesory__material__img">
+                                                </figure>
+                                                <span class="accesory__material__span">Glass Panels</span>
+                                              </div>
+                                              <div class="accesory__card__material__element accesory__material__aliminium" data-material="aluminium">
+                                                <figure class="accesory__material__figure">
+                                                  <img src="./assets/img/image_11.webp" alt="" class="accesory__material__img">
+                                                </figure>
+                                                <span class="accesory__material__span">aluminum shutter panels</span>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </article>
+                                        <article class="accesory__options">
+                                          <div class="accesory__card accesory__card__color accesory__private group__private group element--show" data-group="private"">
+                                            <div class="accesory__card__container">
+
+                                              <!-- Aumentar las cards según la cantidad de colores -->
+                                              <div class="accesory__card__content">
+                                                <div class="accesory__card__element">
+                                                  <span class="color__span">Mist Gray</span>
+                                                  <div class="color__icon"></div>
+                                                  <span class="color__code">RAL-9005</span>
+                                                </div>
+                                              </div>
+                                              <div class="accesory__card__content">
+                                                <div class="accesory__card__element">
+                                                  <span class="color__span">Mist Gray</span>
+                                                  <div class="color__icon"></div>
+                                                  <span class="color__code">RAL-9005</span>
+                                                </div>
+                                              </div>
+                                              <div class="accesory__card__content">
+                                                <div class="accesory__card__element">
+                                                  <span class="color__span">Mist Gray</span>
+                                                  <div class="color__icon"></div>
+                                                  <span class="color__code">RAL-9005</span>
+                                                </div>
+                                              </div>
+                                              <div class="accesory__card__content">
+                                                <div class="accesory__card__element">
+                                                  <span class="color__span">Mist Gray</span>
+                                                  <div class="color__icon"></div>
+                                                  <span class="color__code">RAL-9005</span>
+                                                </div>
+                                              </div>
+                                              <div class="accesory__card__content">
+                                                <div class="accesory__card__element">
+                                                  <span class="color__span">Mist Gray</span>
+                                                  <div class="color__icon"></div>
+                                                  <span class="color__code">RAL-9005</span>
+                                                </div>
+                                              </div>
+                                              <div class="accesory__card__content">
+                                                <div class="accesory__card__element">
+                                                  <span class="color__span">Mist Gray</span>
+                                                  <div class="color__icon"></div>
+                                                  <span class="color__code">RAL-9005</span>
+                                                </div>
+                                              </div>
+                                              <div class="accesory__card__content">
+                                                <div class="accesory__card__element">
+                                                  <span class="color__span">Mist Gray</span>
+                                                  <div class="color__icon"></div>
+                                                  <span class="color__code">RAL-9005</span>
+                                                </div>
+                                              </div>
+                                              <!-- Fin de aumento -->
+
+                                            </div>
+                                          </div>
+                                          <div class="accesory__type accesory__glass group__glass group" data-group="glass">
+                                            <div class="accesory__type__container">
+                                              <div class="accesory__type__content">
+                                                <div class="accesory__type__btns btns__group--bg">
+                                                  <button type="button" class="accesory__btn btn__bg accesory__glass__fixed action__btn--selected" id="glass-fixed">Fixed</button>
+                                                  <button type="button" class="accesory__btn btn__bg accesory__glass__sliding" id="glass-sliding">Sliding</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="accesory__type accesory__aluminium group__aluminium group" data-group="aluminium">
+                                            <div class="accesory__type__container">
+                                              <div class="accesory__type__content">
+                                                <div class="accesory__type__btns btns__group--bg">
+                                                  <button type="button" class="accesory__btn btn__bg accesory__aluminium__fixed action__btn--selected" id="aluminium-fixed">Fixed</button>
+                                                  <button type="button" class="accesory__btn btn__bg accesory__aluminium__sliding" id="aluminium-sliding">Sliding</button>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </article>
+                                      </div>
+                                    </div>
+                                  </article>
+                                </div>
+                                <!-- Duplicar eso de arriba -->
+                              </div>
+                            </article>
+                            <article class="form__article form__footer element--show" id="form-footer-tres">
+                              <div class="form__btns__footer">
+                                <div class="btns__footer__container">
+                                  <div class="btns__footer__content btns__group--bg">
+                                    <button type="button" class="action__btn btn__bg btn__footer action__btn-form-previous" id="btn-form-previous-3">Previous</button>
+                                    <button type="button" class="action__btn btn__bg btn__footer action__btn--selected action__btn-form-continue" id="btn-form-continue-3">Continue</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
+                </section>
+                <!-- Fin de la sección 3 -->
+
+                <!-- Inicio de la sección 4 -->
+                <section class="section__form section__form--cuatro" id="form-cuatro">
+                  <div class="form__options">
+                    <div class="options__step__four form__container__extras">
+                      <article class="form__article__extra">
+                        <section class="section__form__extra">
+                          <div class="form__extra">
+                            <div class="form__extra__title">
+                              <h2>Would you like to add a rain sensor to your pergola?</h2>
+                              <div class="form__extra__title__svg">
+                                <svg
+                                  class="form__title__icon"
+                                  width="24px"
+                                  height="24px"
+                                  viewBox="0 -960 960 960"
+                                  fill="#fff">
+                                    <path
+                                      d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+                                    />
+                                </svg>
+                              </div>
+                            </div>
+                            <div class="form__extra__btns">
+                              <div class="btns__group--bg form__extra__btns__container">
+                                <button type="button" class="action__btn btn__bg btn__extra action__btn--selected" id="extra-yes">Yes</button>
+                                <button type="button" class="action__btn btn__bg btn__extra" id="extra-no">No</button>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                        <section class="section__form__extra">
+                          <div class="form__extra">
+                            <div class="form__extra__container form__extra__long">
+                              <div class="form__extra__heaters">
+                                <div class="heater__container">
+                                  <div class="heater__title">
+                                    <h2 class="heater__title__text">How many heaters would you like to include in your pergola?</h2>
+                                    <div class="heater__title__svg">
+                                      <svg
+                                        class="form__title__icon"
+                                        width="24px"
+                                        height="24px"
+                                        viewBox="0 -960 960 960"
+                                        fill="#fff">
+                                          <path
+                                            d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+                                          />
+                                      </svg>
+                                    </div>
+                                  </div>
+                                  <div class="header__input__container">
+                                    <div class="heater__input">
+                                      <label for="input-heater" class="label__form heater__label">Number of heaters</label>
+                                      <input type="text" class="form__input heater__input__count" id="input-heater" placeholder="0" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form__extra__heaters__alert">
+                                <div class="heaters__alert__container">
+                                  <div class="alert__title">
+                                    <div class="alert__svg">
+                                      <svg
+                                        height="24px"
+                                        viewBox="0 -960 960 960"
+                                        width="24px"
+                                        fill="#fff">
+                                          <path
+                                            d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+                                          />
+                                      </svg>
+                                    </div>
+                                    <h3 class="alert__title__text">Recommended Heater Placement</h2>
+                                  </div>
+                                  <div class="alert__paragraph">
+                                    <p class="paragraph__text">
+                                      Based on your pergola's size, we recommend placing one heater per 100 square feet. This ensures even warmth and comfort throughout the space.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                        <section class="section__form__extra">
+                          <div class="form__extra">
+                            <div class="form__extra__title">
+                              <h2>Do you want to add a fan mounting beam?</h2>
+                              <div class="form__extra__title__svg">
+                                <svg
+                                  class="form__title__icon"
+                                  width="24px"
+                                  height="24px"
+                                  viewBox="0 -960 960 960"
+                                  fill="#fff">
+                                    <path
+                                      d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+                                    />
+                                </svg>
+                              </div>
+                            </div>
+                            <div class="form__extra__btns">
+                              <div class="btns__group--bg form__extra__btns__container">
+                                <button type="button" class="action__btn btn__bg btn__extra action__btn--selected" id="extra-yes">Yes</button>
+                                <button type="button" class="action__btn btn__bg btn__extra" id="extra-no">No</button>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
+                      </article>
+                      <article class="form__article form__footer element--show" id="form-footer-cuatro">
+                        <div class="form__btns__footer">
+                          <div class="btns__footer__container">
+                            <div class="btns__footer__content btns__group--bg">
+                              <button type="button" class="action__btn btn__bg btn__footer action__btn-form-previous" id="btn-form-previous-4">Previous</button>
+                              <button type="button" class="action__btn btn__bg btn__footer action__btn--selected action__btn-form-continue" id="btn-form-continue-4">Continue</button>
+                            </div>
+                          </div>
+                        </div>
+                      </article>
+                    </div>
+                  </div>
+                </section>
+                <!-- Fin de la sección 4 -->
+              </form>
+            </div>
           </div>
-        </div>
+        </section>
       </section>
-    </main>
+    </section>
   </body>
 </html>
