@@ -3,11 +3,10 @@ console.log("Corriendo en el puerto 5500");
 document.addEventListener("DOMContentLoaded", () => {
   // DOM
   const sectionCalculatorForm = document.querySelector(".section__calculator__content");
-  const btnsFormMeasure = document.querySelectorAll(".btn__measure"); 
+  const inputRadioBtns = document.querySelectorAll(".input__radio__btn"); 
   const inputUnits = document.querySelectorAll(".input__unit");
-  const formInputs = document.querySelectorAll(".form__input");
-  const sides = document.querySelectorAll(".side");
-  const btnsGroup = document.querySelectorAll(".btn__bg");
+  const formInputs = document.querySelectorAll(".input__unit__text");
+  const sides = document.querySelectorAll(".side__color");
   const btnsGroupBg = document.querySelectorAll(".btns__group--bg");
   const btnsMeasure = document.querySelectorAll(".btn__measure");
   const statusCount = document.querySelectorAll(".status__content");
@@ -24,9 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnAttached = document.querySelector('.btn__election[data-election="attached"]');
 
   const colorSelects = document.querySelectorAll(".color__select__content");
-  const inputColor = document.getElementById("color-picker");
   const colorInput = document.querySelectorAll(".input__color");
   const louvers = document.querySelectorAll(".louver__color");
+
+  const customColor = document.querySelectorAll("color__picker");
+
+  const btnsLabelTypeMaterial = document.querySelectorAll(".label__action__btn");
 
   const btnFormPrevious = document.querySelectorAll(".btn-form-previous");
   const btnFormContinue = document.querySelectorAll(".btn-form-continue");
@@ -48,7 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const chooseHeaderAccesory = document.querySelectorAll(".choose__header");
 
-  const cardMaterial = document.querySelectorAll(".accesory__card__material__element");
+  const cardsMaterial = document.querySelectorAll(".accesory__card__material__element");
+
+  const cardsMaterialColor = document.querySelectorAll(".accesory__card__color__content");
+
+  const form = document.querySelector(".form");
 
   // Helper para togglear clases
   const toggleClass = (element, className, condition) => {
@@ -56,14 +62,20 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Manejador de eventos
-  const handleMeasureBtn = e => {
+  const handleRadioBtns = e => {
     const btnsGroup = e.target.closest(".form__btns");
-    const currentBtn = btnsGroup.querySelectorAll(".btn__measure");
-    currentBtn.forEach(btn => btn.classList.remove("action__btn--selected"));
-    if (e.target.matches(".btn__measure")) {
-      e.target.classList.add("action__btn--selected");
-    }
+    if (!btnsGroup) return;
 
+    const labels = btnsGroup.querySelectorAll(".action__btn");
+    if (!labels) return;
+
+    labels.forEach(label => label.classList.remove("action__btn--selected"));
+
+    const asociatedLabel = btnsGroup.querySelector(`label[for="${e.target.id}"]`);
+    if (asociatedLabel) asociatedLabel.classList.add("action__btn--selected");
+  }
+
+  const handleMeasureBtn = e => {
     const unitText = e.target.textContent.toLowerCase();
     inputUnits.forEach(input => input.textContent = unitText);
   };
@@ -78,15 +90,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const handleGroupBtn = target => {
-    const btnGroup = target.closest(".btns__group--bg");
-    btnGroup.querySelectorAll(".btn__bg").forEach(btn => btn.classList.remove("action__btn--selected"));
-
-    if (target.matches(".btn__bg, .text__clean")) {
-      const btn = target.matches(".btn__bg") ? target : target.parentElement;
-      btn.classList.add("action__btn--selected");
-      const showAttached = btn.dataset.election === "attached";
-      toggleClass(electionAttached, "element--show", showAttached);
-    }
+    const showAttached = target.dataset.election === "attached";
+    toggleClass(electionAttached, "element--show", showAttached);
   };
 
   const handleCheckboxChange = checked => {
@@ -107,41 +112,75 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const handleColorSelect = e => {
-    const parent = e.target.closest(".form__article");
-    const colorSelect = e.target.matches(".color__select__content")
-      ? e.target
-      : e.target.closest(".color__select__content");
+    const parentColorPergola = e.target.closest(".article__color__base");
+    if (parentColorPergola) {
+      const pergolasColor = parentColorPergola.querySelectorAll(".label__color__pergola");
+      const radioColorPergolas = parentColorPergola.querySelectorAll(".input__radio__color");
 
-    if (!colorSelect) return;
+      radioColorPergolas.forEach(radio => radio.checked = false);
 
-    // Remover selecciones
-    colorSelects.forEach(item => item.classList.remove("color--selected"));
+      pergolasColor.forEach(label => label.classList.remove("color--selected"));
 
-    // Seleccionar
-    colorSelect.classList.add("color--selected");
+      const colorSelected = e.target.matches(".label__color__pergola")
+        ? e.target
+        : e.target.closest(".label__color__pergola");
+      
 
-    // Obtener color
-    const color = colorSelect.dataset.color;
+      const inputSelected = colorSelected.nextElementSibling;
+      inputSelected.checked = true;
 
-    if (color) {
-      if (!parent.classList.contains("article__color__louvers")) {
-        updateColor(color);
-      } else {
-        updateColorLouvers(color);
-      }
+      colorSelected.classList.add("color--selected");
+
+      const colorData = colorSelected.dataset.color;
+
+      if (!colorData) return;
+
+      updateColor(colorData);
 
       if (checkboxInputColor.checked) {
-        updateColorLouvers(color);
+        updateColorLouvers(colorData);
+      }
+    } else {
+      const parentColorLouver = e.target.closest(".article__color__louvers");
+      if (parentColorLouver) {
+        const louversColor = parentColorLouver.querySelectorAll(".label__color__louver");
+        const radioColorLouvers = parentColorLouver.querySelectorAll(".input__radio__color");
+
+        radioColorLouvers.forEach(radio => radio.checked = false);
+        louversColor.forEach(label => label.classList.remove("color--selected"));
+
+        const colorSelectedLouver = e.target.matches(".label__color__louver")
+          ? e.target
+          : e.target.closest(".label__color__louver");
+
+        const imputSelectedLouver = colorSelectedLouver.nextElementSibling;
+        imputSelectedLouver.checked = true;
+
+        colorSelectedLouver.classList.add("color--selected");
+
+        const colorData = colorSelectedLouver.dataset.color;
+
+        if (!colorData) return;
+
+        updateColorLouvers(colorData);
       }
     }
+
   }
 
   const updateColor = color => sides.forEach(side => side.style.backgroundColor = color);
 
-  const updateColorLouvers = color => {
-    louvers.forEach(louver => louver.style.backgroundColor = color);
-  }
+  const updateColorLouvers = color => louvers.forEach(louver => {
+    louver.style.backgroundColor = color;
+    const parentLouver = louver.closest(".article__color__louvers");
 
+    if (!parentLouver) return;
+
+    if (checkboxInputColor.checked) {
+      parentLouver.querySelectorAll(".input__radio__color").forEach(radio => radio.checked = false);
+    }
+  });
+  
   const handleInputColor = e => {
     const color = e.target.value;
     const parent = e.target.closest(".form__article");
@@ -190,10 +229,145 @@ document.addEventListener("DOMContentLoaded", () => {
     const groups = containerAccesory.querySelectorAll(".group");
 
     groups.forEach(group => group.classList.toggle("element--show", group.dataset.group === material));
+
+    const materialContainer = containerAccesory.querySelector(".accesory__card__content");
+    const typeMaterialContainer = containerAccesory.querySelector(".accesory__options");
+    const cardColors = typeMaterialContainer.querySelectorAll(".accesory__card__color__content"); // Cards de colores
+    const btnGlass = typeMaterialContainer.querySelector(".btn__glass"); // Botones de tipo de material Glass
+    const btnAluminium = typeMaterialContainer.querySelector(".btn__sliding"); // Botones de tipo de material Aluminio
+
+    const inputRadioGlass = btnGlass.nextElementSibling;
+    inputRadioGlass.checked = false;
+
+    const inputRadioAluminium = btnAluminium.nextElementSibling;
+    inputRadioAluminium.checked = false;
+
+    const inputRadioColorCard = cardColors[0].nextElementSibling;
+    inputRadioColorCard.checked = false;
+
+    console.log("materialContainer: ", materialContainer);
+    console.log("typeMaterialContainer: ", typeMaterialContainer);
+
+    if (typeMaterialContainer.classList.contains("accesory__options__1")) {
+      if (materialContainer.children[1].checked) {
+        inputRadioColorCard.checked = true;
+        console.log("inputRadioColorCard: ", inputRadioColorCard.checked);
+        inputRadioGlass.checked = false;
+        inputRadioAluminium.checked = false;
+      } else if (materialContainer.children[3].checked) {
+        inputRadioColorCard.checked = false;
+        inputRadioGlass.checked = true;
+        console.log("inputRadioGlass: ", inputRadioGlass.checked);
+        inputRadioAluminium.checked = false;
+      } else if (materialContainer.children[5].checked) {
+        inputRadioColorCard.checked = false;
+        inputRadioGlass.checked = false;
+        inputRadioAluminium.checked = true;
+        console.log("inputRadioAluminium: ", inputRadioAluminium.checked);
+      }
+    } else if (typeMaterialContainer.classList.contains("accesory__options__2")) {
+      if (materialContainer.children[1].checked) {
+        inputRadioColorCard.checked = true;
+        inputRadioGlass.checked = false;
+        inputRadioAluminium.checked = false;
+      } else if (materialContainer.children[3].checked) {
+        inputRadioColorCard.checked = false;
+        inputRadioGlass.checked = true;
+        inputRadioAluminium.checked = false;
+      } else if (materialContainer.children[5].checked) {
+        inputRadioColorCard.checked = false;
+        inputRadioGlass.checked = false;
+        inputRadioAluminium.checked = true;
+      }
+    } else if (typeMaterialContainer.classList.contains("accesory__options__3")) {
+      if (materialContainer.children[1].checked) {
+        inputRadioColorCard.checked = true;
+        inputRadioGlass.checked = false;
+        inputRadioAluminium.checked = false;
+      } else if (materialContainer.children[3].checked) {
+        inputRadioColorCard.checked = false;
+        inputRadioGlass.checked = true;
+        inputRadioAluminium.checked = false;
+      } else if (materialContainer.children[5].checked) {
+        inputRadioColorCard.checked = false;
+        inputRadioGlass.checked = false;
+        inputRadioAluminium.checked = true;
+      }
+    } else if (typeMaterialContainer.classList.contains("accesory__options__4")) {
+      if (materialContainer.children[1].checked) {
+        inputRadioColorCard.checked = true;
+        inputRadioGlass.checked = false;
+        inputRadioAluminium.checked = false;
+      } else if (materialContainer.children[3].checked) {
+        inputRadioColorCard.checked = false;
+        inputRadioGlass.checked = true;
+        inputRadioAluminium.checked = false;
+      } else if (materialContainer.children[5].checked) {
+        inputRadioColorCard.checked = false;
+        inputRadioGlass.checked = false;
+        inputRadioAluminium.checked = true;
+      }
+    }
+
+    console.log("materialContainer.children[1].checked: ", materialContainer.children[1].checked);
+    console.log("materialContainer.children[3].checked: ", materialContainer.children[3].checked);
+    console.log("materialContainer.children[5].checked: ", materialContainer.children[5].checked);
+
+  }
+
+  const handleColorAccesoryBtn = e => {
+    const parentColor = e.target.closest(".accesory__card__container");
+    if (!parentColor) return;
+
+    const cards = parentColor.querySelectorAll(".accesory__card__color__content");
+
+    cards.forEach(card => card.classList.remove("accesory__element--selected"));
+
+    const card = e.target.matches(".accesory__card__color__content")
+      ? e.target
+      : e.target.closest(".accesory__card__color__content");
+
+    if (!card) return;
+
+    card.classList.add("accesory__element--selected");
+  }
+
+  const handeBtnsTypeMaterial = e => {
+    const parentBtns = e.target.closest(".accesory__type__btns");
+    if (!parentBtns) return;
+
+    const btns = parentBtns.querySelectorAll(".label__action__btn");
+    if (!btns) return;
+
+    btns.forEach(btn => btn.classList.remove("action__btn--selected"));
+
+    const btn = e.target.matches(".label__action__btn")
+      ? e.target
+      : e.target.closest(".label__action__btn");
+
+    if (!btn) return;
+
+    btn.classList.add("action__btn--selected");
+  }
+
+  const showSectionForm = step => {
+    sectionCalculatorForm.className = `section__calculator__content step-${step}`;
+
+    statusCount.forEach((stat, index) => {
+      index < step ? stat.classList.add("status__content--active") : stat.classList.remove("status__content--active");
+    });
+
+    handleButtons(step);
+  }
+
+  const handleButtons = step => {
+    step === 1 ? previousBtn1.disabled = true : previousBtn1.disabled = false;
   }
 
   // Eventos
   btnsMeasure.forEach(btn => btn.addEventListener("click", e => handleMeasureBtn(e)));
+
+  inputRadioBtns.forEach(input => input.addEventListener("change", e => handleRadioBtns(e)));
 
   formInputs.forEach(input => {
     input.addEventListener("focus", e => handleInputFocus(e.target, true));
@@ -212,6 +386,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   checkboxInputColor.addEventListener("change", e => handleCheckboxColor(e));
 
+  customColor.forEach(color => {
+    const parent = color.closest(".color__select__container");
+
+    parent.querySelectorAll(".input__radio__color").forEach(radio => radio.checked = false);
+
+    const parentRadio = color.closest(".custom__color");
+    parentRadio.querySelector("#input-radio-color-louver-custom").checked = true;
+  })
+
   btnFormPrevious.forEach(btn => {
     btn.addEventListener("click", () => {
       sectionCalculatorForm.classList.remove("step-two");
@@ -224,72 +407,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  previousBtn1.addEventListener("click", () => {
-    previousBtn1.classList.remove("action__btn--selected");
-    console.log("Removiendo clase");
-  });
+  previousBtn1.addEventListener("click", () => showSectionForm(1));
 
-  continueBtn1.addEventListener("click", () => {
-    sectionCalculatorForm.className = "section__calculator__content step-two";
-    previousBtn1.classList.remove("action__btn--selected");
-    statusCount[1].classList.add("status__content--active");
-    statusCount[2].classList.remove("status__content--active");
-    statusCount[3].classList.remove("status__content--active");
-    statusCount[4].classList.remove("status__content--active");
-  })
+  continueBtn1.addEventListener("click", () => showSectionForm(2));
 
-  previousBtn2.addEventListener("click", () => {
-    previousBtn2.classList.remove("action__btn--selected");
-    sectionCalculatorForm.className = "section__calculator__content step-one";
-    statusCount[1].classList.remove("status__content--active");
-    statusCount[2].classList.remove("status__content--active");
-    statusCount[3].classList.remove("status__content--active");
-    statusCount[4].classList.remove("status__content--active");
-  });
+  previousBtn2.addEventListener("click", () => showSectionForm(1));
 
-  continueBtn2.addEventListener("click", () => {
-    sectionCalculatorForm.className = "section__calculator__content step-three";
-    statusCount[1].classList.add("status__content--active");
-    statusCount[2].classList.add("status__content--active");
-    statusCount[3].classList.remove("status__content--active");
-    statusCount[4].classList.remove("status__content--active");
-  });
+  continueBtn2.addEventListener("click", () => showSectionForm(3));
 
-  previousBtn3.addEventListener("click", () => {
-    previousBtn3.classList.remove("action__btn--selected");
-    sectionCalculatorForm.className = "section__calculator__content step-two";
-    statusCount[1].classList.add("status__content--active");
-    statusCount[2].classList.remove("status__content--active");
-    statusCount[3].classList.remove("status__content--active");
-    statusCount[4].classList.remove("status__content--active");
-  });
+  previousBtn3.addEventListener("click", () => showSectionForm(2));
 
-  continueBtn3.addEventListener("click", () => {
-    sectionCalculatorForm.className = "section__calculator__content step-four";
-    statusCount[1].classList.add("status__content--active");
-    statusCount[2].classList.add("status__content--active");
-    statusCount[3].classList.add("status__content--active");
-    statusCount[4].classList.remove("status__content--active");
-  });
+  continueBtn3.addEventListener("click", () => showSectionForm(4));
 
-  previousBtn4.addEventListener("click", () => {
-    previousBtn4.classList.remove("action__btn--selected");
-    sectionCalculatorForm.className = "section__calculator__content step-three";
-    statusCount[1].classList.add("status__content--active");
-    statusCount[2].classList.add("status__content--active");
-    statusCount[3].classList.remove("status__content--active");
-    statusCount[4].classList.remove("status__content--active");
-  });
+  previousBtn4.addEventListener("click", () => showSectionForm(3));
 
-  continueBtn4.addEventListener("click", () => {
-    sectionCalculatorForm.className = "section__calculator__content step-five";
-    statusCount[1].classList.add("status__content--active");
-    statusCount[2].classList.add("status__content--active");
-    statusCount[3].classList.add("status__content--active");
-    statusCount[4].classList.add("status__content--active");
-  });
+  continueBtn4.addEventListener("click", () => showSectionForm(5));
 
   chooseHeaderAccesory.forEach(header => header.addEventListener("click", () => header.classList.toggle("choose__header--active")));
 
-  cardMaterial.forEach(card => card.addEventListener("click", e => handleAccesoryBtn(e)));
+  cardsMaterial.forEach(card => card.addEventListener("click", e => handleAccesoryBtn(e)));
+
+  cardsMaterialColor.forEach(card => card.addEventListener("click", e => handleColorAccesoryBtn(e)));
+
+  // Obtener los datos del formulario
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const data = Object.fromEntries(new FormData(e.target));
+
+    console.log(data);
+  })
+
 });
