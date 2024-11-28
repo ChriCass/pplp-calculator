@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnsMeasure = document.querySelectorAll(".btn__measure");
   const statusCount = document.querySelectorAll(".status__content");
 
+  const alertMessage = document.getElementById("alert-message");
+
   const inputCheckboxContact = document.getElementById("input-checkbox-form-contact");
   
   const electionContact = document.querySelector(".election__contact");
@@ -27,8 +29,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const louvers = document.querySelectorAll(".louver__color");
 
   const customColor = document.querySelectorAll("color__picker");
-
-  const btnsLabelTypeMaterial = document.querySelectorAll(".label__action__btn");
 
   const btnFormPrevious = document.querySelectorAll(".btn-form-previous");
   const btnFormContinue = document.querySelectorAll(".btn-form-continue");
@@ -47,6 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const previousBtn4 = document.getElementById("btn-form-previous-4");
   const continueBtn4 = document.getElementById("btn-form-continue-4");
+
+  const previousBtn5 = document.getElementById("btn-form-previous-5");
 
   const chooseHeaderAccesory = document.querySelectorAll(".choose__header");
 
@@ -299,6 +301,39 @@ document.addEventListener("DOMContentLoaded", () => {
     step === 1 ? previousBtn1.disabled = true : previousBtn1.disabled = false;
   }
 
+  const validateSectionInputs = step => {
+    const currentSection = document.getElementById(`form-${step}`);
+    const inputs = currentSection.querySelectorAll("input[type='text'], input[type='number'], input[type='email'], input[type='tel'], input[type='url'], input[type='password']");
+
+    let isValid = true;
+
+    inputs.forEach(input => {
+      if (!input.value.trim()) {
+        isValid = false;
+        alertMessage.classList.add("alert__message--show");
+      } else {
+        alertMessage.classList.remove("alert__message--show");
+      }
+    });
+
+    return isValid;
+  }
+
+  const showAlertMessage = message => {
+    alertMessage.textContent = message;
+    alertMessage.classList.add("alert__message--show");
+
+    setTimeout(() => alertMessage.classList.remove("alert__message--show"), 1000);
+  }
+
+  const handleValidationAndNextStep = setp => {
+    if (validateSectionInputs(setp - 1)) {
+      showSectionForm(setp);
+    } else {
+      showAlertMessage("Please fill out all required fields.");
+    }
+  };
+
   // Eventos
   btnsMeasure.forEach(btn => btn.addEventListener("click", e => handleMeasureBtn(e)));
 
@@ -344,25 +379,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   previousBtn1.addEventListener("click", () => showSectionForm(1));
 
-  continueBtn1.addEventListener("click", () => showSectionForm(2));
+  continueBtn1.addEventListener("click", () => handleValidationAndNextStep(2));
 
   previousBtn2.addEventListener("click", () => showSectionForm(1));
 
-  continueBtn2.addEventListener("click", () => showSectionForm(3));
+  continueBtn2.addEventListener("click", () => handleValidationAndNextStep(3));
 
   previousBtn3.addEventListener("click", () => showSectionForm(2));
 
-  continueBtn3.addEventListener("click", () => showSectionForm(4));
+  continueBtn3.addEventListener("click", () => handleValidationAndNextStep(4));
 
   previousBtn4.addEventListener("click", () => showSectionForm(3));
 
-  continueBtn4.addEventListener("click", () => showSectionForm(5));
+  continueBtn4.addEventListener("click", () => handleValidationAndNextStep(5));
+
+  previousBtn5.addEventListener("click", () => showSectionForm(4));
 
   chooseHeaderAccesory.forEach(header => header.addEventListener("click", () => header.classList.toggle("choose__header--active")));
 
   cardsMaterial.forEach(card => card.addEventListener("click", e => handleAccesoryBtn(e)));
 
   cardsMaterialColor.forEach(card => card.addEventListener("click", e => handleColorAccesoryBtn(e)));
+
 
   // Obtener los datos del formulario
   form.addEventListener("submit", e => {
@@ -390,6 +428,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(response => {
         if (response.ok) {
           console.log('Data sent successfully');
+          window.location.href = "/";
         } else {
           console.error('Error sending data');
         }
