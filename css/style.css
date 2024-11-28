@@ -1458,6 +1458,7 @@ input[type="number"]::-webkit-outer-spin-button{
 
       & .btn__extra {
         padding: 0.75rem;
+        width: 90%;
       }
 
       & .form__extra__container {

@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     labels.forEach(label => label.classList.remove("action__btn--selected"));
 
     const asociatedLabel = btnsGroup.querySelector(`label[for="${e.target.id}"]`);
+    console.log("asociatedLabel", asociatedLabel);
     if (asociatedLabel) asociatedLabel.classList.add("action__btn--selected");
   }
 
@@ -219,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const containerAccesory = e.target.closest(".choose__accesory__options__content");
     if (!containerAccesory) return;
 
-    const card = e.target.closest(".accesory__card__material__element") ? e.target.closest(".accesory__card__material__element") : e.target;
+    const card = e.target.closest(".accesory__card__material__element") || e.target;
 
     const material = card.dataset.material;
 
@@ -230,90 +231,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     groups.forEach(group => group.classList.toggle("element--show", group.dataset.group === material));
 
-    const materialContainer = containerAccesory.querySelector(".accesory__card__content");
     const typeMaterialContainer = containerAccesory.querySelector(".accesory__options");
-    const cardColors = typeMaterialContainer.querySelectorAll(".accesory__card__color__content"); // Cards de colores
-    const btnGlass = typeMaterialContainer.querySelector(".btn__glass"); // Botones de tipo de material Glass
-    const btnAluminium = typeMaterialContainer.querySelector(".btn__sliding"); // Botones de tipo de material Aluminio
 
-    const inputRadioGlass = btnGlass.nextElementSibling;
-    inputRadioGlass.checked = false;
+    const allInputs = typeMaterialContainer.querySelectorAll(".input__radio__btn");
+    allInputs.forEach(input => input.checked = false);
 
-    const inputRadioAluminium = btnAluminium.nextElementSibling;
-    inputRadioAluminium.checked = false;
+    const group = Array.from(groups).find(g => g.dataset.group === material);
+    if (!group) return;
 
-    const inputRadioColorCard = cardColors[0].nextElementSibling;
-    inputRadioColorCard.checked = false;
+    const firstRadioBtn = group.querySelector(".input__radio__btn");
+    if (!firstRadioBtn) return;
+    firstRadioBtn.checked = true;
 
-    console.log("materialContainer: ", materialContainer);
-    console.log("typeMaterialContainer: ", typeMaterialContainer);
-
-    if (typeMaterialContainer.classList.contains("accesory__options__1")) {
-      if (materialContainer.children[1].checked) {
-        inputRadioColorCard.checked = true;
-        console.log("inputRadioColorCard: ", inputRadioColorCard.checked);
-        inputRadioGlass.checked = false;
-        inputRadioAluminium.checked = false;
-      } else if (materialContainer.children[3].checked) {
-        inputRadioColorCard.checked = false;
-        inputRadioGlass.checked = true;
-        console.log("inputRadioGlass: ", inputRadioGlass.checked);
-        inputRadioAluminium.checked = false;
-      } else if (materialContainer.children[5].checked) {
-        inputRadioColorCard.checked = false;
-        inputRadioGlass.checked = false;
-        inputRadioAluminium.checked = true;
-        console.log("inputRadioAluminium: ", inputRadioAluminium.checked);
-      }
-    } else if (typeMaterialContainer.classList.contains("accesory__options__2")) {
-      if (materialContainer.children[1].checked) {
-        inputRadioColorCard.checked = true;
-        inputRadioGlass.checked = false;
-        inputRadioAluminium.checked = false;
-      } else if (materialContainer.children[3].checked) {
-        inputRadioColorCard.checked = false;
-        inputRadioGlass.checked = true;
-        inputRadioAluminium.checked = false;
-      } else if (materialContainer.children[5].checked) {
-        inputRadioColorCard.checked = false;
-        inputRadioGlass.checked = false;
-        inputRadioAluminium.checked = true;
-      }
-    } else if (typeMaterialContainer.classList.contains("accesory__options__3")) {
-      if (materialContainer.children[1].checked) {
-        inputRadioColorCard.checked = true;
-        inputRadioGlass.checked = false;
-        inputRadioAluminium.checked = false;
-      } else if (materialContainer.children[3].checked) {
-        inputRadioColorCard.checked = false;
-        inputRadioGlass.checked = true;
-        inputRadioAluminium.checked = false;
-      } else if (materialContainer.children[5].checked) {
-        inputRadioColorCard.checked = false;
-        inputRadioGlass.checked = false;
-        inputRadioAluminium.checked = true;
-      }
-    } else if (typeMaterialContainer.classList.contains("accesory__options__4")) {
-      if (materialContainer.children[1].checked) {
-        inputRadioColorCard.checked = true;
-        inputRadioGlass.checked = false;
-        inputRadioAluminium.checked = false;
-      } else if (materialContainer.children[3].checked) {
-        inputRadioColorCard.checked = false;
-        inputRadioGlass.checked = true;
-        inputRadioAluminium.checked = false;
-      } else if (materialContainer.children[5].checked) {
-        inputRadioColorCard.checked = false;
-        inputRadioGlass.checked = false;
-        inputRadioAluminium.checked = true;
-      }
+    if (material === "private") {
+      const firstColorBtn = typeMaterialContainer.querySelector(".accesory__card__color__content");
+      if (!firstColorBtn) return;
+      firstColorBtn.checked = true;
     }
-
-    console.log("materialContainer.children[1].checked: ", materialContainer.children[1].checked);
-    console.log("materialContainer.children[3].checked: ", materialContainer.children[3].checked);
-    console.log("materialContainer.children[5].checked: ", materialContainer.children[5].checked);
-
-  }
+  };
 
   const handleColorAccesoryBtn = e => {
     const parentColor = e.target.closest(".accesory__card__container");
@@ -431,11 +366,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Obtener los datos del formulario
   form.addEventListener("submit", e => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const data = Object.fromEntries(new FormData(e.target));
 
     console.log(data);
-  })
 
+    const data2 = {
+      "body": data
+    }
+
+    // console.log(data);
+    console.log(data2);
+
+    fetch('https://hook.us1.make.com/6aotgx2a8zeiqbx7vpf68vbq70it2udh', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+      },
+      body: JSON.stringify(data2),
+    })
+      .then(response => {
+        if (response.ok) {
+          console.log('Data sent successfully');
+        } else {
+          console.error('Error sending data');
+        }
+      })
+      .catch(error => console.error('Fetch error:', error));
+  }); 
 });
