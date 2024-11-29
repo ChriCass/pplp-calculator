@@ -95,7 +95,7 @@
                               <div class="input__content">
                                 <label for="input-length" class="label__input">Length</label>
                                 <div class="input__measure">
-                                  <input type="text" name="length" class="form__input input__unit__text" data-mesurance="length" id="input-length" placeholder="x" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                  <input type="number" name="length" class="form__input input__unit__text" data-mesurance="length" id="input-length" placeholder="x" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
                                   <span class="input__unit">feet</span>
                                 </div>
                               </div>
@@ -106,7 +106,7 @@
                               <div class="input__content">
                                 <label for="input-depth" class="label__input">Depth</label>
                                 <div class="input__measure">
-                                  <input type="text" name="depth" class="form__input input__unit__text" data-mesurance="depth" id="input-depth" placeholder="x" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                  <input type="number" name="depth" class="form__input input__unit__text" data-mesurance="depth" id="input-depth" placeholder="x" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
                                   <span class="input__unit">feet</span>
                                 </div>
                               </div>
@@ -117,7 +117,7 @@
                               <div class="input__content">
                                 <label for="input-height" class="label__input">Height</label>
                                 <div class="input__measure">
-                                  <input type="text" name="height" class="form__input input__unit__text" data-mesurance="height" id="input-height" placeholder="x" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                  <input type="number" name="height" class="form__input input__unit__text" data-mesurance="height" id="input-height" placeholder="x" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
                                   <span class="input__unit">feet</span>
                                 </div>
                               </div>
@@ -324,7 +324,7 @@
                                     </div>
                                   </div>
                                   <div class="custom__color__container">
-                                    <input type="color" name="custom-color-pergola" id="color-picker-pergola" class="input__color color__picker" />
+                                    <input type="color" id="color-picker-pergola" class="input__color color__picker" />
                                     <label for="color-picker" class="label__color color__code">Custom</label>
                                   </div>
                                 </article>
@@ -406,7 +406,7 @@
                                     </div>
                                   </div>
                                   <div class="custom__color__container">
-                                    <input type="color" name="custom-color-louver" id="color-picker-louver" class="input__color color__picker" />
+                                    <input type="color" id="color-picker-louver" class="input__color color__picker" />
                                     <label for="color-picker" class="label__color color__code">Custom</label>
                                   </div>
                                 </article>
@@ -1348,19 +1348,19 @@
                               <div class="resume__inputs">
                                 <div class="resume__input">
                                   <label for="input-first-name" class="resume__label label__form">First Name</label>
-                                  <input type="text" name="first-name" class="form__input form__input__first__name" id="input-first-name" autocomplete="new-password" />
+                                  <input type="text" name="first-name" class="form__input form__input__first__name" id="input-first-name" autocomplete="off" required />
                                 </div>
                                 <div class="resume__input">
                                   <label for="input-last-name" class="resume__label label__form">Last Name</label>
-                                  <input type="text" name="last-name" class="form__input form__input__last__name" id="input-last-name" autocomplete="new-password" />
+                                  <input type="text" name="last-name" class="form__input form__input__last__name" id="input-last-name" autocomplete="new-password" required />
                                 </div>
                                 <div class="resume__input">
                                   <label for="input-email" class="resume__label label__form">Email</label>
-                                  <input type="email" name="email" class="form__input form__input__email" id="input-email" autocomplete="new-password" />
+                                  <input type="email" name="email" class="form__input form__input__email" id="input-email" autocomplete="new-password" required />
                                 </div>
                                 <div class="resume__input">
                                   <label for="input-phone" class="resume__label label__form">Phone Number</label>
-                                  <input type="text" name="phone-number" class="form__input form__input__first__name" id="input-phone" onkeypress="return event.charCode >= 48 && event.charCode <= 57" autocomplete="new-password" />
+                                  <input type="tel" name="phone-number" class="form__input form__input__first__name" id="input-phone" required onkeypress="return event.charCode >= 48 && event.charCode <= 57" autocomplete="new-password" />
                                 </div>
                               </div>
                             </div>
@@ -1373,11 +1373,11 @@
                                   <div class="inputs__shipping__container">
                                     <div class="resume__input">
                                       <label for="input-address" class="resume__label label__form">Address</label>
-                                      <input type="text" name="shipping-address" class="form__input form__input__address" id="input-address" autocomplete="new-password" />
+                                      <input type="text" name="shipping-address" class="form__input form__input__address" id="input-address" autocomplete="new-password" required />
                                     </div>
                                     <div class="resume__input">
                                       <label for="input-postal-code" class="resume__label label__form">Postal Code</label>
-                                      <input type="text" name="postal-code" class="form__input form__input__postal__code" id="input-postal-code" autocomplete="new-password" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                      <input type="text" name="postal-code" class="form__input form__input__postal__code" id="input-postal-code" autocomplete="new-password" required onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
                                     </div>
                                   </div>
                                 </div>
@@ -1385,15 +1385,15 @@
                                   <div class="inputs__shipping__container">
                                     <div class="resume__input">
                                       <label for="input-country" class="resume__label label__form">Country</label>
-                                      <input type="text" name="country" class="form__input form__input__country" id="input-country" autocomplete="new-password" />
+                                      <input type="text" name="country" class="form__input form__input__country" id="input-country" autocomplete="new-password" required />
                                     </div>
                                     <div class="resume__input">
                                       <label for="input-city" class="resume__label label__form">City</label>
-                                      <input type="text" name="city" class="form__input form__input__city" id="input-city" autocomplete="new-password" />
+                                      <input type="text" name="city" class="form__input form__input__city" id="input-city" autocomplete="new-password" required />
                                     </div>
                                     <div class="resume__input">
                                       <label for="input-state" class="resume__label label__form">State</label>
-                                      <input type="text" name="state" class="form__input form__input__state" id="input-state" autocomplete="new-password" />
+                                      <input type="text" name="state" class="form__input form__input__state" id="input-state" autocomplete="new-password" required />
                                     </div>
                                   </div>
                                 </div>
@@ -1406,14 +1406,14 @@
                               <div class="resume__inputs">
                                 <div class="resume__input">
                                   <label for="input-additional-information" class="resume__label label__form">Message</label>
-                                  <textarea name="additional-information" id="input-additional-information" class="form__input form__input__additional__information" placeholder="Type your message"></textarea>
+                                  <textarea name="additional-information" id="input-additional-information" class="form__input form__input__additional__information" placeholder="Type your message" required></textarea>
                                 </div>
                               </div>
                             </div>
                           </section>
                           <section class="form__resume checkbox__terms">
                             <div class="resume__checkbox">
-                              <input type="checkbox" name="accept-terms" id="input-checkbox-terms" class="input__checkbox__terms">
+                              <input type="checkbox" name="accept-terms" id="input-checkbox-terms" class="input__checkbox__terms" required>
                               <label for="input-checkbox-terms" class="label__form">I accept the <a href="#" class="link__terms">terms</a></label>
                             </div>
                           </section>
@@ -1435,7 +1435,7 @@
                 <!-- Fin de la sección 5 -->
 
                 <!-- Ventana de alerta -->
-                <div class="alert__message alert__message--show" id="alert-message">
+                <div class="alert__message" id="alert-message">
                   <p class="alert__message__text">
                     Please fill out all required fields.
                   </p>

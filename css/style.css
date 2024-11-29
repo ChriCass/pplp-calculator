@@ -886,6 +886,8 @@ input[type="number"]::-webkit-outer-spin-button{
   & .attached__title{
     font-size: 0.8rem;
     text-align: center;
+    font-family: var(--font-family-gilroy);
+    margin-bottom: 2rem;
   }
   
   & .table__attached{
@@ -1599,6 +1601,17 @@ input[type="number"]::-webkit-outer-spin-button{
       -webkit-text-fill-color: unset;
       color: #000;
       user-select: none;
+      position: relative;
+      width: max-content;
+
+      &::after{
+        position: absolute;
+        right: -0.75rem;
+        top: -0.25rem;
+        content: "*";
+        font-size: 1.5rem;
+        color: #c76973;
+      }
     }
 
     & .link__terms{
@@ -1625,11 +1638,12 @@ input[type="number"]::-webkit-outer-spin-button{
     padding: 1rem;
     font-family: var(--font-family-gilroy);
     border-radius: 1rem;
+    text-align: center;
   }
 
   .alert__message.alert__message--show{
-    display: block;
-    animation: fadeOut 1s forwards;
+    display: flex;
+    animation: fadeOut 3s forwards;
   }
 }
 
@@ -1684,6 +1698,26 @@ input[type="number"]::-webkit-outer-spin-button{
 
     & .alert__message{
       bottom: 6.5rem;
+    }
+
+    & .options__step__5{
+      & .personal__information{
+        & .resume__inputs{
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      & .shipping__address{
+        & .inputs__shipping__container{
+          flex-direction: row;
+
+          & .resume__input{
+            width: unset;
+            flex-grow: 1;
+          }
+        }        
+      }
     }
   }
 }

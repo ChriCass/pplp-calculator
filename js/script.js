@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     labels.forEach(label => label.classList.remove("action__btn--selected"));
 
     const asociatedLabel = btnsGroup.querySelector(`label[for="${e.target.id}"]`);
-    console.log("asociatedLabel", asociatedLabel);
+    // console.log("asociatedLabel", asociatedLabel);
     if (asociatedLabel) asociatedLabel.classList.add("action__btn--selected");
   }
 
@@ -86,7 +86,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const handleInputFocus = (input, focus) => {
     const dataId = input.dataset.mesurance;
 
-    sides.forEach(side => toggleClass(side, `side__${dataId}--active`, focus && side.classList.contains(`side__${dataId}`)));
+    const articleContainer = input.closest(".form__article");
+
+    const sidesArticle = articleContainer.querySelectorAll(".side");
+
+    sidesArticle.forEach(side => toggleClass(side, `side__${dataId}--active`, focus && side.classList.contains(`side__${dataId}`)));
 
     const bgElement = input.closest(".input__bg");
     toggleClass(bgElement, "bg--active", focus);
@@ -127,7 +131,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const colorSelected = e.target.matches(".label__color__pergola")
         ? e.target
         : e.target.closest(".label__color__pergola");
-      
 
       const inputSelected = colorSelected.nextElementSibling;
       inputSelected.checked = true;
@@ -143,6 +146,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (checkboxInputColor.checked) {
         updateColorLouvers(colorData);
       }
+
+      inputSelected.classList.contains("input__radio__custom")
+        ? customColor.setAttribute("name", "custom-color")
+        : customColor.removeAttribute("name");
+
     } else {
       const parentColorLouver = e.target.closest(".article__color__louvers");
       if (parentColorLouver) {
@@ -156,8 +164,8 @@ document.addEventListener("DOMContentLoaded", () => {
           ? e.target
           : e.target.closest(".label__color__louver");
 
-        const imputSelectedLouver = colorSelectedLouver.nextElementSibling;
-        imputSelectedLouver.checked = true;
+        const inputSelectedLouver = colorSelectedLouver.nextElementSibling;
+        inputSelectedLouver.checked = true;
 
         colorSelectedLouver.classList.add("color--selected");
 
@@ -166,6 +174,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!colorData) return;
 
         updateColorLouvers(colorData);
+
+        inputSelectedLouver.classList.contains("input__radio__custom")
+          ? customColorLouver.setAttribute("name", "custom-color-louver")
+          : customColorLouver.removeAttribute("name");
       }
     }
 
@@ -269,24 +281,6 @@ document.addEventListener("DOMContentLoaded", () => {
     card.classList.add("accesory__element--selected");
   }
 
-  const handeBtnsTypeMaterial = e => {
-    const parentBtns = e.target.closest(".accesory__type__btns");
-    if (!parentBtns) return;
-
-    const btns = parentBtns.querySelectorAll(".label__action__btn");
-    if (!btns) return;
-
-    btns.forEach(btn => btn.classList.remove("action__btn--selected"));
-
-    const btn = e.target.matches(".label__action__btn")
-      ? e.target
-      : e.target.closest(".label__action__btn");
-
-    if (!btn) return;
-
-    btn.classList.add("action__btn--selected");
-  }
-
   const showSectionForm = step => {
     sectionCalculatorForm.className = `section__calculator__content step-${step}`;
 
@@ -320,10 +314,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const showAlertMessage = message => {
-    alertMessage.textContent = message;
+    const p = alertMessage.querySelector("p");
+    p.textContent = message;
     alertMessage.classList.add("alert__message--show");
 
-    setTimeout(() => alertMessage.classList.remove("alert__message--show"), 1000);
+    setTimeout(() => alertMessage.classList.remove("alert__message--show"), 3000);
   }
 
   const handleValidationAndNextStep = setp => {
@@ -401,6 +396,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cardsMaterialColor.forEach(card => card.addEventListener("click", e => handleColorAccesoryBtn(e)));
 
+  const stepUno = document.querySelector(".step-1");
+  console.log("stepUno", stepUno);
+
+  const confirmation = document.createElement("div");
+  confirmation.className = "confirmation__container"
+  confirmation.innerHTML = `
+    <div class="confirmation__title">
+      <h2>Thank you for your submission!</h2>
+    </div>
+  `;
+
+  const confirmationForm = () => {
+    console.log('Data sent successfully');
+    window.location.href = "/";
+    stepUno.appendChild(confirmation);
+  }
 
   // Obtener los datos del formulario
   form.addEventListener("submit", e => {
@@ -416,6 +427,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // console.log(data);
     console.log(data2);
+    confirmationForm();
+
 
     fetch('https://hook.us1.make.com/6aotgx2a8zeiqbx7vpf68vbq70it2udh', {
       method: 'POST',
@@ -427,8 +440,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
       .then(response => {
         if (response.ok) {
-          console.log('Data sent successfully');
-          window.location.href = "/";
+          confirmationForm();
         } else {
           console.error('Error sending data');
         }
