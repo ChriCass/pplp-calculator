@@ -2,6 +2,7 @@ console.log("Corriendo en el puerto 5500");
 
 document.addEventListener("DOMContentLoaded", () => {
   // DOM
+  const stepUno = document.querySelector(".step-1");
   const sectionCalculatorForm = document.querySelector(".section__calculator__content");
   const inputRadioBtns = document.querySelectorAll(".input__radio__btn"); 
   const inputUnits = document.querySelectorAll(".input__unit");
@@ -57,6 +58,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const cardsMaterialColor = document.querySelectorAll(".accesory__card__color__content");
 
   const form = document.querySelector(".form");
+
+  // Confirmación de envío de formulario
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("success") === "true") {
+    const confirmation = document.createElement("div");
+    confirmation.className = "confirmation__container confirmation--show"
+    confirmation.innerHTML = `
+      <div class="confirmation__title">
+        <h3>Thank you for your submission!</h3>
+      </div>
+    `;
+    stepUno.appendChild(confirmation);
+
+    const confirmationContainer = document.querySelector(".confirmation__container");
+
+    setTimeout(() => confirmationContainer.classList.remove("confirmation--show"), 2500);
+  }
 
   // Helper para togglear clases
   const toggleClass = (element, className, condition) => {
@@ -396,30 +414,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cardsMaterialColor.forEach(card => card.addEventListener("click", e => handleColorAccesoryBtn(e)));
 
-  const stepUno = document.querySelector(".step-1");
-  console.log("stepUno", stepUno);
-
-  const confirmation = document.createElement("div");
-  confirmation.className = "confirmation__container"
-  confirmation.innerHTML = `
-    <div class="confirmation__title">
-      <h2>Thank you for your submission!</h2>
-    </div>
-  `;
-
-  const confirmationForm = () => {
-    console.log('Data sent successfully');
-    window.location.href = "/";
-    stepUno.appendChild(confirmation);
-  }
-
   // Obtener los datos del formulario
   form.addEventListener("submit", e => {
-    // e.preventDefault();
+    e.preventDefault();
 
     const data = Object.fromEntries(new FormData(e.target));
-
-    console.log(data);
 
     const data2 = {
       "body": data
@@ -427,8 +426,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // console.log(data);
     console.log(data2);
-    confirmationForm();
-
 
     fetch('https://hook.us1.make.com/6aotgx2a8zeiqbx7vpf68vbq70it2udh', {
       method: 'POST',
@@ -440,7 +437,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
       .then(response => {
         if (response.ok) {
-          confirmationForm();
+          window.location.href = "/?success=true"
         } else {
           console.error('Error sending data');
         }
