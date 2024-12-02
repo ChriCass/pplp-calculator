@@ -1751,9 +1751,9 @@ input[type="number"]::-webkit-outer-spin-button{
       }
     }
 
-    & .alert__message{
+    /* & .alert__message{
       bottom: 6.5rem;
-    }
+    } */
 
     & .options__step__5{
       & .personal__information{
