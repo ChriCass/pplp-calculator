@@ -455,6 +455,13 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", e => {
     e.preventDefault();
 
+    const terms = document.getElementById("input-checkbox-terms");
+
+    if (!terms.checked) {
+      showAlertMessage("Please accept the terms and conditions.");
+      return;
+    }
+
     const data = Object.fromEntries(new FormData(e.target));
 
     const data2 = {
