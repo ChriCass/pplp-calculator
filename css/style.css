@@ -404,6 +404,7 @@ input[type="number"]::-webkit-outer-spin-button{
     align-items: center;
     gap: 1rem;
     padding-block: 1rem;
+    font-family: var(--font-family-gilroy);
   }
   
   & .form__title__icon{
@@ -659,6 +660,10 @@ input[type="number"]::-webkit-outer-spin-button{
     &:has(.form__input:focus) {
       border-bottom-color: var(--color-secundario);
     }
+
+    &:not(:has(.form__input:placeholder-shown)){
+      border-bottom-color: var(--color-secundario);
+    }
   }
   
   & .label__input{
@@ -827,6 +832,10 @@ input[type="number"]::-webkit-outer-spin-button{
     display: flex;
     align-items: center;
     font-family: var(--font-family-gilroy);
+  }
+
+  & .election__title__text{
+    font-size: clamp(1.125rem, 4.5vw, 1.625rem);
   }
   
   & .election__btns{
@@ -1236,7 +1245,7 @@ input[type="number"]::-webkit-outer-spin-button{
           & .choose__header__btn{
             border-radius: 50%;
             overflow: hidden;
-            background-image: linear-gradient(to right, var(--color-principal) 30%, var(--color-secundario));
+            background-image: linear-gradient(to right, var(--color-secundario) 30%, var(--color-principal));
             width: 1rem;
             aspect-ratio: 1/1;
             height: 1rem;
@@ -1246,8 +1255,10 @@ input[type="number"]::-webkit-outer-spin-button{
   
             & .choose__header__figure{
               width: 0.5rem;
+              width: 100%;
               aspect-ratio: 1/1;
               height: 0.5rem;
+              height: 100%;
   
               & .choose__header__img{
                 display: block;
@@ -1268,7 +1279,7 @@ input[type="number"]::-webkit-outer-spin-button{
           & .choose__header__btn{
             & .choose__header__figure{
               & .choose__header__img{
-                transform: rotateZ(90deg);
+                transform: rotateZ(-180deg);
               }
             }
           }

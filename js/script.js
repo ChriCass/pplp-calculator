@@ -98,10 +98,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const handleMeasureBtn = e => {
     const unitText = e.target.textContent.toLowerCase();
+    const attachedMeasure = document.querySelectorAll(".attached__measure--text");
     inputUnits.forEach(input => input.textContent = unitText);
+    attachedMeasure.forEach(measure => measure.textContent = ` ${unitText}`);
   };
 
   const handleInputFocus = (input, focus) => {
+    const span = input.nextElementSibling; // Span unit
+    span.style.opacity = 0;
     const dataId = input.dataset.mesurance;
 
     const articleContainer = input.closest(".form__article");
@@ -112,6 +116,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const bgElement = input.closest(".input__bg");
     toggleClass(bgElement, "bg--active", focus);
+  };
+
+  const handleInputBlur = e => {
+    const span = e.target.nextElementSibling; // Span unit
+    span.style.opacity = 1;
+  }
+
+  const handleInputMeasure = e => {
+    const measure = e.target.dataset.mesurance;
+    const measureAttachedA1 = document.querySelector(".measure__attached__a1");
+    const measureAttachedA2 = document.querySelector(".measure__attached__a2");
+    const measureAttachedB1 = document.querySelector(".measure__attached__b1");
+    const measureAttachedB2 = document.querySelector(".measure__attached__b2");
+
+    if (measure === "length") {
+      if (e.target.value === "") {
+        measureAttachedA1.textContent = 0;
+        measureAttachedA2.textContent = 0;
+      }
+      measureAttachedA1.textContent = `${e.target.value} `;
+      measureAttachedA2.textContent = `${e.target.value} `;
+    } else if (measure === "depth") {
+      if (e.target.value === "") {
+        measureAttachedB1.textContent = 0;
+        measureAttachedB2.textContent = 0;
+      }
+      measureAttachedB1.textContent = `${e.target.value} `;
+      measureAttachedB2.textContent = `${e.target.value} `;
+    }
   };
 
   const handleGroupBtn = target => {
@@ -354,7 +387,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   formInputs.forEach(input => {
     input.addEventListener("focus", e => handleInputFocus(e.target, true));
-    input.addEventListener("blur", e => handleInputFocus(e.target, false));
+    input.addEventListener("blur", e => {
+      handleInputFocus(e.target, false);
+      handleInputBlur(e);
+    });
+    input.addEventListener("input", e => handleInputMeasure(e));
   });
 
   btnsGroupBg.forEach(group => group.addEventListener("click", e => handleGroupBtn(e.target)));
