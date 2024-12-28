@@ -296,12 +296,14 @@ document.addEventListener("DOMContentLoaded", () => {
     louvers.forEach(louver => {
       louver.style.backgroundColor = e.target.checked ? sides[0].style.backgroundColor : "#000";
     });
+    colorLouverContainer.querySelectorAll(".label__color__louver").forEach(label => label.classList.remove("color--selected"));
 
     if (e.target.checked) {
       colorLouverContainer.querySelector(".input__radio__black").checked = false;
       colorLouverContainer.classList.remove("element--show");
     } else if (!e.target.checked) {
       colorLouverContainer.querySelector(".input__radio__black").checked = true;
+      colorLouverContainer.querySelector(".color__black").classList.add("color--selected");
       colorLouverContainer.classList.add("element--show");
     }
   }
@@ -340,9 +342,11 @@ document.addEventListener("DOMContentLoaded", () => {
     firstRadioBtn.checked = true;
 
     if (material === "private") {
-      const firstColorBtn = typeMaterialContainer.querySelector(".accesory__card__color__content");
-      if (!firstColorBtn) return;
-      firstColorBtn.checked = true;
+      const colorBtns = typeMaterialContainer.querySelectorAll(".accesory__card__color__content");
+      if (!colorBtns) return;
+      colorBtns.forEach(colorBtn => colorBtn.parentElement.classList.remove("accesory__element--selected"));
+      colorBtns[0]?.parentElement.classList.add("accesory__element--selected");
+      colorBtns[0].nextElementSibling.checked = true;
     }
 
     const cardParent = card.closest(".choose__accesory__content");
