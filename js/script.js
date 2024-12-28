@@ -39,6 +39,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const checkboxInputColor = document.getElementById("input-checkbox-color");
   const colorLouverContainer = document.querySelector(".color__louver__container");
 
+  const materialsPrivate = document.querySelectorAll(".accesory__material__private");
+  const btnsCloseModal = document.querySelectorAll(".btn__close__modal");
+  const sectionsModal = document.querySelectorAll(".section__modal");
+  const modalsContainer = document.querySelectorAll(".modal__container");
+
   const previousBtn1 = document.getElementById("btn-form-previous-1");
   const continueBtn1 = document.getElementById("btn-form-continue-1");
 
@@ -326,13 +331,35 @@ document.addEventListener("DOMContentLoaded", () => {
     pergolaElement.classList.add("table__attached--active");
   };
 
+  const handleModalOpen = e => {
+    const private = e.target.closest(".accesory__material__private") ? e.target : e.target.closest(".accesory__material__private");
+    if (!private) return;
+
+    const modalActivate = private.closest(".choose__accesory__options__content");
+
+    const modalSection = modalActivate.querySelector(".section__modal");
+
+    modalSection.classList.add("modal--show");
+    document.querySelector("body").style.overflow = "hidden";
+  }
+
+  const handleModalClose = e => {
+    const targetEvent = e.target.matches(".btn__close__modal") || e.target.matches(".close__modal__img") || e.target.matches(".section__modal");
+    if (!targetEvent) return;
+
+    const modalSection = e.target.closest(".section__modal");
+
+    modalSection.classList.remove("modal--show");
+    document.querySelector("body").style.overflow = "auto";
+  }
+
   const handleColorAccesoryBtn = e => {
     const parentColor = e.target.closest(".accesory__card__container");
     if (!parentColor) return;
 
     const cards = parentColor.querySelectorAll(".accesory__card__color__content");
 
-    cards.forEach(card => card.closest(".swiper-slide").classList.remove("accesory__element--selected"));
+    cards.forEach(card => card.classList.remove("accesory__element--selected"));
 
     const card = e.target.matches(".accesory__card__color__content")
       ? e.target
@@ -340,7 +367,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!card) return;
 
-    card.closest(".swiper-slide").classList.add("accesory__element--selected");
+    card.classList.add("accesory__element--selected");
 
     const cardParent = card.closest(".choose__accesory__content");
     const pergolaCard = cardParent.dataset.accesory;
@@ -444,7 +471,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const parentRadio = color.closest(".custom__color");
     parentRadio.querySelector("#input-radio-color-louver-custom").checked = true;
-  })
+  });
+
+  materialsPrivate.forEach(material => material.addEventListener("click", e => handleModalOpen(e)));
+
+  sectionsModal.forEach(section => section.addEventListener("click", e => handleModalClose(e)));
+  btnsCloseModal.forEach(btn => btn.addEventListener("click", e => handleModalClose(e)));
+  modalsContainer.forEach(modal => modal.addEventListener("click", e => e.stopPropagation()));
 
   btnFormPrevious.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -502,7 +535,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // console.log(data);
     console.log(data2);
 
-    fetch('https://hook.us1.make.com/6aotgx2a8zeiqbx7vpf68vbq70it2udh', {
+    /* fetch('https://hook.us1.make.com/6aotgx2a8zeiqbx7vpf68vbq70it2udh', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -517,6 +550,6 @@ document.addEventListener("DOMContentLoaded", () => {
           console.error('Error sending data');
         }
       })
-      .catch(error => console.error('Fetch error:', error));
+      .catch(error => console.error('Fetch error:', error)); */
   }); 
 });
