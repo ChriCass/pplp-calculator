@@ -29,6 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const colorInput = document.querySelectorAll(".input__color");
   const louvers = document.querySelectorAll(".louver__color");
 
+  const tableAccesory = document.querySelector(".scene__table__accesory");
+
   const customColor = document.querySelectorAll("color__picker");
 
   const btnFormPrevious = document.querySelectorAll(".btn-form-previous");
@@ -313,6 +315,15 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!firstColorBtn) return;
       firstColorBtn.checked = true;
     }
+
+    const cardParent = card.closest(".choose__accesory__content");
+    const pergolaCard = cardParent.dataset.accesory;
+
+    const pergolaSelector = `.table__attached__${pergolaCard.toLowerCase()}`;
+    const pergolaElement = tableAccesory.querySelector(pergolaSelector);
+
+    if (!pergolaElement) return;
+    pergolaElement.classList.add("table__attached--active");
   };
 
   const handleColorAccesoryBtn = e => {
@@ -321,7 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const cards = parentColor.querySelectorAll(".accesory__card__color__content");
 
-    cards.forEach(card => card.classList.remove("accesory__element--selected"));
+    cards.forEach(card => card.closest(".swiper-slide").classList.remove("accesory__element--selected"));
 
     const card = e.target.matches(".accesory__card__color__content")
       ? e.target
@@ -329,7 +340,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!card) return;
 
-    card.classList.add("accesory__element--selected");
+    card.closest(".swiper-slide").classList.add("accesory__element--selected");
+
+    const cardParent = card.closest(".choose__accesory__content");
+    const pergolaCard = cardParent.dataset.accesory;
+
+    const pergolaSelector = `.table__attached__${pergolaCard.toLowerCase()}`;
+    const pergolaElement = tableAccesory.querySelector(pergolaSelector);
+
+    if (!pergolaElement) return;
+
+    pergolaElement.classList.add("table__attached--active");
   }
 
   const showSectionForm = step => {
@@ -337,6 +358,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     statusCount.forEach((stat, index) => {
       index < step ? stat.classList.add("status__content--active") : stat.classList.remove("status__content--active");
+    });
+
+    // Scroll arriba
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     });
 
     handleButtons(step);
@@ -377,6 +404,10 @@ document.addEventListener("DOMContentLoaded", () => {
       showSectionForm(setp);
     } else {
       showAlertMessage("Please fill out all required fields.");
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
   };
 

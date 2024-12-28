@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test PPLP</title>
     <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
     <script src="./js/script.js" defer></script>
   </head>
   <body class="body">
@@ -362,14 +364,14 @@
                           </div>
                           <div class="input__checkbox__color">
                             <div class="checkbox__color__container">
-                              <input type="checkbox" id="input-checkbox-color" class="input__checkbox__color" name="same-color-louvers-pergola">
+                              <input type="checkbox" id="input-checkbox-color" class="input__checkbox__color" name="same-color-louvers-pergola" checked>
                               <label for="input-checkbox-color" class="label__input">I want the louvers to be the same color</label>
                             </div>
                           </div>
                         </div>
                       </article>
                       <article class="form__article article__color__louvers">
-                        <div class="color__base__container color__louver__container element--show">
+                        <div class="color__base__container color__louver__container">
                           <div class="color__louvers__title">
                             <h2 class="louver__title">And what color would you like the louvers to be?</h2>
                             <div class="color__louvers__title__svg">
@@ -502,694 +504,1037 @@
                               <div class="choose__accesory__container">
 
                                 <!-- Accesorio A1 -->
-                                <div class="choose__accesory__content">
-                                <article class="choose__header choose__header--active">
-                                  <div class="choose__header__container">
-                                    <div class="choose__header__content">
-                                      <h3 class="choose__side">A1</h3>
-                                      <div class="choose__btn">
-                                        <span class="choose__header__span">Choose Accesory 01</span>
-                                        <div class="choose__header__btn">
-                                          <figure class="choose__header__figure">
-                                            <img src="./assets/icons/icon-new-play-white.svg" alt="Icon Arrow" class="choose__header__img">
-                                          </figure>
+                                <div class="choose__accesory__content accesory--A1" data-accesory="A1">
+                                  <article class="choose__header choose__header--active">
+                                    <div class="choose__header__container">
+                                      <div class="choose__header__content">
+                                        <h3 class="choose__side">A1</h3>
+                                        <div class="choose__btn">
+                                          <span class="choose__header__span">Choose Accesory 01</span>
+                                          <div class="choose__header__btn">
+                                            <figure class="choose__header__figure">
+                                              <img src="./assets/icons/icon-new-play-white.svg" alt="Icon Arrow" class="choose__header__img">
+                                            </figure>
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                                </article>
-                                <article class="choose__accesory__options">
-                                  <div class="choose__accesory__options__container">
-                                    <div class="choose__accesory__options__content">
-                                      <article class="accesory__material">
-                                        <div class="accesory__cards__container">
-                                          <div class="accesory__card__content">
-                                            <label for="input-radio-material-private-a1" class="label__form accesory__card__material__element accesory__material__private accesory__element--selected" data-material="private">
-                                              <figure class="accesory__material__figure">
-                                                <img src="./assets/img/image_9.webp" alt="" class="accesory__material__img">
-                                              </figure>
-                                              <span class="accesory__material__span">Private Screens</span>
-                                            </label>
-                                            <input type="radio" name="material-pergola-a1" id="input-radio-material-private-a1" class="input__radio input__radio__btn" value="private" checked />
-                                            <label for="input-radio-material-glass-a1" class="label__form accesory__card__material__element accesory__material__glass" data-material="glass">
-                                              <figure class="accesory__material__figure">
-                                                <img src="./assets/img/image_10.webp" alt="" class="accesory__material__img">
-                                              </figure>
-                                              <span class="accesory__material__span">Glass Panels</span>
-                                            </label>
-                                            <input type="radio" name="material-pergola-a1" id="input-radio-material-glass-a1" class="input__radio input__radio__btn" value="glass" />
-                                            <label for="input-radio-material-aluminium-a1" class="label__form accesory__card__material__element accesory__material__aliminium" data-material="aluminium">
-                                              <figure class="accesory__material__figure">
-                                                <img src="./assets/img/image_11.webp" alt="" class="accesory__material__img">
-                                              </figure>
-                                              <span class="accesory__material__span">Aluminum Shutter Panels</span>
-                                            </label>
-                                            <input type="radio" name="material-pergola-a1" id="input-radio-material-aluminium-a1" class="input__radio input__radio__btn" value="aluminium" />
+                                  </article>
+                                  <article class="choose__accesory__options">
+                                    <div class="choose__accesory__options__container">
+                                      <div class="choose__accesory__options__content">
+                                        <article class="accesory__material">
+                                          <div class="accesory__cards__container">
+                                            <div class="accesory__card__content">
+                                              <label for="input-radio-material-private-a1" class="label__form accesory__card__material__element accesory__material__private accesory__element--selected" data-material="private">
+                                                <figure class="accesory__material__figure">
+                                                  <img src="./assets/img/image_9.webp" alt="" class="accesory__material__img">
+                                                </figure>
+                                                <span class="accesory__material__span">Private Screens</span>
+                                              </label>
+                                              <input type="radio" name="material-pergola-a1" id="input-radio-material-private-a1" class="input__radio input__radio__btn" value="private" checked />
+                                              <label for="input-radio-material-glass-a1" class="label__form accesory__card__material__element accesory__material__glass" data-material="glass">
+                                                <figure class="accesory__material__figure">
+                                                  <img src="./assets/img/image_10.webp" alt="" class="accesory__material__img">
+                                                </figure>
+                                                <span class="accesory__material__span">Glass Panels</span>
+                                              </label>
+                                              <input type="radio" name="material-pergola-a1" id="input-radio-material-glass-a1" class="input__radio input__radio__btn" value="glass" />
+                                              <label for="input-radio-material-aluminium-a1" class="label__form accesory__card__material__element accesory__material__aliminium" data-material="aluminium">
+                                                <figure class="accesory__material__figure">
+                                                  <img src="./assets/img/image_11.webp" alt="" class="accesory__material__img">
+                                                </figure>
+                                                <span class="accesory__material__span">Aluminum Shutter Panels</span>
+                                              </label>
+                                              <input type="radio" name="material-pergola-a1" id="input-radio-material-aluminium-a1" class="input__radio input__radio__btn" value="aluminium" />
+                                            </div>
                                           </div>
-                                        </div>
-                                      </article>
-                                      <article class="accesory__options accesory__options__1">
-                                        <div class="accesory__card accesory__card__color accesory__private group__private group element--show" data-group="private"">
-                                          <div class="accesory__card__container accesory__card__color__container">
+                                        </article>
+                                        <article class="accesory__options accesory__options__1">
+                                          <div class="accesory__card accesory__card__color accesory__private group__private group element--show" data-group="private"">
+                                            <div class="accesory__card__container accesory__card__color__container">
 
-                                            <!-- Cards de colores -->
-                                            <label for="input-radio-color-private-d0ccc0-a1" class="label__form accesory__card__color__content accesory__element--selected">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Nombre</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #d0ccc0;"></div>
+                                              <!-- Cards de colores -->
+                                              <section class="swiper">
+                                                <div class="swiper-wrapper">
+                                                  <div class="swiper-slide accesory__element--selected">
+                                                    <label for="input-radio-color-private-a1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black Brown</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #0E0B0E;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ003</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a1" id="input-radio-color-private-a1" class="input__radio input__radio__btn" value="OS5SJ003" checked />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #585B67;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ002</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a1" id="input-radio-color-private-a1" class="input__radio input__radio__btn" value="OS5SJ002" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #403F3D;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ001</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a1" id="input-radio-color-private-a1" class="input__radio input__radio__btn" value="OS5SJ001" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Dark Gray</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #2D2D37;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ007</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a1" id="input-radio-color-private-a1" class="input__radio input__radio__btn" value="OS5SJ007" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Light Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #9D9D9D;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ006</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a1" id="input-radio-color-private-a1" class="input__radio input__radio__btn" value="OS5SJ006" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">White Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #A5A5A6;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ005</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a1" id="input-radio-color-private-a1" class="input__radio input__radio__btn" value="OS5SJ005" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">White</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #CBD2DE;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ004</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a1" id="input-radio-color-private-a1" class="input__radio input__radio__btn" value="OS5SJ004" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #75767B;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ002</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a1" id="input-radio-color-private-a1" class="input__radio input__radio__btn" value="OS10DJ002" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #242733;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ001</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a1" id="input-radio-color-private-a1" class="input__radio input__radio__btn" value="OS10DJ001" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Blue</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #0B40B6;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10SJ001</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a1" id="input-radio-color-private-a1" class="input__radio input__radio__btn" value="OS10SJ001" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Dark Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #292F3F;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ004</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a1" id="input-radio-color-private-a1" class="input__radio input__radio__btn" value="OS10DJ004" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Light Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #A5ACB7;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ003</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a1" id="input-radio-color-private-a1" class="input__radio input__radio__btn" value="OS10DJ003" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Yellow</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #DCC858;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10SJ002</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a1" id="input-radio-color-private-a1" class="input__radio input__radio__btn" value="OS10SJ002" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Brown</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #585855;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS30DJ004</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a1" id="input-radio-color-private-a1" class="input__radio input__radio__btn" value="OS30DJ004" />
+                                                  </div>
                                                 </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a1" id="input-radio-color-private-d0ccc0-a1" class="input__radio input__radio__btn" value="#d0ccc0" checked />
-
-                                            <label for="input-radio-color-private-c5c4bb-a1" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Mist Gray</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #c5c4bb;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a1" id="input-radio-color-private-c5c4bb-a1" class="input__radio input__radio__btn" value="#c5c4bb" />
-
-                                            <label for="input-radio-color-private-9a9b93-a1" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Lemon Grass</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #9a9b93;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a1" id="input-radio-color-private-9a9b93-a1" class="input__radio input__radio__btn" value="#9a9b93" />
-
-                                            <label for="input-radio-color-private-201b1b-a1" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Cold Gray</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #201b1b;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a1" id="input-radio-color-private-201b1b-a1" class="input__radio input__radio__btn" value="#201b1b" />
-
-                                            <label for="input-radio-color-private-d6d2ca-a1" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Timberwolf</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #d6d2ca;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a1" id="input-radio-color-private-d6d2ca-a1" class="input__radio input__radio__btn" value="#d6d2ca" />
-
-                                            <label for="input-radio-color-private-293133-a1" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Jet Black</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #293133;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-7016</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a1" id="input-radio-color-private-293133-a1" class="input__radio input__radio__btn" value="#293133" />
-
-                                            <label for="input-radio-color-private-cfc4b0-a1" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Soft Amber</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #cfc4b0;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a1" id="input-radio-color-private-cfc4b0-a1" class="input__radio input__radio__btn" value="#cfc4b0" />
-
-                                            <label for="input-radio-color-private-82857f-a1" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Nombre</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #82857f;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a1" id="input-radio-color-private-82857f-a1" class="input__radio input__radio__btn" value="#82857f" />
-
+                                                <div class="swiper-scrollbar"></div>
+                                              </section>
+                                            </div>
                                           </div>
-                                        </div>
-                                        <div class="accesory__type accesory__glass group__glass group" data-group="glass">
-                                          <div class="accesory__type__container">
-                                            <div class="accesory__type__content">
-                                              <div class="accesory__type__btns form__btns btns__group--bg">
-                                                <label for="input-radio-glass-fixed-a1" class="label__action__btn action__btn btn__bg btn__glass glass__fixed action__btn--selected">Fixed</label>
-                                                <input type="radio" name="glass-type-a1" id="input-radio-glass-fixed-a1" class="input__radio__btn input__radio" value="fixed" />
-                                                <label for="input-radio-glass-sliding-a1" class="label__action__btn action__btn btn__bg btn__sliding glass__sliding">Sliding</label>
-                                                <input type="radio" name="glass-type-a1" id="input-radio-glass-sliding-a1" class="input__radio__btn input__radio" value="sliding" />
+                                          <div class="accesory__type accesory__glass group__glass group" data-group="glass">
+                                            <div class="accesory__type__container">
+                                              <div class="accesory__type__content">
+                                                <div class="accesory__type__btns form__btns btns__group--bg">
+                                                  <label for="input-radio-glass-fixed-a1" class="label__action__btn action__btn btn__bg btn__glass glass__fixed action__btn--selected">Fixed</label>
+                                                  <input type="radio" name="glass-type-a1" id="input-radio-glass-fixed-a1" class="input__radio__btn input__radio" value="fixed" />
+                                                  <label for="input-radio-glass-sliding-a1" class="label__action__btn action__btn btn__bg btn__sliding glass__sliding">Sliding</label>
+                                                  <input type="radio" name="glass-type-a1" id="input-radio-glass-sliding-a1" class="input__radio__btn input__radio" value="sliding" />
+                                                </div>
                                               </div>
                                             </div>
                                           </div>
-                                        </div>
-                                        <div class="accesory__type accesory__aluminium group__aluminium group" data-group="aluminium">
-                                          <div class="accesory__type__container">
-                                            <div class="accesory__type__content">
-                                              <div class="accesory__type__btns form__btns btns__group--bg">
-                                                <label for="input-radio-aluminium-fixed-a1" class="label__action__btn action__btn btn__bg btn__aluminium aluminium__fixed action__btn--selected">Fixed</label>
-                                                <input type="radio" name="aluminium-type-a1" id="input-radio-aluminium-fixed-a1" class="input__radio__btn input__radio" value="fixed" />
-                                                <label for="input-radio-aluminium-sliding-a1" class="label__action__btn action__btn btn__bg btn__sliding aluminium__sliding">Sliding</label>
-                                                <input type="radio" name="aluminium-type-a1" id="input-radio-aluminium-sliding-a1" class="input__radio__btn input__radio" value="sliding" />
+                                          <div class="accesory__type accesory__aluminium group__aluminium group" data-group="aluminium">
+                                            <div class="accesory__type__container">
+                                              <div class="accesory__type__content">
+                                                <div class="accesory__type__btns form__btns btns__group--bg">
+                                                  <label for="input-radio-aluminium-fixed-a1" class="label__action__btn action__btn btn__bg btn__aluminium aluminium__fixed action__btn--selected">Fixed</label>
+                                                  <input type="radio" name="aluminium-type-a1" id="input-radio-aluminium-fixed-a1" class="input__radio__btn input__radio" value="fixed" />
+                                                  <label for="input-radio-aluminium-sliding-a1" class="label__action__btn action__btn btn__bg btn__sliding aluminium__sliding">Sliding</label>
+                                                  <input type="radio" name="aluminium-type-a1" id="input-radio-aluminium-sliding-a1" class="input__radio__btn input__radio" value="sliding" />
+                                                </div>
                                               </div>
                                             </div>
                                           </div>
-                                        </div>
-                                      </article>
+                                        </article>
+                                      </div>
                                     </div>
-                                  </div>
-                                </article>
+                                  </article>
                                 </div>
                                 <!-- Accesorio A1 -->
 
                                 <!-- Accesorio A2 -->
-                                <div class="choose__accesory__content">
-                                <article class="choose__header choose__header--active">
-                                  <div class="choose__header__container">
-                                    <div class="choose__header__content">
-                                      <h3 class="choose__side">A2</h3>
-                                      <div class="choose__btn">
-                                        <span class="choose__header__span">Choose Accesory 02</span>
-                                        <div class="choose__header__btn">
-                                          <figure class="choose__header__figure">
-                                            <img src="./assets/icons/icon-new-play-white.svg" alt="Icon Arrow" class="choose__header__img">
-                                          </figure>
+                                <div class="choose__accesory__content accesory--A2" data-accesory="A2">
+                                  <article class="choose__header choose__header--active">
+                                    <div class="choose__header__container">
+                                      <div class="choose__header__content">
+                                        <h3 class="choose__side">A2</h3>
+                                        <div class="choose__btn">
+                                          <span class="choose__header__span">Choose Accesory 02</span>
+                                          <div class="choose__header__btn">
+                                            <figure class="choose__header__figure">
+                                              <img src="./assets/icons/icon-new-play-white.svg" alt="Icon Arrow" class="choose__header__img">
+                                            </figure>
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                                </article>
-                                <article class="choose__accesory__options">
-                                  <div class="choose__accesory__options__container">
-                                    <div class="choose__accesory__options__content">
-                                      <article class="accesory__material">
-                                        <div class="accesory__cards__container">
-                                          <div class="accesory__card__content">
-                                            <label for="input-radio-material-private-a2" class="label__form accesory__card__material__element accesory__material__private accesory__element--selected" data-material="private">
-                                              <figure class="accesory__material__figure">
-                                                <img src="./assets/img/image_9.webp" alt="" class="accesory__material__img">
-                                              </figure>
-                                              <span class="accesory__material__span">Private Screens</span>
-                                            </label>
-                                            <input type="radio" name="material-pergola-a2" id="input-radio-material-private-a2" class="input__radio input__radio__btn" value="private" checked />
-                                            <label for="input-radio-material-glass-a2" class="label__form accesory__card__material__element accesory__material__glass" data-material="glass">
-                                              <figure class="accesory__material__figure">
-                                                <img src="./assets/img/image_10.webp" alt="" class="accesory__material__img">
-                                              </figure>
-                                              <span class="accesory__material__span">Glass Panels</span>
-                                            </label>
-                                            <input type="radio" name="material-pergola-a2" id="input-radio-material-glass-a2" class="input__radio input__radio__btn" value="glass" />
-                                            <label for="input-radio-material-aluminium-a2" class="label__form accesory__card__material__element accesory__material__aliminium" data-material="aluminium">
-                                              <figure class="accesory__material__figure">
-                                                <img src="./assets/img/image_11.webp" alt="" class="accesory__material__img">
-                                              </figure>
-                                              <span class="accesory__material__span">Aluminum Shutter Panels</span>
-                                            </label>
-                                            <input type="radio" name="material-pergola-a2" id="input-radio-material-aluminium-a2" class="input__radio input__radio__btn" value="aluminium" />
+                                  </article>
+                                  <article class="choose__accesory__options">
+                                    <div class="choose__accesory__options__container">
+                                      <div class="choose__accesory__options__content">
+                                        <article class="accesory__material">
+                                          <div class="accesory__cards__container">
+                                            <div class="accesory__card__content">
+                                              <label for="input-radio-material-private-a2" class="label__form accesory__card__material__element accesory__material__private accesory__element--selected" data-material="private">
+                                                <figure class="accesory__material__figure">
+                                                  <img src="./assets/img/image_9.webp" alt="" class="accesory__material__img">
+                                                </figure>
+                                                <span class="accesory__material__span">Private Screens</span>
+                                              </label>
+                                              <input type="radio" name="material-pergola-a2" id="input-radio-material-private-a2" class="input__radio input__radio__btn" value="private" checked />
+                                              <label for="input-radio-material-glass-a2" class="label__form accesory__card__material__element accesory__material__glass" data-material="glass">
+                                                <figure class="accesory__material__figure">
+                                                  <img src="./assets/img/image_10.webp" alt="" class="accesory__material__img">
+                                                </figure>
+                                                <span class="accesory__material__span">Glass Panels</span>
+                                              </label>
+                                              <input type="radio" name="material-pergola-a2" id="input-radio-material-glass-a2" class="input__radio input__radio__btn" value="glass" />
+                                              <label for="input-radio-material-aluminium-a2" class="label__form accesory__card__material__element accesory__material__aliminium" data-material="aluminium">
+                                                <figure class="accesory__material__figure">
+                                                  <img src="./assets/img/image_11.webp" alt="" class="accesory__material__img">
+                                                </figure>
+                                                <span class="accesory__material__span">Aluminum Shutter Panels</span>
+                                              </label>
+                                              <input type="radio" name="material-pergola-a2" id="input-radio-material-aluminium-a2" class="input__radio input__radio__btn" value="aluminium" />
+                                            </div>
                                           </div>
-                                        </div>
-                                      </article>
-                                      <article class="accesory__options accesory__options__2">
-                                        <div class="accesory__card accesory__card__color accesory__private group__private group element--show" data-group="private"">
-                                          <div class="accesory__card__container accesory__card__color__container">
+                                        </article>
+                                        <article class="accesory__options accesory__options__2">
+                                          <div class="accesory__card accesory__card__color accesory__private group__private group element--show" data-group="private"">
+                                            <div class="accesory__card__container accesory__card__color__container">
 
-                                            <!-- Cards de colores -->
-                                            <label for="input-radio-color-private-d0ccc0-a2" class="label__form accesory__card__color__content accesory__element--selected">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Nombre</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #d0ccc0;"></div>
+                                              <!-- Cards de colores -->
+                                              <section class="swiper">
+                                                <div class="swiper-wrapper">
+                                                  <div class="swiper-slide accesory__element--selected">
+                                                    <label for="input-radio-color-private-a2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black Brown</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #0E0B0E;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ003</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a2" id="input-radio-color-private-a2" class="input__radio input__radio__btn" value="OS5SJ003" checked />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #585B67;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ002</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a2" id="input-radio-color-private-a2" class="input__radio input__radio__btn" value="OS5SJ002" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #403F3D;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ001</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a2" id="input-radio-color-private-a2" class="input__radio input__radio__btn" value="OS5SJ001" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Dark Gray</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #2D2D37;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ007</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a2" id="input-radio-color-private-a2" class="input__radio input__radio__btn" value="OS5SJ007" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Light Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #9D9D9D;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ006</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a2" id="input-radio-color-private-a2" class="input__radio input__radio__btn" value="OS5SJ006" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">White Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #A5A5A6;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ005</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a2" id="input-radio-color-private-a2" class="input__radio input__radio__btn" value="OS5SJ005" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">White</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #CBD2DE;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ004</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a2" id="input-radio-color-private-a2" class="input__radio input__radio__btn" value="OS5SJ004" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #75767B;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ002</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a2" id="input-radio-color-private-a2" class="input__radio input__radio__btn" value="OS10DJ002" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #242733;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ001</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a2" id="input-radio-color-private-a2" class="input__radio input__radio__btn" value="OS10DJ001" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Blue</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #0B40B6;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10SJ001</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a2" id="input-radio-color-private-a2" class="input__radio input__radio__btn" value="OS10SJ001" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Dark Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #292F3F;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ004</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a2" id="input-radio-color-private-a2" class="input__radio input__radio__btn" value="OS10DJ004" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Light Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #A5ACB7;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ003</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a2" id="input-radio-color-private-a2" class="input__radio input__radio__btn" value="OS10DJ003" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Yellow</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #DCC858;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10SJ002</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a2" id="input-radio-color-private-a2" class="input__radio input__radio__btn" value="OS10SJ002" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-a2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Brown</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #585855;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS30DJ004</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-a2" id="input-radio-color-private-a2" class="input__radio input__radio__btn" value="OS30DJ004" />
+                                                  </div>
                                                 </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a2" id="input-radio-color-private-d0ccc0-a2" class="input__radio input__radio__btn" value="#d0ccc0" checked />
+                                                <div class="swiper-scrollbar"></div>
+                                              </section>
 
-                                            <label for="input-radio-color-private-c5c4bb-a2" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Mist Gray</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #c5c4bb;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a2" id="input-radio-color-private-c5c4bb-a2" class="input__radio input__radio__btn" value="#c5c4bb" />
-
-                                            <label for="input-radio-color-private-9a9b93-a2" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Lemon Grass</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #9a9b93;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a2" id="input-radio-color-private-9a9b93-a2" class="input__radio input__radio__btn" value="#9a9b93" />
-
-                                            <label for="input-radio-color-private-201b1b-a2" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Cold Gray</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #201b1b;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a2" id="input-radio-color-private-201b1b-a2" class="input__radio input__radio__btn" value="#201b1b" />
-
-                                            <label for="input-radio-color-private-d6d2ca-a2" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Timberwolf</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #d6d2ca;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a2" id="input-radio-color-private-d6d2ca-a2" class="input__radio input__radio__btn" value="#d6d2ca" />
-
-                                            <label for="input-radio-color-private-293133-a2" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Jet Black</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #293133;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-7016</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a2" id="input-radio-color-private-293133-a2" class="input__radio input__radio__btn" value="#293133" />
-
-                                            <label for="input-radio-color-private-cfc4b0-a2" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Soft Amber</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #cfc4b0;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a2" id="input-radio-color-private-cfc4b0-a2" class="input__radio input__radio__btn" value="#cfc4b0" />
-
-                                            <label for="input-radio-color-private-82857f-a2" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Nombre</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #82857f;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-a2" id="input-radio-color-private-82857f-a2" class="input__radio input__radio__btn" value="#82857f" />
-
+                                            </div>
                                           </div>
-                                        </div>
-                                        <div class="accesory__type accesory__glass group__glass group" data-group="glass">
-                                          <div class="accesory__type__container">
-                                            <div class="accesory__type__content">
-                                              <div class="accesory__type__btns form__btns btns__group--bg">
-                                                <label for="input-radio-glass-fixed-a2" class="label__action__btn action__btn btn__bg btn__glass glass__fixed action__btn--selected">Fixed</label>
-                                                <input type="radio" name="glass-type-a2" id="input-radio-glass-fixed-a2" class="input__radio__btn input__radio" value="fixed" />
-                                                <label for="input-radio-glass-sliding-a2" class="label__action__btn action__btn btn__bg btn__sliding glass__sliding">Sliding</label>
-                                                <input type="radio" name="glass-type-a2" id="input-radio-glass-sliding-a2" class="input__radio__btn input__radio" value="sliding" />
+                                          <div class="accesory__type accesory__glass group__glass group" data-group="glass">
+                                            <div class="accesory__type__container">
+                                              <div class="accesory__type__content">
+                                                <div class="accesory__type__btns form__btns btns__group--bg">
+                                                  <label for="input-radio-glass-fixed-a2" class="label__action__btn action__btn btn__bg btn__glass glass__fixed action__btn--selected">Fixed</label>
+                                                  <input type="radio" name="glass-type-a2" id="input-radio-glass-fixed-a2" class="input__radio__btn input__radio" value="fixed" />
+                                                  <label for="input-radio-glass-sliding-a2" class="label__action__btn action__btn btn__bg btn__sliding glass__sliding">Sliding</label>
+                                                  <input type="radio" name="glass-type-a2" id="input-radio-glass-sliding-a2" class="input__radio__btn input__radio" value="sliding" />
+                                                </div>
                                               </div>
                                             </div>
                                           </div>
-                                        </div>
-                                        <div class="accesory__type accesory__aluminium group__aluminium group" data-group="aluminium">
-                                          <div class="accesory__type__container">
-                                            <div class="accesory__type__content">
-                                              <div class="accesory__type__btns form__btns btns__group--bg">
-                                                <label for="input-radio-aluminium-fixed" class="label__action__btn action__btn btn__bg btn__aluminium aluminium__fixed action__btn--selected">Fixed</label>
-                                                <input type="radio" name="aluminium-type-a2" id="input-radio-aluminium-fixed" class="input__radio__btn input__radio" value="fixed" />
-                                                <label for="input-radio-aluminium-sliding" class="label__action__btn action__btn btn__bg btn__sliding aluminium__sliding">Sliding</label>
-                                                <input type="radio" name="aluminium-type-a2" id="input-radio-aluminium-sliding" class="input__radio__btn input__radio" value="sliding" />
+                                          <div class="accesory__type accesory__aluminium group__aluminium group" data-group="aluminium">
+                                            <div class="accesory__type__container">
+                                              <div class="accesory__type__content">
+                                                <div class="accesory__type__btns form__btns btns__group--bg">
+                                                  <label for="input-radio-aluminium-fixed" class="label__action__btn action__btn btn__bg btn__aluminium aluminium__fixed action__btn--selected">Fixed</label>
+                                                  <input type="radio" name="aluminium-type-a2" id="input-radio-aluminium-fixed" class="input__radio__btn input__radio" value="fixed" />
+                                                  <label for="input-radio-aluminium-sliding" class="label__action__btn action__btn btn__bg btn__sliding aluminium__sliding">Sliding</label>
+                                                  <input type="radio" name="aluminium-type-a2" id="input-radio-aluminium-sliding" class="input__radio__btn input__radio" value="sliding" />
+                                                </div>
                                               </div>
                                             </div>
                                           </div>
-                                        </div>
-                                      </article>
+                                        </article>
+                                      </div>
                                     </div>
-                                  </div>
-                                </article>
+                                  </article>
                                 </div>
                                 <!-- Accesorio A2 -->
 
                                 <!-- Accesorio B1 -->
-                                <div class="choose__accesory__content">
-                                <article class="choose__header choose__header--active">
-                                  <div class="choose__header__container">
-                                    <div class="choose__header__content">
-                                      <h3 class="choose__side">B1</h3>
-                                      <div class="choose__btn">
-                                        <span class="choose__header__span">Choose Accesory 03</span>
-                                        <div class="choose__header__btn">
-                                          <figure class="choose__header__figure">
-                                            <img src="./assets/icons/icon-new-play-white.svg" alt="Icon Arrow" class="choose__header__img">
-                                          </figure>
+                                <div class="choose__accesory__content accesory--B1" data-accesory="B1">
+                                  <article class="choose__header choose__header--active">
+                                    <div class="choose__header__container">
+                                      <div class="choose__header__content">
+                                        <h3 class="choose__side">B1</h3>
+                                        <div class="choose__btn">
+                                          <span class="choose__header__span">Choose Accesory 03</span>
+                                          <div class="choose__header__btn">
+                                            <figure class="choose__header__figure">
+                                              <img src="./assets/icons/icon-new-play-white.svg" alt="Icon Arrow" class="choose__header__img">
+                                            </figure>
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                                </article>
-                                <article class="choose__accesory__options">
-                                  <div class="choose__accesory__options__container">
-                                    <div class="choose__accesory__options__content">
-                                      <article class="accesory__material">
-                                        <div class="accesory__cards__container">
-                                          <div class="accesory__card__content">
-                                            <label for="input-radio-material-private-b1" class="label__form accesory__card__material__element accesory__material__private accesory__element--selected" data-material="private">
-                                              <figure class="accesory__material__figure">
-                                                <img src="./assets/img/image_9.webp" alt="" class="accesory__material__img">
-                                              </figure>
-                                              <span class="accesory__material__span">Private Screens</span>
-                                            </label>
-                                            <input type="radio" name="material-pergola-b1" id="input-radio-material-private-b1" class="input__radio input__radio__btn" value="private" checked />
-                                            <label for="input-radio-material-glass-b1" class="label__form accesory__card__material__element accesory__material__glass" data-material="glass">
-                                              <figure class="accesory__material__figure">
-                                                <img src="./assets/img/image_10.webp" alt="" class="accesory__material__img">
-                                              </figure>
-                                              <span class="accesory__material__span">Glass Panels</span>
-                                            </label>
-                                            <input type="radio" name="material-pergola-b1" id="input-radio-material-glass-b1" class="input__radio input__radio__btn" value="glass" />
-                                            <label for="input-radio-material-aluminium-b1" class="label__form accesory__card__material__element accesory__material__aliminium" data-material="aluminium">
-                                              <figure class="accesory__material__figure">
-                                                <img src="./assets/img/image_11.webp" alt="" class="accesory__material__img">
-                                              </figure>
-                                              <span class="accesory__material__span">Aluminum Shutter Panels</span>
-                                            </label>
-                                            <input type="radio" name="material-pergola-b1" id="input-radio-material-aluminium-b1" class="input__radio input__radio__btn" value="aluminium" />
+                                  </article>
+                                  <article class="choose__accesory__options">
+                                    <div class="choose__accesory__options__container">
+                                      <div class="choose__accesory__options__content">
+                                        <article class="accesory__material">
+                                          <div class="accesory__cards__container">
+                                            <div class="accesory__card__content">
+                                              <label for="input-radio-material-private-b1" class="label__form accesory__card__material__element accesory__material__private accesory__element--selected" data-material="private">
+                                                <figure class="accesory__material__figure">
+                                                  <img src="./assets/img/image_9.webp" alt="" class="accesory__material__img">
+                                                </figure>
+                                                <span class="accesory__material__span">Private Screens</span>
+                                              </label>
+                                              <input type="radio" name="material-pergola-b1" id="input-radio-material-private-b1" class="input__radio input__radio__btn" value="private" checked />
+                                              <label for="input-radio-material-glass-b1" class="label__form accesory__card__material__element accesory__material__glass" data-material="glass">
+                                                <figure class="accesory__material__figure">
+                                                  <img src="./assets/img/image_10.webp" alt="" class="accesory__material__img">
+                                                </figure>
+                                                <span class="accesory__material__span">Glass Panels</span>
+                                              </label>
+                                              <input type="radio" name="material-pergola-b1" id="input-radio-material-glass-b1" class="input__radio input__radio__btn" value="glass" />
+                                              <label for="input-radio-material-aluminium-b1" class="label__form accesory__card__material__element accesory__material__aliminium" data-material="aluminium">
+                                                <figure class="accesory__material__figure">
+                                                  <img src="./assets/img/image_11.webp" alt="" class="accesory__material__img">
+                                                </figure>
+                                                <span class="accesory__material__span">Aluminum Shutter Panels</span>
+                                              </label>
+                                              <input type="radio" name="material-pergola-b1" id="input-radio-material-aluminium-b1" class="input__radio input__radio__btn" value="aluminium" />
+                                            </div>
                                           </div>
-                                        </div>
-                                      </article>
-                                      <article class="accesory__options accesory__options__3">
-                                        <div class="accesory__card accesory__card__color accesory__private group__private group element--show" data-group="private"">
-                                          <div class="accesory__card__container accesory__card__color__container">
+                                        </article>
+                                        <article class="accesory__options accesory__options__3">
+                                          <div class="accesory__card accesory__card__color accesory__private group__private group element--show" data-group="private"">
+                                            <div class="accesory__card__container accesory__card__color__container">
 
-                                            <!-- Cards de colores -->
-                                            <label for="input-radio-color-private-d0ccc0-b1" class="label__form accesory__card__color__content accesory__element--selected">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Nombre</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #d0ccc0;"></div>
+                                              <!-- Cards de colores -->
+                                              <section class="swiper">
+                                                <div class="swiper-wrapper">
+                                                  <div class="swiper-slide accesory__element--selected">
+                                                    <label for="input-radio-color-private-b1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black Brown</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #0E0B0E;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ003</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b1" id="input-radio-color-private-b1" class="input__radio input__radio__btn" value="OS5SJ003" checked />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #585B67;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ002</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b1" id="input-radio-color-private-b1" class="input__radio input__radio__btn" value="OS5SJ002" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #403F3D;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ001</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b1" id="input-radio-color-private-b1" class="input__radio input__radio__btn" value="OS5SJ001" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Dark Gray</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #2D2D37;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ007</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b1" id="input-radio-color-private-b1" class="input__radio input__radio__btn" value="OS5SJ007" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Light Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #9D9D9D;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ006</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b1" id="input-radio-color-private-b1" class="input__radio input__radio__btn" value="OS5SJ006" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">White Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #A5A5A6;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ005</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b1" id="input-radio-color-private-b1" class="input__radio input__radio__btn" value="OS5SJ005" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">White</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #CBD2DE;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ004</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b1" id="input-radio-color-private-b1" class="input__radio input__radio__btn" value="OS5SJ004" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #75767B;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ002</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b1" id="input-radio-color-private-b1" class="input__radio input__radio__btn" value="OS10DJ002" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #242733;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ001</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b1" id="input-radio-color-private-b1" class="input__radio input__radio__btn" value="OS10DJ001" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Blue</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #0B40B6;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10SJ001</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b1" id="input-radio-color-private-b1" class="input__radio input__radio__btn" value="OS10SJ001" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Dark Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #292F3F;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ004</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b1" id="input-radio-color-private-b1" class="input__radio input__radio__btn" value="OS10DJ004" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Light Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #A5ACB7;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ003</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b1" id="input-radio-color-private-b1" class="input__radio input__radio__btn" value="OS10DJ003" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Yellow</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #DCC858;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10SJ002</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b1" id="input-radio-color-private-b1" class="input__radio input__radio__btn" value="OS10SJ002" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b1" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Brown</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #585855;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS30DJ004</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b1" id="input-radio-color-private-b1" class="input__radio input__radio__btn" value="OS30DJ004" />
+                                                  </div>
                                                 </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b1" id="input-radio-color-private-d0ccc0-b1" class="input__radio input__radio__btn" value="#d0ccc0" checked />
+                                                <div class="swiper-scrollbar"></div>
+                                              </section>
 
-                                            <label for="input-radio-color-private-c5c4bb-b1" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Mist Gray</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #c5c4bb;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b1" id="input-radio-color-private-c5c4bb-b1" class="input__radio input__radio__btn" value="#c5c4bb" />
-
-                                            <label for="input-radio-color-private-9a9b93-b1" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Lemon Grass</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #9a9b93;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b1" id="input-radio-color-private-9a9b93-b1" class="input__radio input__radio__btn" value="#9a9b93" />
-
-                                            <label for="input-radio-color-private-201b1b-b1" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Cold Gray</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #201b1b;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b1" id="input-radio-color-private-201b1b-b1" class="input__radio input__radio__btn" value="#201b1b" />
-
-                                            <label for="input-radio-color-private-d6d2ca-b1" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Timberwolf</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #d6d2ca;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b1" id="input-radio-color-private-d6d2ca-b1" class="input__radio input__radio__btn" value="#d6d2ca" />
-
-                                            <label for="input-radio-color-private-293133-b1" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Jet Black</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #293133;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-7016</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b1" id="input-radio-color-private-293133-b1" class="input__radio input__radio__btn" value="#293133" />
-
-                                            <label for="input-radio-color-private-cfc4b0-b1" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Soft Amber</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #cfc4b0;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b1" id="input-radio-color-private-cfc4b0-b1" class="input__radio input__radio__btn" value="#cfc4b0" />
-
-                                            <label for="input-radio-color-private-82857f-b1" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Nombre</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #82857f;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b1" id="input-radio-color-private-82857f-b1" class="input__radio input__radio__btn" value="#82857f" />
-
+                                            </div>
                                           </div>
-                                        </div>
-                                        <div class="accesory__type accesory__glass group__glass group" data-group="glass">
-                                          <div class="accesory__type__container">
-                                            <div class="accesory__type__content">
-                                              <div class="accesory__type__btns form__btns btns__group--bg">
-                                                <label for="input-radio-glass-fixed-b1" class="label__action__btn action__btn btn__bg btn__glass glass__fixed action__btn--selected">Fixed</label>
-                                                <input type="radio" name="glass-type-b1" id="input-radio-glass-fixed-b1" class="input__radio__btn input__radio" value="fixed" />
-                                                <label for="input-radio-glass-sliding-b1" class="label__action__btn action__btn btn__bg btn__sliding glass__sliding">Sliding</label>
-                                                <input type="radio" name="glass-type-b1" id="input-radio-glass-sliding-b1" class="input__radio__btn input__radio" value="sliding" />
+                                          <div class="accesory__type accesory__glass group__glass group" data-group="glass">
+                                            <div class="accesory__type__container">
+                                              <div class="accesory__type__content">
+                                                <div class="accesory__type__btns form__btns btns__group--bg">
+                                                  <label for="input-radio-glass-fixed-b1" class="label__action__btn action__btn btn__bg btn__glass glass__fixed action__btn--selected">Fixed</label>
+                                                  <input type="radio" name="glass-type-b1" id="input-radio-glass-fixed-b1" class="input__radio__btn input__radio" value="fixed" />
+                                                  <label for="input-radio-glass-sliding-b1" class="label__action__btn action__btn btn__bg btn__sliding glass__sliding">Sliding</label>
+                                                  <input type="radio" name="glass-type-b1" id="input-radio-glass-sliding-b1" class="input__radio__btn input__radio" value="sliding" />
+                                                </div>
                                               </div>
                                             </div>
                                           </div>
-                                        </div>
-                                        <div class="accesory__type accesory__aluminium group__aluminium group" data-group="aluminium">
-                                          <div class="accesory__type__container">
-                                            <div class="accesory__type__content">
-                                              <div class="accesory__type__btns form__btns btns__group--bg">
-                                                <label for="input-radio-aluminium-fixed-b1" class="label__action__btn action__btn btn__bg btn__aluminium aluminium__fixed action__btn--selected">Fixed</label>
-                                                <input type="radio" name="aluminium-type-b1" id="input-radio-aluminium-fixed-b1" class="input__radio__btn input__radio" value="fixed" />
-                                                <label for="input-radio-aluminium-sliding-b1" class="label__action__btn action__btn btn__bg btn__sliding aluminium__sliding">Sliding</label>
-                                                <input type="radio" name="aluminium-type-b1" id="input-radio-aluminium-sliding-b1" class="input__radio__btn input__radio" value="sliding" />
+                                          <div class="accesory__type accesory__aluminium group__aluminium group" data-group="aluminium">
+                                            <div class="accesory__type__container">
+                                              <div class="accesory__type__content">
+                                                <div class="accesory__type__btns form__btns btns__group--bg">
+                                                  <label for="input-radio-aluminium-fixed-b1" class="label__action__btn action__btn btn__bg btn__aluminium aluminium__fixed action__btn--selected">Fixed</label>
+                                                  <input type="radio" name="aluminium-type-b1" id="input-radio-aluminium-fixed-b1" class="input__radio__btn input__radio" value="fixed" />
+                                                  <label for="input-radio-aluminium-sliding-b1" class="label__action__btn action__btn btn__bg btn__sliding aluminium__sliding">Sliding</label>
+                                                  <input type="radio" name="aluminium-type-b1" id="input-radio-aluminium-sliding-b1" class="input__radio__btn input__radio" value="sliding" />
+                                                </div>
                                               </div>
                                             </div>
                                           </div>
-                                        </div>
-                                      </article>
+                                        </article>
+                                      </div>
                                     </div>
-                                  </div>
-                                </article>
+                                  </article>
                                 </div>
                                 <!-- Accesorio B1 -->
 
                                 <!-- Accesorio B2 -->
-                                <div class="choose__accesory__content">
-                                <article class="choose__header choose__header--active">
-                                  <div class="choose__header__container">
-                                    <div class="choose__header__content">
-                                      <h3 class="choose__side">B2</h3>
-                                      <div class="choose__btn">
-                                        <span class="choose__header__span">Choose Accesory 04</span>
-                                        <div class="choose__header__btn">
-                                          <figure class="choose__header__figure">
-                                            <img src="./assets/icons/icon-new-play-white.svg" alt="Icon Arrow" class="choose__header__img">
-                                          </figure>
+                                <div class="choose__accesory__content accesory--B2" data-accesory="B2">
+                                  <article class="choose__header choose__header--active">
+                                    <div class="choose__header__container">
+                                      <div class="choose__header__content">
+                                        <h3 class="choose__side">B2</h3>
+                                        <div class="choose__btn">
+                                          <span class="choose__header__span">Choose Accesory 04</span>
+                                          <div class="choose__header__btn">
+                                            <figure class="choose__header__figure">
+                                              <img src="./assets/icons/icon-new-play-white.svg" alt="Icon Arrow" class="choose__header__img">
+                                            </figure>
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                                </article>
-                                <article class="choose__accesory__options">
-                                  <div class="choose__accesory__options__container">
-                                    <div class="choose__accesory__options__content">
-                                      <article class="accesory__material">
-                                        <div class="accesory__cards__container">
-                                          <div class="accesory__card__content">
-                                            <label for="input-radio-material-private-b2" class="label__form accesory__card__material__element accesory__material__private accesory__element--selected" data-material="private">
-                                              <figure class="accesory__material__figure">
-                                                <img src="./assets/img/image_9.webp" alt="" class="accesory__material__img">
-                                              </figure>
-                                              <span class="accesory__material__span">Private Screens</span>
-                                            </label>
-                                            <input type="radio" name="material-pergola-b2" id="input-radio-material-private-b2" class="input__radio input__radio__btn" value="private" checked />
-                                            <label for="input-radio-material-glass-b2" class="label__form accesory__card__material__element accesory__material__glass" data-material="glass">
-                                              <figure class="accesory__material__figure">
-                                                <img src="./assets/img/image_10.webp" alt="" class="accesory__material__img">
-                                              </figure>
-                                              <span class="accesory__material__span">Glass Panels</span>
-                                            </label>
-                                            <input type="radio" name="material-pergola-b2" id="input-radio-material-glass-b2" class="input__radio input__radio__btn" value="glass" />
-                                            <label for="input-radio-material-aluminium-b2" class="label__form accesory__card__material__element accesory__material__aliminium" data-material="aluminium">
-                                              <figure class="accesory__material__figure">
-                                                <img src="./assets/img/image_11.webp" alt="" class="accesory__material__img">
-                                              </figure>
-                                              <span class="accesory__material__span">Aluminum Shutter Panels</span>
-                                            </label>
-                                            <input type="radio" name="material-pergola-b2" id="input-radio-material-aluminium-b2" class="input__radio input__radio__btn" value="aluminium" />
+                                  </article>
+                                  <article class="choose__accesory__options">
+                                    <div class="choose__accesory__options__container">
+                                      <div class="choose__accesory__options__content">
+                                        <article class="accesory__material">
+                                          <div class="accesory__cards__container">
+                                            <div class="accesory__card__content">
+                                              <label for="input-radio-material-private-b2" class="label__form accesory__card__material__element accesory__material__private accesory__element--selected" data-material="private">
+                                                <figure class="accesory__material__figure">
+                                                  <img src="./assets/img/image_9.webp" alt="" class="accesory__material__img">
+                                                </figure>
+                                                <span class="accesory__material__span">Private Screens</span>
+                                              </label>
+                                              <input type="radio" name="material-pergola-b2" id="input-radio-material-private-b2" class="input__radio input__radio__btn" value="private" checked />
+                                              <label for="input-radio-material-glass-b2" class="label__form accesory__card__material__element accesory__material__glass" data-material="glass">
+                                                <figure class="accesory__material__figure">
+                                                  <img src="./assets/img/image_10.webp" alt="" class="accesory__material__img">
+                                                </figure>
+                                                <span class="accesory__material__span">Glass Panels</span>
+                                              </label>
+                                              <input type="radio" name="material-pergola-b2" id="input-radio-material-glass-b2" class="input__radio input__radio__btn" value="glass" />
+                                              <label for="input-radio-material-aluminium-b2" class="label__form accesory__card__material__element accesory__material__aliminium" data-material="aluminium">
+                                                <figure class="accesory__material__figure">
+                                                  <img src="./assets/img/image_11.webp" alt="" class="accesory__material__img">
+                                                </figure>
+                                                <span class="accesory__material__span">Aluminum Shutter Panels</span>
+                                              </label>
+                                              <input type="radio" name="material-pergola-b2" id="input-radio-material-aluminium-b2" class="input__radio input__radio__btn" value="aluminium" />
+                                            </div>
                                           </div>
-                                        </div>
-                                      </article>
-                                      <article class="accesory__options accesory__options__4">
-                                        <div class="accesory__card accesory__card__color accesory__private group__private group element--show" data-group="private"">
-                                          <div class="accesory__card__container accesory__card__color__container">
+                                        </article>
+                                        <article class="accesory__options accesory__options__4">
+                                          <div class="accesory__card accesory__card__color accesory__private group__private group element--show" data-group="private"">
+                                            <div class="accesory__card__container accesory__card__color__container">
 
-                                            <!-- Cards de colores -->
-                                            <label for="input-radio-color-private-d0ccc0-b2" class="label__form accesory__card__color__content accesory__element--selected">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Nombre</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #d0ccc0;"></div>
+                                              <!-- Cards de colores -->
+                                              <section class="swiper">
+                                                <div class="swiper-wrapper">
+                                                  <div class="swiper-slide accesory__element--selected">
+                                                    <label for="input-radio-color-private-b2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black Brown</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #0E0B0E;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ003</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b2" id="input-radio-color-private-b2" class="input__radio input__radio__btn" value="OS5SJ003" checked />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #585B67;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ002</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b2" id="input-radio-color-private-b2" class="input__radio input__radio__btn" value="OS5SJ002" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #403F3D;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ001</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b2" id="input-radio-color-private-b2" class="input__radio input__radio__btn" value="OS5SJ001" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Dark Gray</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #2D2D37;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ007</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b2" id="input-radio-color-private-b2" class="input__radio input__radio__btn" value="OS5SJ007" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Light Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #9D9D9D;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ006</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b2" id="input-radio-color-private-b2" class="input__radio input__radio__btn" value="OS5SJ006" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">White Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #A5A5A6;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ005</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b2" id="input-radio-color-private-b2" class="input__radio input__radio__btn" value="OS5SJ005" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">White</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #CBD2DE;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS5SJ004</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b2" id="input-radio-color-private-b2" class="input__radio input__radio__btn" value="OS5SJ004" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #75767B;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ002</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b2" id="input-radio-color-private-b2" class="input__radio input__radio__btn" value="OS10DJ002" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Black</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #242733;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ001</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b2" id="input-radio-color-private-b2" class="input__radio input__radio__btn" value="OS10DJ001" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Blue</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #0B40B6;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10SJ001</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b2" id="input-radio-color-private-b2" class="input__radio input__radio__btn" value="OS10SJ001" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Dark Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #292F3F;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ004</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b2" id="input-radio-color-private-b2" class="input__radio input__radio__btn" value="OS10DJ004" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Light Grey</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #A5ACB7;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10DJ003</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b2" id="input-radio-color-private-b2" class="input__radio input__radio__btn" value="OS10DJ003" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Yellow</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #DCC858;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS10SJ002</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b2" id="input-radio-color-private-b2" class="input__radio input__radio__btn" value="OS10SJ002" />
+                                                  </div>
+                                                  <div class="swiper-slide">
+                                                    <label for="input-radio-color-private-b2" class="label__form accesory__card__color__content">
+                                                      <div class="accesory__card__element">
+                                                        <span class="color__span">Brown</span>
+                                                        <div class="color__icon__container">
+                                                          <div class="color__icon color__mist__gray" style="--color-card: #585855;"></div>
+                                                        </div>
+                                                        <span class="color__code">OS30DJ004</span>
+                                                      </div>
+                                                    </label>
+                                                    <input type="radio" name="color-material-private-b2" id="input-radio-color-private-b2" class="input__radio input__radio__btn" value="OS30DJ004" />
+                                                  </div>
                                                 </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b2" id="input-radio-color-private-d0ccc0-b2" class="input__radio input__radio__btn" value="#d0ccc0" checked />
+                                                <div class="swiper-scrollbar"></div>
+                                              </section>
 
-                                            <label for="input-radio-color-private-c5c4bb-b2" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Mist Gray</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #c5c4bb;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b2" id="input-radio-color-private-c5c4bb-b2" class="input__radio input__radio__btn" value="#c5c4bb" />
-
-                                            <label for="input-radio-color-private-9a9b93-b2" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Lemon Grass</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #9a9b93;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b2" id="input-radio-color-private-9a9b93-b2" class="input__radio input__radio__btn" value="#9a9b93" />
-
-                                            <label for="input-radio-color-private-201b1b-b2" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Cold Gray</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #201b1b;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b2" id="input-radio-color-private-201b1b-b2" class="input__radio input__radio__btn" value="#201b1b" />
-
-                                            <label for="input-radio-color-private-d6d2ca-b2" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Timberwolf</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #d6d2ca;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b2" id="input-radio-color-private-d6d2ca-b2" class="input__radio input__radio__btn" value="#d6d2ca" />
-
-                                            <label for="input-radio-color-private-293133-b2" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Jet Black</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #293133;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-7016</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b2" id="input-radio-color-private-293133-b2" class="input__radio input__radio__btn" value="#293133" />
-
-                                            <label for="input-radio-color-private-cfc4b0-b2" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Soft Amber</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #cfc4b0;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b2" id="input-radio-color-private-cfc4b0-b2" class="input__radio input__radio__btn" value="#cfc4b0" />
-
-                                            <label for="input-radio-color-private-82857f-b2" class="label__form accesory__card__color__content">
-                                              <div class="accesory__card__element">
-                                                <span class="color__span">Nombre</span>
-                                                <div class="color__icon__container">
-                                                  <div class="color__icon color__mist__gray" style="--color-card: #82857f;"></div>
-                                                </div>
-                                                <span class="color__code">RAL-9005</span>
-                                              </div>
-                                            </label>
-                                            <input type="radio" name="color-material-private-b2" id="input-radio-color-private-82857f-b2" class="input__radio input__radio__btn" value="#82857f" />
-
+                                            </div>
                                           </div>
-                                        </div>
-                                        <div class="accesory__type accesory__glass group__glass group" data-group="glass">
-                                          <div class="accesory__type__container">
-                                            <div class="accesory__type__content">
-                                              <div class="accesory__type__btns form__btns btns__group--bg">
-                                                <label for="input-radio-glass-fixed-b2" class="label__action__btn action__btn btn__bg btn__glass glass__fixed action__btn--selected">Fixed</label>
-                                                <input type="radio" name="glass-type-b2" id="input-radio-glass-fixed-b2" class="input__radio__btn input__radio" value="fixed" />
-                                                <label for="input-radio-glass-sliding-b2" class="label__action__btn action__btn btn__bg btn__sliding glass__sliding">Sliding</label>
-                                                <input type="radio" name="glass-type-b2" id="input-radio-glass-sliding-b2" class="input__radio__btn input__radio" value="sliding" />
+                                          <div class="accesory__type accesory__glass group__glass group" data-group="glass">
+                                            <div class="accesory__type__container">
+                                              <div class="accesory__type__content">
+                                                <div class="accesory__type__btns form__btns btns__group--bg">
+                                                  <label for="input-radio-glass-fixed-b2" class="label__action__btn action__btn btn__bg btn__glass glass__fixed action__btn--selected">Fixed</label>
+                                                  <input type="radio" name="glass-type-b2" id="input-radio-glass-fixed-b2" class="input__radio__btn input__radio" value="fixed" />
+                                                  <label for="input-radio-glass-sliding-b2" class="label__action__btn action__btn btn__bg btn__sliding glass__sliding">Sliding</label>
+                                                  <input type="radio" name="glass-type-b2" id="input-radio-glass-sliding-b2" class="input__radio__btn input__radio" value="sliding" />
+                                                </div>
                                               </div>
                                             </div>
                                           </div>
-                                        </div>
-                                        <div class="accesory__type accesory__aluminium group__aluminium group" data-group="aluminium">
-                                          <div class="accesory__type__container">
-                                            <div class="accesory__type__content">
-                                              <div class="accesory__type__btns form__btns btns__group--bg">
-                                                <label for="input-radio-aluminium-fixed-b2" class="label__action__btn action__btn btn__bg btn__aluminium aluminium__fixed action__btn--selected">Fixed</label>
-                                                <input type="radio" name="aluminium-type-b2" id="input-radio-aluminium-fixed-b2" class="input__radio__btn input__radio" value="fixed" />
-                                                <label for="input-radio-aluminium-sliding-b2" class="label__action__btn action__btn btn__bg btn__sliding aluminium__sliding">Sliding</label>
-                                                <input type="radio" name="aluminium-type-b2" id="input-radio-aluminium-sliding-b2" class="input__radio__btn input__radio" value="sliding" />
+                                          <div class="accesory__type accesory__aluminium group__aluminium group" data-group="aluminium">
+                                            <div class="accesory__type__container">
+                                              <div class="accesory__type__content">
+                                                <div class="accesory__type__btns form__btns btns__group--bg">
+                                                  <label for="input-radio-aluminium-fixed-b2" class="label__action__btn action__btn btn__bg btn__aluminium aluminium__fixed action__btn--selected">Fixed</label>
+                                                  <input type="radio" name="aluminium-type-b2" id="input-radio-aluminium-fixed-b2" class="input__radio__btn input__radio" value="fixed" />
+                                                  <label for="input-radio-aluminium-sliding-b2" class="label__action__btn action__btn btn__bg btn__sliding aluminium__sliding">Sliding</label>
+                                                  <input type="radio" name="aluminium-type-b2" id="input-radio-aluminium-sliding-b2" class="input__radio__btn input__radio" value="sliding" />
+                                                </div>
                                               </div>
                                             </div>
                                           </div>
-                                        </div>
-                                      </article>
+                                        </article>
+                                      </div>
                                     </div>
-                                  </div>
-                                </article>
+                                  </article>
                                 </div>
                                 <!-- Accesorio B2 -->
 
@@ -1456,4 +1801,32 @@
       </section>
     </section>
   </body>
+  <script type="module">
+    import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
+
+    const swiperCollection = document.querySelectorAll('.swiper');
+
+    swiperCollection.forEach(swiper => {
+      const swiperInstance = new Swiper(swiper, {
+        loop: true,
+        slidesPerView: 3,
+        spaceBetween: 16,
+        scrollbar: {
+          el: '.swiper-scrollbar',
+          draggable: true
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 4,
+          },
+          1024: {
+            slidesPerView: 5,
+          },
+          1200: {
+            slidesPerView: 7,
+          }
+        }
+      });
+    });
+  </script>
 </html>
