@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const tableAccesory = document.querySelector(".scene__table__accesory");
 
-  const customColor = document.querySelectorAll("color__picker");
+  const customColor = document.querySelectorAll(".color__picker");
 
   const btnFormPrevious = document.querySelectorAll(".btn-form-previous");
   const btnFormContinue = document.querySelectorAll(".btn-form-continue");
@@ -176,6 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (parentColorPergola) {
       const pergolasColor = parentColorPergola.querySelectorAll(".label__color__pergola");
       const radioColorPergolas = parentColorPergola.querySelectorAll(".input__radio__color");
+      const colorPicker = parentColorPergola.querySelector(".input__color");
 
       radioColorPergolas.forEach(radio => radio.checked = false);
 
@@ -190,27 +191,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
       colorSelected.classList.add("color--selected");
 
+      if (colorSelected.classList.contains("custom__color")) {
+        if (colorPicker) {
+          console.log("colorPicker", colorPicker);
+          colorPicker.setAttribute("name", "custom-color");
+        }
+      } else {
+        if (colorPicker) colorPicker.removeAttribute("name");
+      }
+
       const colorData = colorSelected.dataset.color;
 
       if (!colorData) return;
 
       updateColor(colorData);
 
-      if (checkboxInputColor.checked) {
-        updateColorLouvers(colorData);
-      }
-
-      inputSelected.classList.contains("input__radio__custom")
-        ? customColor.setAttribute("name", "custom-color")
-        : customColor.removeAttribute("name");
+      if (checkboxInputColor.checked) updateColorLouvers(colorData);
 
     } else {
       const parentColorLouver = e.target.closest(".article__color__louvers");
       if (parentColorLouver) {
         const louversColor = parentColorLouver.querySelectorAll(".label__color__louver");
         const radioColorLouvers = parentColorLouver.querySelectorAll(".input__radio__color");
+        const colorPickerLouver = parentColorLouver.querySelector(".input__color");
 
         radioColorLouvers.forEach(radio => radio.checked = false);
+
         louversColor.forEach(label => label.classList.remove("color--selected"));
 
         const colorSelectedLouver = e.target.matches(".label__color__louver")
@@ -222,15 +228,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
         colorSelectedLouver.classList.add("color--selected");
 
+        if (colorSelectedLouver.classList.contains("custom__color")) {
+          if (colorPickerLouver) {
+            console.log("colorPickerLouver", colorPickerLouver);
+            colorPickerLouver.setAttribute("name", "custom-color-louver");
+          }
+        } else {
+          if (colorPickerLouver) colorPickerLouver.removeAttribute("name");
+        }
+
         const colorData = colorSelectedLouver.dataset.color;
 
         if (!colorData) return;
 
         updateColorLouvers(colorData);
-
-        inputSelectedLouver.classList.contains("input__radio__custom")
-          ? customColorLouver.setAttribute("name", "custom-color-louver")
-          : customColorLouver.removeAttribute("name");
       }
     }
 
@@ -246,6 +257,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (checkboxInputColor.checked) {
       parentLouver.querySelectorAll(".input__radio__color").forEach(radio => radio.checked = false);
+    } else {
+      parentLouver.querySelector(".input__radio__black").checked = true;
     }
   });
   
@@ -280,7 +293,13 @@ document.addEventListener("DOMContentLoaded", () => {
       louver.style.backgroundColor = e.target.checked ? sides[0].style.backgroundColor : "#000";
     });
 
-    e.target.checked ? colorLouverContainer.classList.remove("element--show") : colorLouverContainer.classList.add("element--show");
+    if (e.target.checked) {
+      colorLouverContainer.querySelector(".input__radio__black").checked = false;
+      colorLouverContainer.classList.remove("element--show");
+    } else if (!e.target.checked) {
+      colorLouverContainer.querySelector(".input__radio__black").checked = true;
+      colorLouverContainer.classList.add("element--show");
+    }
   }
 
   const handleAccesoryBtn = e => {
@@ -437,14 +456,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   checkboxInputColor.addEventListener("change", e => handleCheckboxColor(e));
 
-  customColor.forEach(color => {
+  /* customColor.forEach(color => {
     const parent = color.closest(".color__select__container");
 
     parent.querySelectorAll(".input__radio__color").forEach(radio => radio.checked = false);
 
     const parentRadio = color.closest(".custom__color");
+    console.log("parentRadio", parentRadio);
     parentRadio.querySelector("#input-radio-color-louver-custom").checked = true;
-  })
+  }) */
 
   btnFormPrevious.forEach(btn => {
     btn.addEventListener("click", () => {
@@ -502,7 +522,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // console.log(data);
     console.log(data2);
 
-    fetch('https://hook.us1.make.com/6aotgx2a8zeiqbx7vpf68vbq70it2udh', {
+    /* fetch('https://hook.us1.make.com/6aotgx2a8zeiqbx7vpf68vbq70it2udh', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -517,6 +537,6 @@ document.addEventListener("DOMContentLoaded", () => {
           console.error('Error sending data');
         }
       })
-      .catch(error => console.error('Fetch error:', error));
+      .catch(error => console.error('Fetch error:', error)); */
   }); 
 });
