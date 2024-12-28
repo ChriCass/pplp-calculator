@@ -326,13 +326,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!group) return;
 
     const firstRadioBtn = group.querySelector(".input__radio__btn");
+    const labelBtns = group.querySelectorAll(".label__action__btn");
     if (!firstRadioBtn) return;
+    if (!labelBtns) return;
+    labelBtns.forEach(label => label.classList.remove("action__btn--selected"));
+
+    labelBtns[0]?.classList.add("action__btn--selected");
     firstRadioBtn.checked = true;
 
     if (material === "private") {
-      const firstColorBtn = typeMaterialContainer.querySelector(".accesory__card__color__content");
-      if (!firstColorBtn) return;
-      firstColorBtn.checked = true;
+      const colorBtns = typeMaterialContainer.querySelectorAll(".accesory__card__color__content");
+      if (!colorBtns) return;
+      colorBtns.forEach(colorBtn => colorBtn.parentElement.classList.remove("accesory__element--selected"));
+      colorBtns[0]?.parentElement.classList.add("accesory__element--selected");
+      colorBtns[0].nextElementSibling.checked = true;
     }
 
     const cardParent = card.closest(".choose__accesory__content");
