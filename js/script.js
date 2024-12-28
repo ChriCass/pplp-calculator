@@ -181,6 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (parentColorPergola) {
       const pergolasColor = parentColorPergola.querySelectorAll(".label__color__pergola");
       const radioColorPergolas = parentColorPergola.querySelectorAll(".input__radio__color");
+      const colorPicker = parentColorPergola.querySelector(".input__color");
 
       radioColorPergolas.forEach(radio => radio.checked = false);
 
@@ -195,6 +196,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       colorSelected.classList.add("color--selected");
 
+      if (colorSelected.classList.contains("custom__color")) {
+        if (colorPicker) {
+          colorPicker.setAttribute("name", "custom-color");
+        }
+      } else {
+        if (colorPicker) colorPicker.removeAttribute("name");
+      }
+
       const colorData = colorSelected.dataset.color;
 
       if (!colorData) return;
@@ -205,15 +214,12 @@ document.addEventListener("DOMContentLoaded", () => {
         updateColorLouvers(colorData);
       }
 
-      inputSelected.classList.contains("input__radio__custom")
-        ? customColor.setAttribute("name", "custom-color")
-        : customColor.removeAttribute("name");
-
     } else {
       const parentColorLouver = e.target.closest(".article__color__louvers");
       if (parentColorLouver) {
         const louversColor = parentColorLouver.querySelectorAll(".label__color__louver");
         const radioColorLouvers = parentColorLouver.querySelectorAll(".input__radio__color");
+        const colorPickerLouver = parentColorLouver.querySelector(".input__color");
 
         radioColorLouvers.forEach(radio => radio.checked = false);
         louversColor.forEach(label => label.classList.remove("color--selected"));
@@ -227,15 +233,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         colorSelectedLouver.classList.add("color--selected");
 
+        if (colorSelectedLouver.classList.contains("custom__color")) {
+          if (colorPickerLouver) {
+            colorPickerLouver.setAttribute("name", "custom-color-louver");
+          }
+        } else {
+          if (colorPickerLouver) colorPickerLouver.removeAttribute("name");
+        }
+
         const colorData = colorSelectedLouver.dataset.color;
 
         if (!colorData) return;
 
         updateColorLouvers(colorData);
-
-        inputSelectedLouver.classList.contains("input__radio__custom")
-          ? customColorLouver.setAttribute("name", "custom-color-louver")
-          : customColorLouver.removeAttribute("name");
       }
     }
 
@@ -251,6 +261,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (checkboxInputColor.checked) {
       parentLouver.querySelectorAll(".input__radio__color").forEach(radio => radio.checked = false);
+    } else {
+      parentLouver.querySelector(".input__radio__black").checked = true;
     }
   });
   
@@ -285,7 +297,13 @@ document.addEventListener("DOMContentLoaded", () => {
       louver.style.backgroundColor = e.target.checked ? sides[0].style.backgroundColor : "#000";
     });
 
-    e.target.checked ? colorLouverContainer.classList.remove("element--show") : colorLouverContainer.classList.add("element--show");
+    if (e.target.checked) {
+      colorLouverContainer.querySelector(".input__radio__black").checked = false;
+      colorLouverContainer.classList.remove("element--show");
+    } else if (!e.target.checked) {
+      colorLouverContainer.querySelector(".input__radio__black").checked = true;
+      colorLouverContainer.classList.add("element--show");
+    }
   }
 
   const handleAccesoryBtn = e => {
@@ -312,7 +330,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!group) return;
 
     const firstRadioBtn = group.querySelector(".input__radio__btn");
+    const labelBtns = group.querySelectorAll(".label__action__btn");
     if (!firstRadioBtn) return;
+    if (!labelBtns) return;
+
+    labelBtns.forEach(label => label.classList.remove("action__btn--selected"));
+
+    labelBtns[0]?.classList.add("action__btn--selected");
     firstRadioBtn.checked = true;
 
     if (material === "private") {
