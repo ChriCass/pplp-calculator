@@ -1,0 +1,717 @@
+<style>
+  #{{ section.id }} {
+    font-size: 16px;
+    padding-top: {{ section.settings.padding_top }}em;
+    padding-bottom: {{ section.settings.padding_bottom }}em;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  #{{ section.id }} .c-section-top-subheading,
+  #{{ section.id }} div,
+  #{{ section.id }} h2,
+  #{{ section.id }} h3 {
+    color: {{ section.settings.text_color }};
+  }
+
+  #{{ section.id }} .c-section-top {
+    align-items: {{ section.settings.section_top_alignment }};
+    text-align: {{ section.settings.text_alignment }};
+  }
+
+  #{{ section.id }} h2 {
+    color: {{ section.settings.accent_color }};
+  }
+
+
+  #{{ section.id }} .c-f-grid {
+    {% if section.settings.use_grid == true %}
+      display: grid;
+      grid-template-columns: 0.75fr 1fr;
+    {% else %}
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    {% endif %}
+    gap: 4em;
+  }
+
+  #{{ section.id }} .c-f-grid-right {
+    {% if section.settings.side == true %}grid-row: 1;{% endif %}
+  }
+
+  #{{ section.id }} .c-f-grid-right-inner,
+  #{{ section.id }} .c-buttons-div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  #{{ section.id }} .c-buttons-div {
+    justify-content: center;
+    align-items: center;
+    margin-top: 3em;
+  }
+
+  #{{ section.id }} .c-button {
+    padding: 0.5em 1em;
+    font-size: 1.125em;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 700;
+    border-radius: 999px;
+    background-color: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    text-decoration: none;
+  }
+
+  #{{ section.id }} .c-f-grid-right-inner {
+    position: sticky;
+    top: var(--sticky-top);
+  }
+
+  #{{ section.id }} .c-f-grid-left {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    {% if section.settings.use_grid == false %}
+      min-width: 100%;
+      max-width: 700px;
+    {% endif %}
+    align-items: start;
+    align-self: center;
+    position: sticky;
+    top: var(--sticky-top);
+  }
+
+  #{{ section.id }} .c-f-card {
+    border: none;  
+    border-bottom: 1px solid {{ section.settings.faq_text_border }}; 
+    background: {{ section.settings.card_background }};
+  /*  padding: 1.25em 0.5em 0.25em 1.5em; */
+    border-radius: 0em;
+    cursor: pointer;
+  }
+  
+  #{{ section.id }} .c-f-card:hover {
+    border-color: {{ section.settings.text_color }};
+  }
+
+  #{{ section.id }} .c-f-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #{{ section.id }} .c-f-card-top p {
+    font-weight: 600;
+  }
+
+  #{{ section.id }} .c-f-card-top p,
+  #{{ section.id }} .c-f-answer p,
+  #{{ section.id }} .c-f-plus-div svg {
+    color: {{ section.settings.faq_text_border }};
+  }
+
+  #{{ section.id }} .c-f-plus-div {
+    padding: 0px 5px;
+    border-radius: 0px;
+    margin: auto 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #{{ section.id }} .c-f-plus-div svg {
+    width: 4.5rem;
+    transition: 0.3s ease;
+  }
+
+  #{{ section.id }} .c-f-answer {
+    margin-top: 0;
+    border-top: 1px solid {{ section.settings.faq_text_border }};
+    padding-top: 30px;
+  }
+
+  #{{ section.id }} .c-f-answer {
+    display: none;
+    transition: 0.3s ease;
+  }
+
+  #{{ section.id }} .c-f-answer > * {
+    color: {{ section.settings.faq_text_border }};
+  }
+
+  #{{ section.id }} .c-f-answer a {
+    text-decoration: underline;
+    color: {{ section.settings.faq_text_border }};
+  }
+
+  #{{ section.id }} .c-f-active .c-f-answer {
+    display: block;
+  }
+
+  #{{ section.id }} .c-f-active .c-f-plus-div svg {
+    transform: rotate(135deg);
+  }
+
+  #{{ section.id }} .c-b1 {
+    border-radius: 0px !important;
+    background: black !important;
+    color: white !important;
+    font-size: 20px !important;
+  }
+
+  #{{ section.id }} .c-b1:hover {
+    background: #dfd7c8  !important;
+    color: black !important;
+    transition: ease 0.3s;
+    border: 1px solid black;
+  }
+
+  @media (max-width: 768px) {
+    {% if section.settings.use_grid == true %}
+      #{{ section.id }} .c-f-grid {
+        grid-template-columns: 1fr;
+      }
+
+    {% else %}
+
+      #{{ section.id }} .c-f-grid-left {
+        min-width: auto;
+        width: 100%;
+      }
+    {% endif %}
+  }
+
+
+  
+  #{{ section.id }} .tabs-container {
+    background-color: #e6e0d5;
+    border-radius: 50px;
+    padding: 10px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5rem;
+    transition: all 0.3s ease;
+    position: relative;  
+  }
+  
+  #{{ section.id }} .tabs-container.sticky {
+    /*
+    position: fixed;
+    top: calc(var(--header-height, 0px));  
+    left: 0;
+    right: 0;
+    z-index: 10; 
+    margin-bottom: 0;
+    border-radius: 0;
+    padding: 10px 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #e6e0d5;
+    */  
+  }
+  
+  .menu-dropdown { 
+    z-index: 20; 
+    position: relative; 
+  }
+  
+  
+
+ 
+#{{ section.id }} .tabs {
+  display: flex;
+  gap: 20px;  
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: nowrap;
+}
+
+ 
+#{{ section.id }} .tab {
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  background-color: transparent; 
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+ 
+#{{ section.id }} .active {
+  background-color: white;  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+ 
+#{{ section.id }} .tab:hover {
+  background-color: white; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+ 
+@media (max-width: 768px) {
+  #{{ section.id }} .tabs-container {
+    overflow-x: auto;
+    justify-content: start;
+    -webkit-overflow-scrolling: touch; 
+  }
+
+  #{{ section.id }} .tabs {
+    gap: 10px; 
+  }
+
+  #{{ section.id }} .tab {
+    padding: 8px 12px;  
+    font-size: 12px; 
+  }
+}
+
+</style>
+
+<section id="{{ section.id }}" class="c-section">
+  <div class="container">
+    <div class="c-section-top">
+      {%- if section.settings.using_navbar -%}
+        <!-- Navbar -->
+        <div class="tabs-container">
+          <ul class="tabs">
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'headers_navbar' %}
+                  <li class="tab  ">
+                    {{ block.settings.tab_label }}
+                  </li>
+              {% endcase %}
+            {% endfor %}
+          </ul>
+        </div>
+      {%- else -%}
+        <!-- Default Headings -->
+        {%- if section.settings.section_top_subheading != empty -%}
+          <p class="c-section-top-subheading">{{ section.settings.section_top_subheading }}</p>
+        {%- endif -%}
+        {%- if section.settings.section_top_heading != empty -%}
+          <h2>{{ section.settings.section_top_heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.section_top_paragraph != empty -%}
+          <div class="c-t-80">{{ section.settings.section_top_paragraph }}</div>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+    
+    <div class="c-f-grid">
+      <div class="c-f-grid-left">
+        {% for block in section.blocks %}
+          {% case block.type %}
+          {% when 'headers_faq' %}
+            <h3  id="toggle-scroll" style="margin: 0 !important;">{{ block.settings.header_text }}</h3>
+            {% when 'FAQ' %}
+              <div class="c-f-card">
+                <div class="c-f-card-top">
+                  <p>{{ block.settings.faq_heading }}</p>
+                  <div class="c-f-plus-div">{% render 'c-icon-plus-border' %}</div>
+                </div>
+                <div class="c-f-answer">{{ block.settings.faq_answer }}</div>
+              </div>
+ 
+          
+          {% endcase %}
+        {% endfor %}
+      </div>
+      {% if section.settings.use_grid == true %}
+        <div class="c-f-grid-right">
+          <div class="c-f-grid-right-inner">
+            {%- if section.settings.subheading != empty -%}
+              <p class="c-section-top-subheading">{{ section.settings.subheading }}</p>
+            {%- endif -%}
+            {% if section.settings.heading != empty %}
+              <h2 class="c-f-heading">{{ section.settings.heading }}</h2>
+            {% endif %}
+            {% if section.settings.paragraph != empty %}
+              <div class="c-f-para">{{ section.settings.paragraph }}</div>
+            {% endif %}
+            {% if section.settings.grid_image != blank %}
+              {{
+                section.settings.grid_image
+                | image_url: width: 1080
+                | image_tag: style: 'border-radius: 20px; margin-bottom: 16px;'
+              }}
+            {% endif %}
+            {%- if section.settings.button_text != empty -%}
+              <div class="c-buttons-div">
+                <a class="c-button {{ section.settings.button_style }}" href="{{ section.settings.button_url }}">
+                  {{- section.settings.button_text -}}
+                </a>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    {% if section.settings.use_grid == false %}
+      {%- if section.settings.button_text != empty -%}
+        <div class="c-buttons-div">
+          <a class="c-button c-b1" href="{{ section.settings.button_url }}">{{ section.settings.button_text }}</a>
+        </div>
+      {%- endif -%}
+    {% endif %}
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('#{{ section.id }} .c-f-card').forEach((faq) => {
+    faq.addEventListener('click', () => {
+      if (faq.classList.contains('c-f-active')) {
+        document.querySelectorAll('#{{ section.id }} .c-f-card').forEach((faq2) => {
+          faq2.classList.remove('c-f-active');
+        });
+        faq.classList.remove('c-f-active');
+      } else {
+        document.querySelectorAll('#{{ section.id }} .c-f-card').forEach((faq2) => {
+          faq2.classList.remove('c-f-active');
+        });
+        faq.classList.add('c-f-active');
+      }
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabs = document.querySelectorAll(".tabs .tab");
+    const headers = document.querySelectorAll("h3#toggle-scroll");
+  
+    
+    if (tabs.length > 0) {
+      tabs[0].classList.add("active");
+    }
+  
+ 
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", function () {
+        const clickedText = this.textContent.trim();
+  
+        const targetHeader = Array.from(headers).find(
+          (header) => header.textContent.trim() === clickedText
+        );
+  
+        if (targetHeader) {
+          tabs.forEach((tab) => tab.classList.remove("active"));
+          this.classList.add("active");
+          targetHeader.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+  
+    
+    const handleScroll = () => {
+      let activeHeader = null;
+  
+ 
+      headers.forEach((header) => {
+        const rect = header.getBoundingClientRect();
+        if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
+          activeHeader = header;
+        }
+      });
+  
+      if (activeHeader) {
+        const activeText = activeHeader.textContent.trim();
+  
+        
+        tabs.forEach((tab) => {
+          if (tab.textContent.trim() === activeText) {
+            tab.classList.add("active");
+          } else {
+            tab.classList.remove("active");
+          }
+        });
+      }
+    };
+  
+  
+    window.addEventListener("scroll", handleScroll);
+  });
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    const navbar = document.querySelector('#{{ section.id }} .tabs-container');
+    const header = document.querySelector('.header'); 
+    const navbarOffsetTop = navbar.offsetTop;
+
+     
+    const headerHeight = header ? header.offsetHeight : 0;
+    document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > navbarOffsetTop - headerHeight) {
+        navbar.classList.add('sticky');
+      } else {
+        navbar.classList.remove('sticky');
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "C FAQs w navbar",
+  "blocks": [
+    {
+      "name": "FAQ",
+      "type": "FAQ",
+      "limit": 50,
+      "settings": [
+        {
+          "type": "text",
+          "id": "faq_heading",
+          "label": "Question",
+          "default": "Question text goes here"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_answer",
+          "label": "Answer",
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>"
+        }
+      ]
+
+      
+    },
+    {
+      "type": "headers_faq",
+      "name": "Headers FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "header_text",
+          "label": "Header Text",
+          "default": "Header Content Here"
+        }
+      ]
+    },
+    {
+      "name": "Headers Navbar",
+      "type": "headers_navbar",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab Label",
+          "default": "Orders"
+        }
+      ]
+    }
+    
+  ],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "use_grid",
+      "label": "Use grid",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "using_navbar",
+      "label": "Using Navbar?",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "side",
+      "label": "Flip",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "FAQ's"
+    },
+    {
+      "type": "richtext",
+      "id": "paragraph",
+      "label": "Paragraph",
+      "default": "<p>Have you got questions? We've got answers!</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "grid_image",
+      "label": "Image"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Buy Now"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_style",
+      "label": "Button style",
+      "default": "c-b1"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#5d3be4"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "Section Colors"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#5d3be4"
+    },
+    {
+      "type": "color_background",
+      "id": "card_background",
+      "label": "Card colored",
+      "default": "linear-gradient(262deg, rgba(93, 59, 228, 0.75), rgba(93, 59, 228, 0.3) 100%)"
+    },
+    {
+      "type": "color",
+      "id": "faq_text_border",
+      "label": "Faq Card Text & border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000"
+    },
+    {
+      "type": "header",
+      "content": "Section Top"
+    },
+    {
+      "type": "text",
+      "id": "section_top_subheading",
+      "label": "Subheading",
+      "default": "subheading"
+    },
+    {
+      "type": "text",
+      "id": "section_top_heading",
+      "label": "Heading",
+      "default": "My heading"
+    },
+    {
+      "type": "richtext",
+      "id": "section_top_paragraph",
+      "label": "Paragraph",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.</p>"
+    },
+    {
+      "type": "select",
+      "id": "section_top_alignment",
+      "label": "Section Top Alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "unit": "rem"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 15,
+      "step": 1,
+      "default": 4,
+      "unit": "rem"
+    }
+  ],
+  "presets": [
+    {
+      "name": "C FAQs w navbar"
+    }
+  ]
+}
+{% endschema %}

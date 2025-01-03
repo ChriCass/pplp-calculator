@@ -386,11 +386,6 @@ document.addEventListener("DOMContentLoaded", () => {
       index < step ? stat.classList.add("status__content--active") : stat.classList.remove("status__content--active");
     });
 
-    // Scroll arriba
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
 
     handleButtons(step);
   }

@@ -1,0 +1,3963 @@
+<style>
+  /*********** ROOT ***********/
+:root{
+  --color-principal: #131313;
+  --color-secundario-z: #1a5772;
+  --color-secundario: #1E81AE;
+  --color-secundario-y: #1e81ae;
+
+  --color-card-1: #d0ccc0;
+  --color-card-2: #c5c4bb;
+  --color-card-3: #9a9b93;
+  --color-card-4: #201b1b;
+  --color-card-5: #d6d2ca;
+  --color-card-6: #293133;
+  --color-card-7: #cfc4b0;
+  --color-card-8: #82857f;
+
+ 
+}
+
+/***************** RESET *****************/
+/* html{
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-family: "Gilroy", sans-serif;
+  font-size: 16px;
+  scroll-behavior: smooth;
+} */
+
+ 
+/* body{
+  position: relative;
+  margin: 0;
+  width: 100%;
+  overflow-x: hidden;
+} */
+
+/* button,
+input{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: 300ms ease;
+  display: block;
+} */
+
+/* a{
+  text-decoration: none;
+  transition: 300ms ease;
+  display: inline-block;
+}
+
+figure{
+  user-select: none;
+  flex-shrink: 0;
+  display: flex;
+}
+
+img, video, iframe{
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+li{
+  list-style: none;
+}
+
+p{
+  text-wrap: pretty;
+  font-size: 0.912rem;
+}
+
+select,
+option{
+  cursor: pointer;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button{
+  -webkit-appearance: none;
+} */
+
+  /***************** UTILITIES *****************/
+.container{
+  width: 95%;
+  max-width: 75rem;
+  max-width: 64rem;
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+.flex-c-c{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section__section__calculator__form{
+  width: 100%;
+  padding-block: 1rem;
+}
+
+.action__btn{
+  background-image: linear-gradient(to right, var(--color-principal) 30%, var(--color-secundario));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  font-weight: 400;
+  background-color: #fff;
+}
+
+.action__btn--selected{
+  border: none;
+  color: #fff;
+  background-color: transparent;
+  background-clip: unset;
+  -webkit-text-fill-color: #fff;
+}
+
+/***************** KEYFRAMES *****************/
+@keyframes length{
+  0%{
+    transform: scaleX(1);
+  }
+  50%{
+    transform: scaleX(1.2);
+  }
+}
+
+@keyframes depth{
+  0%{
+    transform: scaleY(1);
+  }
+  50%{
+    transform: scaleY(1.2);
+  }
+}
+
+@keyframes height{
+  0%{
+    transform: scaleY(1);
+  }
+  50%{
+    transform: scaleY(1.1);
+  }
+}
+
+@keyframes rotate-circle{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/***************** PAGE *****************/
+#{{ section.id }} h2{
+  font-size: 26px !important;
+}
+#{{ section.id }} .alert__title__text{
+
+font-size: 20px !important;
+
+}
+#{{ section.id }}{
+
+  & .section__calculator__content{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  & .section__form.section__form--1,
+  & .section__form.section__form--2,
+  & .section__form.section__form--3,
+  & .section__form.section__form--4,
+  & .section__form.section__form--5{
+    opacity: 0;
+    display: none;
+  }
+
+  &:has(.section__calculator__content.step-1){
+    & .section__calculator__content.step-1{
+      & .status__bar.status__step-1::after{
+        width: 15%;
+      }
+    }
+
+    & .section__form--1{
+      opacity: 1;
+      display: block;
+
+      @starting-style{
+        opacity: 0;
+      }
+    }
+  }
+
+  &:has(.section__calculator__content.step-2){
+    & .section__calculator__content.step-2{
+      & .status__bar.status__step-1::after{
+        width: 40%;
+      }
+
+      & .section__form--2{
+        display: block;
+        opacity: 1;
+
+        @starting-style{
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &:has(.section__calculator__content.step-3){
+    & .section__calculator__content.step-3{
+      & .status__bar.status__step-1::after{
+        width: 65%;
+      }
+
+      & .section__form--3{
+        display: block;
+        opacity: 1;
+
+        @starting-style{
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &:has(.section__calculator__content.step-4){
+    & .section__calculator__content.step-4{
+      .status__bar.status__step-1::after{
+        width: 90%;
+      }
+
+      & .section__form--4{
+        display: block;
+        opacity: 1;
+
+        @starting-style{
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &:has(.section__calculator__content.step-5){
+    & .section__calculator__content.step-5{
+      & .status__bar.status__step-1::after{
+        width: 100%;
+      }
+
+      & .section__form--5{
+        display: block;
+        opacity: 1;
+
+        @starting-style{
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  /*********** STATUS-BAR ***********/
+  & .status__bar__principal{
+    padding-block: 1rem;
+    overflow: auto;
+  
+    &.container{
+      width: 95%;
+    }
+  }
+  
+  & .status__bar__container{
+    width: 100%;
+    min-width: 45rem;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  
+    &.container{
+      width: 95%;
+      max-width: 75rem;
+    }
+  }
+  
+  & .status__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  & .status__text{
+    background-image: linear-gradient(to right, var(--color-principal) 30%, var(--color-secundario));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+  
+  }
+  
+  & .status__count{
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    aspect-ratio: 1/1;
+    padding: 0.2rem;
+    border: thin solid var(--color-secundario);
+    background-color: #fff;
+    border-radius: 50%;
+    z-index: 2;
+  }
+  
+  & .status__bar{
+    position: absolute;
+    bottom: 20%;
+    inset-inline: 0;
+    width: 92%;
+    height: 6px;
+    margin-left: 3.15rem;
+    border: thin solid var(--color-principal);
+    border-left: none;
+    border-right: none;
+    z-index: 1;
+    transition: all 0.3s ease;
+  
+    &.status__step-1::after{
+      transition: all 0.3s ease;
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: calc(100% / 8);
+      background-image: linear-gradient(to right, var(--color-principal) 30%, var(--color-secundario));
+    }
+  }
+  
+  & .status__content--last .status__count::after{
+    content: "";
+    position: absolute;
+    left: 30.8px;
+    width: 1rem;
+    height: 1rem;
+    background-color: #fff;
+    z-index: 5;
+  }
+  
+  & .status__content--active .status__count{
+    border-color: var(--color-principal);
+    color: #fff;
+    background-color: var(--color-principal);
+ 
+  }
+
+  /*********** FORM ***********/
+  & .design__content{
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+    border-radius: 1rem;
+    background-image: linear-gradient(to right, var(--color-principal) 30%, var(--color-secundario));
+  
+  }
+  
+  & .form__design{
+    margin: 1px;
+    background-color: #fff;
+    border-radius: 1rem;
+    position: relative;
+  }
+  
+  & .section__form{
+    padding: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: height 0.3s ease, opacity 0.5s ease;
+    interpolate-size: allow-keywords;
+  }
+  
+  & .form__title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1rem;
+  
+  }
+  
+  & .form__title__icon{
+    fill: var(--color-secundario);
+  }
+  
+  & .form__options{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  & .form__article{
+    padding-block: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: height 0.3s ease;
+    interpolate-size: allow-keywords;
+    height: auto;
+  
+    & > * {
+      transition: all 0.3s ease;
+    }
+  
+    &:nth-child(2) {
+      align-items: center;
+    }
+  }
+  
+  & .scene__table{
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    margin: auto;
+    max-width: 20rem;
+    max-height: 20rem;
+    position: relative;
+  }
+  
+  & .table{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    height: 100%;
+    margin-inline: auto;
+    transform: rotateX(0deg) rotateY(0deg);
+    &:has(.edge__top:hover) .edge__top,
+    &:has(.edge__top:hover) .edge__bottom,
+    &:has(.edge__bottom:hover) .edge__top,
+    &:has(.edge__bottom:hover) .edge__bottom,
+    &:has(.edge__left:hover) .edge__left,
+    &:has(.edge__left:hover) .edge__right,
+    &:has(.edge__right:hover) .edge__left,
+    &:has(.edge__right:hover) .edge__right{
+      background-color: var(--color-secundario);
+      box-shadow: 0 1px 16px 0 var(--color-secundario);
+      z-index: 5;
+    }
+  }
+  
+  & .table__top{
+    position: relative;
+    width: 73.85%;
+    height: 52.75%;
+    background-color: transparent;
+    transform: skewX(-45deg) rotateX(60deg) translateY(-50%) translateX(0);
+    z-index: 5;
+  
+  }
+  
+  & .edge{
+    background-color: #5558;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    position: absolute;
+    cursor: pointer;
+  }
+  
+  & .edge__top{
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 11px;
+  }
+  
+  & .edge__right{
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 8px;
+  }
+  
+  & .edge__bottom{
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 11px;
+  }
+  
+  & .edge__left{
+    left: 0;
+    bottom: 0;
+    width: 8px;
+    height: 100%;
+  }
+  
+  & .table__legs{
+    position: absolute;
+    inset: 0;
+  
+    &:has(.leg:hover) .leg{
+      background-color: var(--color-secundario);
+      box-shadow: 0 1px 16px 0 var(--color-secundario);
+    }
+  }
+  
+  & .leg {
+    position: absolute;
+    width: 6px;
+    height: 70%;
+    background-color: #5558;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  & .leg__front__left {
+    top: 25%;
+    left: 0.8%;
+  }
+  
+  & .leg__front__right {
+    top: 25%;
+    right: 25%;
+  }
+  
+  & .leg__back__left {
+    top: 3px;
+    left: 26.5%;
+  }
+  
+  & .leg__back__right {
+    top: 0;
+    right: 0;
+    transform: translateZ(100px);
+  }
+  
+  & .side__length--active,
+  & .side__depth--active,
+  & .side__height--active{
+    background-color: var(--color-secundario);
+    box-shadow: 0 1px 16px 0 var(--color-secundario);
+    z-index: 5;
+  }
+  
+  & .side__length--active{
+    animation: length 1s ease infinite;
+  }
+  
+  & .side__depth--active{
+    animation: depth 1s ease infinite;
+  }
+  
+  & .side__height--active{
+    z-index: 2;
+    animation: height 1s ease infinite;
+    transform-origin: top;
+  }
+  
+  & .form__info{
+    display: flex;
+    flex-direction: column;
+    & > *{
+      padding-block: 1rem;
+    }
+  }
+  
+  & .form__btns{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  & .action__btn{
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 300ms ease;
+    display: block;
+    text-align: center;
+ 
+  }
+
+  & .input__radio__btn{
+    display: none;
+  }
+  
+  & .measure__span{
+    background-image: linear-gradient(to right, var(--color-principal) 30%, var(--color-secundario));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+    user-select: none;
+  }
+  
+  & .form__inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: hidden;
+  
+    & > *{
+      padding-block: 1rem;
+    }
+
+    & .input__unit__text::-webkit-inner-spin-button,
+    & .input__unit__text::-webkit-outer-spin-button{
+      -webkit-appearance: none;
+      appearance: none;
+    }
+  }
+  
+  & .input__bg{
+    padding: 0;
+    border-radius: 0.7rem;
+    transition: background-image 0.3s ease;
+  
+    &.bg--active{
+      background-image: linear-gradient(to right, var(--color-principal) 30%, var(--color-secundario));
+    }
+  }
+  
+  & .input__container{
+    padding: 1rem;
+    border-radius: 0.7rem;
+    margin: 1px;
+    background-color: #EDF5F9;
+  }
+  
+  & .input__content{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-bottom: thin solid transparent;
+    transition: all 0.3s ease;
+  
+    &:has(.form__input:focus) {
+      border-bottom-color: var(--color-secundario);
+    }
+
+    &:not(:has(.form__input:placeholder-shown)){
+      border-bottom-color: var(--color-secundario);
+    }
+  }
+  
+  & .label__input{
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding: 0;
+ 
+    background-clip: text;
+    color: black;
+    font-weight: 600;
+    text-transform: none !important;
+  }
+  
+  & .input__measure{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    & > *{
+      flex-grow: 1;
+      width: 0;
+    }
+  }
+  
+  & .form__input{
+    padding: 0.5rem;
+    text-align: center;
+    text-align: end;
+ 
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 300ms ease;
+    display: block;
+    margin: 0; 
+  }
+  
+  & .input__unit{
+    text-align: start;
+ 
+  }
+  
+  & .alert__container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 0.6rem;
+    background-color: rgba(151, 71, 255, 0.08);
+    border: thin solid #8f33ff;
+    padding: 0.75rem;
+    overflow: hidden;
+
+    & .paragraph__text{
+  
+    }
+  }
+  
+  & .alert__title{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+ 
+  }
+  
+  & .alert__svg__icon{
+    background-color: #8f33ff;
+    border-radius: 50%;
+    display: block;
+  }
+  
+  & .form__input__checkbox{
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  & .election__contact,
+  & .election__pergola,
+  & .form__article.form__footer.form__btns__footer ,
+  & .election__attached{
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    display: none;
+  }
+
+  & .election__contact.element--show,
+  & .election__pergola.element--show,
+  & .form__article.form__footer.form__btns__footer.element--show,
+  & .election__attached.element--show{
+    display: block;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  
+    @starting-style{
+      opacity: 0;
+    }
+  }
+
+  & .form__article:last-child{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  & .form__btns__footer{
+    width: 100%;
+  }
+  
+  & .election__contact__container{
+    width: 100%;
+    margin-inline: auto;
+    max-width: 416px;
+    border-radius: 1rem;
+    background-color: rgba(233, 240, 243, 1);
+  }
+  
+  & .election__contact__content{
+    overflow: hidden;
+    padding: 1.5rem;
+  }
+  
+  & .election__contact__content{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  & .contact__title__text{
+    font-weight: 400;
+    font-size: 21px !important;
+  }
+  
+  & .contact__btn {
+    display: flex;
+
+    & .btn__contact{
+      padding: 1rem;
+      border-radius: 1rem;
+  
+      text-decoration: none;
+      transition: 300ms ease;
+      display: inline-block;
+    
+    } 
+  }
+  
+  & .election__container{
+    overflow: hidden;
+  }
+  
+  & .election__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  & .election__title{
+    display: flex;
+    align-items: center;
+   
+  }
+
+  & .election__title__text{
+    font-size: clamp(1.125rem, 4.5vw, 1.625rem);
+  }
+  
+  & .election__btns{
+    min-width: 8rem;
+    width: 70%;
+    max-width: 15rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  & .btn__election{
+    border-radius: 1rem;
+
+    text-decoration: none;
+    transition: 300ms ease;
+    border: none;
+    outline: none;
+  }
+
+  & .input__radio__measure{
+    display: none;
+  }
+  
+  & .election__title__svg{
+    fill: var(--color-secundario);
+  }
+  
+  & .btns__footer__container{
+    overflow: hidden;
+  }
+  
+  & .btns__footer__content{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  & .btn__footer{
+    padding: 1rem 4rem;
+    border-radius: 1rem;
+    border: thin solid var(--color-principal);
+  }
+
+  /********* ATTACHED *********/
+  & .election__attached__content{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  & .attached__content{
+    display: flex;
+    flex-direction: column;
+  
+    & > * {
+      padding-block: 1rem;
+    }
+  }
+  
+  & .attached__title{
+    font-size: 0.8rem;
+    text-align: center;
+ 
+    margin-bottom: 2rem;
+  }
+  
+  & .table__attached{
+    position: absolute;
+    width: 2rem;
+    aspect-ratio: 1/1;
+    height: 2rem;
+    border-radius: 50%;
+    color: var(--color-secundario);
+    font-size: 0.75rem;
+    background-color: #fff;
+    border: thin solid var(--color-secundario);
+    z-index: 6;
+    transition: all 0.3s ease;
+    
+    &.table__attached--active{
+      background-color: var(--color-secundario);
+      box-shadow: 0 1px 16px 0 var(--color-secundario);
+      color: #fff;
+    }
+  }
+  
+  & .attached__measures__container{
+    width: 90%;
+    margin-inline: auto;
+    overflow: hidden;
+  }
+  
+  & .attached__list{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  & .attached__measure__content{
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 1rem;
+  
+    & .label__input{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  & .attached__measure{
+    border-radius: 1rem;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  & .table__attached__a1{
+    top: 30%;
+    left: 35%;
+  }
+  
+  & .table__attached__a2{
+    top: -17%;
+    right: 30%;
+  }
+  
+  & .table__attached__b1{
+    top: -2%;
+    left: 0%;
+  }
+
+  & .table__attached__b2{
+    top: 14%;
+    right: 0%;
+  }
+  
+  & .attached__content{
+    &:has(.input__form--checkbox[data-attached="a1"]:checked) .table__attached__a1{
+      background-color: var(--color-secundario);
+      box-shadow: 0 1px 16px 0 var(--color-secundario);
+      color: #fff;
+      z-index: 5;
+      border: thin solid var(--color-secundario);
+    }
+  
+    &:has(.input__form--checkbox[data-attached="a2"]:checked) .table__attached__a2{
+      background-color: var(--color-secundario);
+      box-shadow: 0 1px 16px 0 var(--color-secundario);
+      color: #fff;
+      z-index: 5;
+      border: thin solid var(--color-secundario);
+    }
+  
+    &:has(.input__form--checkbox[data-attached="b1"]:checked) .table__attached__b1{
+      background-color: var(--color-secundario);
+      box-shadow: 0 1px 16px 0 var(--color-secundario);
+      color: #fff;
+      z-index: 5;
+      border: thin solid var(--color-secundario);
+    }
+  
+    &:has(.input__form--checkbox[data-attached="b2"]:checked) .table__attached__b2{
+      background-color: var(--color-secundario);
+      box-shadow: 0 1px 16px 0 var(--color-secundario);
+      color: #fff;
+      z-index: 5;
+      border: thin solid var(--color-secundario);
+    }
+  }
+  
+  & .bg__gradient{
+    background-image: linear-gradient(to right, var(--color-principal) 30%, var(--color-secundario));
+    padding: 1px;
+  }
+
+  /*********** FORM-2 ***********/
+  
+  & .article__color__base{
+    gap: 2rem;
+  }
+  
+  & .color__base__container{
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  & .color__select__container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 5rem), 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(min(100%, 5rem), 1fr));
+    gap: 1rem;
+  }
+  
+  & .color__select__content{
+    cursor: pointer;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    background-color: #EDF5F9;
+    border: thin solid transparent;
+  
+    &.color--selected{
+      border-color: var(--color-secundario);
+    }
+  }
+  
+  & .color__content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+  
+    position: relative;
+  }
+  
+  & .span__color,
+  & .color__code{
+    font-size: 0.8rem;
+    text-align: center;
+    color: #000;
+  }
+  
+  & .color__icon{
+    width: 80%;
+    max-width: 2rem;
+    height: auto;
+    aspect-ratio: 1/1;
+    background-color: #fff;
+    border-radius: 50%;
+    border: thin solid transparent;
+  }
+  
+  & .color__black .color__icon{
+    background-color: #000;
+  }
+  
+  & .color__white .color__icon{
+    background-color: #fff;
+    border-color: #000;
+  }
+  
+  & .color__grey .color__icon{
+    background-color: #555;
+  }
+  
+  & .custom__color__bg{
+    width: 100%;
+  }
+  
+  & .custom__color__circle{
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  & .circle__color{
+    position: absolute;
+    inset: 0;
+    background-image: conic-gradient(red, magenta, blue, aqua, lime, yellow, red);
+    animation: rotate-circle 10s linear infinite;
+  }
+  
+  & .custom__color__container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    & input{
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transition: none;
+      opacity: 0;
+    }
+  }
+
+  & .table__color{
+    & .side {
+      border: thin solid #8888;
+    }
+  }
+  
+  & .input__checkbox__color{
+    padding-top: 1rem;
+  }
+  
+  & .checkbox__color__container{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  
+  & .form__article.article__color__louvers{
+    align-items: stretch;
+    gap: 2rem;
+  }
+  
+  & .color__louvers__title{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  & .color__louver__container{
+    display: none;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  & .color__louver__container.element--show{
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  & .louvers{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: space-evenly;
+    padding-inline: 6px;
+  }
+  
+  & .louver{
+    width: 5px;
+    height: 100%;
+    background-color: #000;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    border: thin solid #8888;
+  }
+  
+  & .section__form--2 .form__btns__footer{
+    opacity: 1;
+    display: block;
+  }
+  
+  /*********** FORM-3 ***********/
+  & .options__step__3{
+    display: flex;
+    flex-direction: column;
+
+    & .scene__table__accesory{
+      padding-block: 4rem;
+
+      & .side,
+      & .leg{
+        background-color: #5558;
+      }
+    }
+
+    & .section__accesory{
+      padding-block: 1rem;
+    }
+
+    & .choose__accesory__content{
+      display: flex;
+      flex-direction: column;
+    }
+
+    & .choose__header{
+      border-radius: 2rem;
+      padding: 1px;
+      background-image: linear-gradient(to right,
+                                                var(--color-principal) 30%,
+                                                var(--color-secundario));
+
+      & .choose__header__container{
+        padding: 0.5rem;
+        background-color: #EDF5F9;
+        border-radius: 2rem;
+        overflow: hidden;
+        cursor: pointer;
+  
+        & .choose__header__content{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        
+        }
+  
+        & .choose__side {
+          font-size: 1rem;
+          font-weight: 400;
+        }
+  
+        & .choose__header__span{
+          font-size: 0.8rem;
+          user-select: none;
+        }
+  
+        & .choose__btn{
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+  
+          & .choose__header__btn{
+            border-radius: 50%;
+            overflow: hidden;
+            background-image: linear-gradient(to right, var(--color-secundario) 30%, var(--color-principal));
+            width: 1rem;
+            aspect-ratio: 1/1;
+            height: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+  
+            & .choose__header__figure{
+              width: 0.5rem;
+              width: 100%;
+              aspect-ratio: 1/1;
+              height: 0.5rem;
+              height: 100%;
+  
+              & .choose__header__img{
+                display: block;
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+                height: auto;
+                transform: rotateZ(0);
+                transition: all 0.3s ease;
+              }
+            }
+          }
+        }
+      }
+
+      &.choose__header--active{
+        & .choose__header__container {
+          & .choose__header__btn{
+            & .choose__header__figure{
+              & .choose__header__img{
+                transform: rotateZ(-180deg);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    & .choose__accesory__options{
+      padding-block: 1rem;
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease;
+
+      & .choose__accesory__options__container {
+        overflow: hidden;
+
+        & .choose__accesory__options__content{
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+
+          & .accesory__card__content{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+
+            & .accesory__card__material__element{
+              padding: 1rem;
+              border-radius: 1rem;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 0.75rem;
+              cursor: pointer;
+              min-width: 200px;
+              width: 50%;
+              max-width: 380px;
+              border: thin solid transparent;
+
+              & .accesory__material__span{
+ 
+                font-weight: 600;
+              }
+
+              &.accesory__element--selected{
+                background-color:  #D6E7EF;
+                border-color: var(--color-secundario);
+              }
+            }
+          }
+
+          & .accesory__options {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            & .accesory__card__color {
+              padding-bottom: 1rem;
+              overflow-x: auto;
+              
+              & .accesory__card__container{
+                min-width: 45rem;
+                width: 100%;
+                display: flex;
+                gap: 0.5rem;
+  
+                & .accesory__card__color__content{
+                  padding: 0.5rem 0.25rem;
+                  background-color: #e7f5ff;
+                  border: thin solid transparent;
+                  border-radius: 0.5rem;
+                  cursor: pointer;
+                  flex-grow: 1;
+                  
+                  &.accesory__element--selected{
+                    border-color: var(--color-secundario);
+                  }
+  
+                  & .accesory__card__element{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-align: center;
+                    width: 100%;
+                    gap: 0.5rem;
+  
+                    & span{
+                      font-size: 0.7rem;
+                    
+                    }
+
+                    & .color__icon__container{
+                      width: 100%;
+                      height: 100%;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      flex-grow: 1;
+                    }
+
+                    & .color__icon{
+                      background-color: var(--color-card);
+                    }
+  
+                    & .color__icon--white{
+                      color: #fff;
+                    }
+                  }
+                }
+              }
+            }
+
+            & .group {
+              display: none;
+              opacity: 0;
+              transition: all 0.3s ease;
+
+              &.element--show{
+                display: block;
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    & .choose__accesory__content:has(.choose__header--active) .choose__accesory__options{
+      grid-template-rows: 1fr;
+    }
+
+    & .accesory__type__btns{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      & .accesory__btn{
+        background-image: linear-gradient(to right, var(--color-principal) 30%, var(--color-secundario));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+        font-weight: 600;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-family: inherit;
+        transition: all 300ms ease;
+  
+        padding: 0.75rem 4rem;
+        display: block;
+        border-radius: 2rem;
+
+        &.action__btn--selected{
+          -webkit-background-clip: unset;
+          -webkit-text-fill-color: #fff;
+          background-clip: unset;
+          color: #fff;
+        }
+      }
+    }
+
+  }
+
+  /*********** FORM-4 ***********/
+  & .options__step__4{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    & .form__article__extra{
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      & .form__extra{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      & .form__extra__title,
+      & .heater__title{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      
+      }
+
+      & .form__extra__btns{
+        display: flex;
+        width: 100%;
+      }
+
+      & .form__extra__btns__container{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 0.5rem;
+      }
+
+      & .btn__extra {
+        padding: 0.75rem;
+        width: 90%;
+      }
+
+      & .form__extra__container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      & .heater__container{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      & .header__input__container{
+        background-color: #ecf7ff;
+        padding: 0.75rem;
+        border-radius: 1rem;
+      }
+
+      & .heater__input{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      & .heater__label{
+        font-size: 0.8rem;
+ 
+      }
+
+      & .heater__input__count{
+        text-align: center;
+        border-bottom: thin solid var(--color-principal);
+      }
+
+      & .form__extra__heaters__alert{
+        background-color: #ecddff;
+        border: thin solid #8f33ff;
+        border-radius: 1rem;
+        padding: 0.75rem;
+      }
+
+      & .heaters__alert__container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      & .alert__paragraph {
+   
+        font-size: 0.8rem;
+      }
+
+      & .alert__svg svg{
+        fill: #8f33ff;
+      }
+      
+    }
+  }
+
+  /*********** FORM-5 ***********/
+  & .options__step__5{
+
+    & .resume__container{
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    & .form__resume__content{
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    & .resume__title{
+ 
+    }
+
+    & .resume__inputs{
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    & .resume__input{
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    & .resume__label{
+      font-size: 0.8rem;
+ 
+    }
+
+    & .form__input{
+      padding: 1rem;
+  
+      text-align: start;
+      background-color: #EDF5F9;
+      border-radius: 0.5rem;
+      border: thin solid var(--color-secundario);
+    }
+
+    & .inputs__shipping__container{
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    & .form__input__additional__information{
+      resize: none;
+      min-height: 8rem;
+    }
+
+    & .resume__checkbox{
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    & .label__form{
+      font-size: 0.8rem;
+      padding-bottom: 0;
+      background-image: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
+      color: #000;
+      user-select: none;
+      position: relative;
+      width: max-content;
+
+      &::after{
+        position: absolute;
+        right: -0.75rem;
+        top: -0.25rem;
+        content: "*";
+        font-size: 1.5rem;
+        color: #c76973;
+      }
+    }
+
+    & .link__terms{
+      color: var(--color-secundario);
+      text-decoration: underline;
+      display: inline-block;
+    }
+  }
+
+  & .alert__message{
+    position: fixed;
+    inset-inline: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+  }
+  
+  & .alert__message__container{
+    position: absolute;
+    top: 6rem;
+    right: -100%;
+    margin-inline: auto;
+    border-top: medium solid #721c24;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+ 
+    border-radius: 1rem;
+    text-align: center;
+    width: 90%;
+    max-width: max-content;
+    transition: all 0.3s ease;
+  }
+
+  & .alert__message.alert__message--show{
+
+    & .alert__message__container{
+      right: 0.5rem
+    }
+    /* animation: fadeOut 3s forwards; */
+  }
+
+  & .confirmation__container{
+    position: fixed;
+    inset-inline: 0;
+    z-index: 5;
+    top: 0;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: center;
+  }
+  
+  & .confirmation__container.confirmation--show{
+    & .confirmation__title{
+      top: 1rem;
+    }
+  }
+  
+  & .confirmation__title{
+    position: absolute;
+    z-index: 5;
+    width: 80%;
+    margin-inline: auto;
+    max-width: max-content;
+    font-family: var(--font-family-gilroy);
+    overflow: hidden;
+    background-color: #d4edda;
+    color: #fff;
+    border-radius: 1rem;
+    border-top: medium solid #58b56d;
+    top: -4rem;
+    transition: top 1s ease, right 1s ease;
+
+    & h3{
+      font-weight: 400;
+      padding: 1rem;
+      color: #295233;
+      text-align: center;
+    }
+  }
+}
+
+
+/***************************** MEDIA QUERIES *****************************/
+@media screen and (width >= 768px) {
+  #{{ section.id }}{
+    & .status__bar__principal{
+      overflow: hidden;
+    }
+    & .choose__header__container{
+      padding: 1rem 0.5rem !important;
+    }
+
+    & .election__btns{
+      flex-direction: row;
+      max-width: unset;
+      width: unset;
+    }
+  
+    & .btn__election{
+      padding: 0.75rem 4rem;
+    }
+  
+    & .btns__footer__content{
+      flex-direction: row;
+      gap: 1rem;
+    }
+
+    & .options__step__4{
+
+      & .form__article__extra{
+        gap: 4rem;
+
+        & .form__extra__btns__container{
+          flex-direction: row;
+        }
+
+        & .form__extra__container.form__extra__long{
+          flex-direction: row;
+          align-items: center;
+        }
+
+        & .form__extra__heaters{
+          flex-grow: 2;
+          width: 0;
+        }
+
+        & .form__extra__heaters__alert{
+          flex-grow: 1;
+          width: 0;
+        }
+      }
+    }
+
+    /* & .alert__message{
+      bottom: 6.5rem;
+    } */
+
+    & .options__step__5{
+      & .personal__information{
+        & .resume__inputs{
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      & .shipping__address{
+        & .inputs__shipping__container{
+          flex-direction: row;
+
+          & .resume__input{
+            width: unset;
+            flex-grow: 1;
+          }
+        }        
+      }
+    }
+
+    & .confirmation__container.confirmation--show{
+      & .confirmation__title{
+        right: 0.5rem;
+        top: 4rem;
+      }
+    }
+
+    & .confirmation__title{
+      top: 4rem;
+      right: -100%;
+    }
+  }
+}
+
+@media screen and (width >= 1024px){
+  #{{ section.id }}{
+    & .container{
+      width: 80%;
+    }
+  
+    & .section__form{
+      padding: 2rem 4rem;
+    }
+    & .alert__message{
+      top:5rem;
+    }
+    & .form__article:first-child{
+      flex-direction: row-reverse;
+  
+      & > *{
+        flex-grow: 1;
+      }
+    }
+  
+    & .scene__table__container{
+      width: 100%;
+    }
+  
+    & .table{
+      width: 80%;
+      height: 80%;
+      margin: auto;
+    }
+  
+    & .attached__content{
+      flex-direction: row-reverse;
+      width: 100%;
+  
+      & > *{
+        flex-grow: 1;
+        width: 100%;
+      }
+    }
+  
+    & .attached__measures__container{
+      width: max-content;
+      height: 70%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+    }
+  
+    & .attached__list{
+      gap: 0.5rem;
+    }
+  
+    & .attached__measure__content{
+      padding: 0.5rem 1rem;
+    }
+  
+    & .scene__table__container{
+      justify-content: flex-start;
+      justify-content: center;
+  
+      & .scene__table{
+        margin: 0;
+      }
+    }
+  
+    & .article__color__base:first-child{
+      flex-direction: column;
+    }
+
+    & .options__step__3.options__table.table__material__color{
+
+      & .scene__table__accesory{
+        padding-bottom: 0;
+      }
+
+      & .choose__accesory__options{
+
+        & .choose__accesory__options__content{
+  
+          & .accesory__material {
+            
+            & .accesory__card__content{
+              flex-direction: row;
+
+              & .accesory__card__material__element{
+                min-width: unset;
+              }
+            }
+          }
+
+          & .accesory__type{
+
+            & .accesory__type__content {
+
+              & .accesory__type__btns{
+                flex-direction: row;
+                width: 80%;
+                margin-inline: auto;
+
+                & .accesory__btn {
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#{{ section.id }} [data-item=button] > *,
+#{{ section.id }} [data-item=inverted-button] > *,
+#{{ section.id }} [data-item=inverted-secondary-button] > *,
+#{{ section.id }} [data-item=secondary-button] > *,
+#{{ section.id }} button,
+#{{ section.id }} input[type=button],
+#{{ section.id }} input[type=reset],
+#{{ section.id }} input[type=submit] {
+     line-height: 0 !important; 
+}
+
+
+
+
+</style>
+
+<section style="margin-top: 2rem !important; margin-bottom: 2rem !important;" class="section__calculator section__calculator__form"  id="{{ section.id }}">
+  <section class="section__calculator__content step-1">
+    <!-- Barra de estado -->
+    <section class="section__main section__status-bar">
+      <div class="status__bar__principal container">
+        <div class="status__bar__container">
+          <div class="status__content status__content--active">
+            <span class="status__text">Basic Pergola Setup</span>
+            <span class="flex-c-c status__count">1</span>
+          </div>
+          <div class="status__content">
+            <span class="status__text">Design Preferences</span>
+            <span class="flex-c-c status__count">2</span>
+          </div>
+          <div class="status__content">
+            <span class="status__text">Screen Options</span>
+            <span class="flex-c-c status__count">3</span>
+          </div>
+          <div class="status__content">
+            <span class="status__text">Climate Control Options</span>
+            <span class="flex-c-c status__count">4</span>
+          </div>
+          <div class="status__content status__content--last">
+            <span class="status__text">Resume</span>
+            <span class="flex-c-c status__count">5</span>
+          </div>
+          <div class="status__bar status__step-1"></div>
+        </div>
+      </div>
+    </section>
+    <!-- Formulario de diseño -->
+    <section class="section__main section__design">
+      <div class="design__container container">
+        <div class="design__content">
+          <form class="form form__design">
+
+            <!-- Inicio de la sección 1 -->
+            <section class="section__form section__form--1" id="form-1">
+              <div class="form__title">
+                <h2>What are the dimensions of your pergola?</h2>
+                <div class="form__title__svg">
+                  {% render 'c-interrogation' %}
+                </div>
+              </div>
+              <div class="form__options">
+                <article class="form__article">
+                  <div class="flex-c-c scene__table__container">
+                    <div class="scene__table">
+                      <div class="table">
+                        <div class="table__top">
+                          <div class="side edge edge__top side__length"></div>
+                          <div class="side edge edge__right side__depth"></div>
+                          <div class="side edge edge__bottom side__length"></div>
+                          <div class="side edge edge__left side__depth"></div>
+                        </div>
+                        <div class="table__legs">
+                          <div class="side leg leg__front__left side__height"></div>
+                          <div class="side leg leg__front__right side__height"></div>
+                          <div class="side leg leg__back__left side__height"></div>
+                          <div class="side leg leg__back__right side__height"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form__info">
+                    <div class="form__btns btns__group--bg form__btns__measure">
+                      <label for="input-radio-measure-feet" class="label__action__btn action__btn btn__bg btn__measure measure__feet action__btn--selected">Feet</label>
+                      <input type="radio" name="measure" id="input-radio-measure-feet" class="input__radio__btn input__radio input__radio__measure" value="feet" checked/>
+                      <label for="input-radio-measure-inch" class="label__action__btn action__btn btn__bg btn__measure measure__inch">Inch</label>
+                      <input type="radio" name="measure" id="input-radio-measure-inch" class="input__radio__btn input__radio input__radio__measure" value="inch" />
+                    </div>
+                    <div class="form__inputs">
+                      <div class="input__bg">
+                        <article class="input__container">
+                          <div class="input__content">
+                            <label for="input-length" class="label__input">Length</label>
+                            <div class="input__measure">
+                              <input type="number" name="length" class="form__input input__unit__text" data-mesurance="length" id="input-length" placeholder="x" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                              <span class="input__unit">feet</span>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                      <div class="input__bg">
+                        <article class="input__container">
+                          <div class="input__content">
+                            <label for="input-depth" class="label__input">Depth</label>
+                            <div class="input__measure">
+                              <input type="number" name="depth" class="form__input input__unit__text" data-mesurance="depth" id="input-depth" placeholder="x" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                              <span class="input__unit">feet</span>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                      <div class="input__bg">
+                        <article class="input__container">
+                          <div class="input__content">
+                            <label for="input-height" class="label__input">Height</label>
+                            <div class="input__measure">
+                              <input type="number" name="height" class="form__input input__unit__text" data-mesurance="height" id="input-height" placeholder="x" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                              <span class="input__unit">feet</span>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                      <div class="alert__recomendation">
+                        <div class="alert__container">
+                          <div class="alert__title">
+                            <div class="alert__svg">
+                              <svg class="alert__svg__icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff">
+                                <path
+                                  d="M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                              </svg>
+                            </div>
+                            <h4 class="alert__title__text">Recommended Height</h4>
+                          </div>
+                          <div class="alert__paragraph">
+                            <p class="paragraph__text">
+                              Height measures the total height, not the internal clearance. 8' to 10' is recommended. Max height can be 140" or 11.67'.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+                <article class="form__article">
+                  <div class="form__input__checkbox">
+                    <input type="checkbox" id="input-checkbox-form-contact" class="input__checkbox" />
+                    <label for="input-checkbox-form-contact" class="label__input">I have an irregular shape on mind</label>
+                  </div>
+                </article>
+                <article class="form__article" id="form-footer-1">
+                  <div class="election__contact">
+                    <div class="election__contact__container">
+                      <div class="election__contact__content">
+                        <div class="contact__title">
+                          <h3 class="contact__title__text">Let's talk about your design idea</h3>
+                        </div>
+                        <div class="contact__btn">
+                          <a href="#" class="action__btn btn__contact action__btn--selected">Book a Call</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="election__pergola element--show">
+                    <div class="election__container">
+                      <div class="election__content">
+                        <div class="election__title">
+                          <h3 class="election__title__text">Is your pergola going to be freestanding or attached?</h3>
+                          <div class="election__title__svg">
+                            <svg class="election__title__svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+                          </div>
+                        </div>
+                        <div class="election__btns btns__group--bg form__btns">
+                          <label for="input-radio-freestanding" class="label__action__btn action__btn btn__bg btn__freestanding action__btn--selected">Freestanding</label>
+                          <input type="radio" name="pergolaType" id="input-radio-freestanding" class="input__radio__btn input__radio input__radio__freestanding" value="freestanding" checked data-election="freestanding" />
+                          <label for="input-radio-attached" class="label__action__btn action__btn btn__bg btn__attached">Attached</label>
+                          <input type="radio" name="pergolaType" id="input-radio-attached" class="input__radio__btn input__radio input__radio__attached" value="attached" data-election="attached" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="election__attached">
+                    <div class="election__attached__container">
+                      <article class="election__attached__content">
+                        <div class="attached__title">
+                          <span class="text__clean">Which side(s) will attach?</span>
+                        </div>
+                        <div class="attached__content">
+                          <div class="attached__table">
+                            <div class="flex-c-c scene__table__container">
+                              <div class="scene__table">
+                                <div class="table">
+                                  <div class="table__top">
+                                    <div class="side edge edge__top side__length"></div>
+                                    <div class="side edge edge__right side__depth"></div>
+                                    <div class="side edge edge__bottom side__length"></div>
+                                    <div class="side edge edge__left side__depth"></div>
+                                  </div>
+                                  <div class="table__legs">
+                                    <div class="side leg leg__front__left side__height"></div>
+                                    <div class="side leg leg__front__right side__height"></div>
+                                    <div class="side leg leg__back__left side__height"></div>
+                                    <div class="side leg leg__back__right side__height"></div>
+                                  </div>
+                                  <div class="flex-c-c table__attached table__attached__a1">A1</div>
+                                  <div class="flex-c-c table__attached table__attached__a2">A2</div>
+                                  <div class="flex-c-c table__attached table__attached__b1">B1</div>
+                                  <div class="flex-c-c table__attached table__attached__b2">B2</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="attached__measures">
+                            <div class="attached__measures__container">
+                              <div class="attached__measures__content">
+                                <ul class="attached__list">
+                                  <li class="attached__measure">
+                                    <div class="bg__gradient">
+                                      <div class="attached__measure__content">
+                                        <input type="checkbox" name="attached-a1" id="input-measure-a1" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="a1">
+                                        <label for="input-measure-a1" class="label__input">A1 = <span class="measure__attached__a1">0 </span><span class="measure__attached__a1--measure attached__measure--text"> feet</span></label>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <li class="attached__measure">
+                                    <div class="bg__gradient">
+                                      <div class="attached__measure__content">
+                                        <input type="checkbox" name="attached-a2" id="input-measure-a2" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="a2">
+                                        <label for="input-measure-a2" class="label__input">A2 = <span class="measure__attached__a2">0 </span><span class="measure__attached__a2--measure attached__measure--text"> feet</span></label>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <li class="attached__measure">
+                                    <div class="bg__gradient">
+                                      <div class="attached__measure__content">
+                                        <input type="checkbox" name="attached-b1" id="input-measure-b1" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="b1">
+                                        <label for="input-measure-b1" class="label__input">B1 = <span class="measure__attached__b1">0 </span><span class="measure__attached__b1--measure attached__measure--text"> feet</span></label>
+                                      </div>
+                                    </div>
+                                  </li>
+                                  <li class="attached__measure">
+                                    <div class="bg__gradient">
+                                      <div class="attached__measure__content">
+                                        <input type="checkbox" name="attached-b2" id="input-measure-b2" class="input__form input__form--checkbox input__checkbox__attached__measure" data-attached="b2">
+                                        <label for="input-measure-b2" class="label__input">B2 = <span class="measure__attached__b2">0 </span><span class="measure__attached__b2--measure attached__measure--text"> feet</span></label>
+                                      </div>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </article>
+                    </div>
+                  </div>
+                  <div class="form__article form__footer form__btns__footer element--show">
+                    <div class="btns__footer__container">
+                      <div class="btns__footer__content btns__group--bg">
+                        <button type="button" class="action__btn btn__bg btn__footer action__btn-form-previous" id="btn-form-previous-1">Previous</button>
+                        <button type="button" class="action__btn btn__bg btn__footer action__btn--selected action__btn-form-continue" id="btn-form-continue-1">Continue</button>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
+            <!-- Fin de la sección 1 -->
+            <!-- Fin de la sección 1 -->
+
+            <!-- Inicio de la sección 2 -->
+            <section class="section__form section__form--2" id="form-2">
+              <div class="form__options">
+                <section class="section__color__select">
+                  <article class="form__article article__color__base">
+                    <div class="color__base__container">
+                      <div class="form__title">
+                        <h2>What color would you like the structure of your pergola to be?</h2>
+                        <div class="form__title__svg">
+                          <svg
+                            class="form__title__icon"
+                            width="24px"
+                            height="24px"
+                            viewBox="0 -960 960 960"
+                            fill="#fff">
+                              <path
+                                d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"
+                              />
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="color__base__content">
+                        <div class="color__select__container">
+                          <label for="input-radio-color-white" class="label__form label__color__pergola color__select__content color__white" data-color="#fff">
+                            <article class="color__content">
+                              <span class="span__color">Traffic White</span>
+                              <div class="color__icon"></div>
+                              <span class="color__code">RAL-9016</span>
+                            </article>
+                          </label>
+                          <input type="radio" name="color-pergola" id="input-radio-color-white" class="input__radio__color input__radio__btn input__radio__white" value="#ffffff" />
+                          <label for="input-radio-color-black" class="label__form label__color__pergola color__select__content color__black color--selected" data-color="#000">
+                            <article class="color__content">
+                              <span class="span__color">Jet Black</span>
+                              <div class="color__icon"></div>
+                              <span class="color__code">RAL-9005</span>
+                            </article>
+                          </label>
+                          <input type="radio" name="color-pergola" id="input-radio-color-black" class="input__radio__color input__radio__btn input__radio__black" value="#000000" checked />
+                          <label for="input-radio-color-grey" class="label__form label__color__pergola color__select__content color__grey" data-color="#555">
+                            <article class="color__content">
+                              <span class="span__color">Anthracite Grey</span>
+                              <div class="color__icon"></div>
+                              <span class="color__code">RAL-7016</span>
+                            </article>
+                          </label>
+                          <input type="radio" name="color-pergola" id="input-radio-color-grey" class="input__radio__color input__radio__btn input__radio__grey" value="#555555" />
+                          <label for="input-radio-color-pergola-custom" class="label__form label__color__pergola color__select__content custom__color" data-color>
+                            <article class="color__content">
+                              <div class="flex-c-c custom__color__bg">
+                                <div class="color__icon custom__color__circle">
+                                  <div class="circle__color"></div>
+                                </div>
+                              </div>
+                              <div class="custom__color__container">
+                                <input type="color" name="custom-color-pergola" id="color-picker-pergola" class="input__color color__picker" />
+                                <label for="color-picker" class="label__color color__code">Custom</label>
+                              </div>
+                            </article>
+                          </label>
+                          <input type="radio" name="color-pergola" id="input-radio-color-pergola-custom" class="input__radio__color input__radio__btn input__radio__custom" value="custom" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="scene__table__color">
+                      <div class="table__color__container">
+                        <article class="table__color">
+                          <div class="scene__table">
+                            <div class="table">
+                              <div class="table__top">
+                                <div class="side edge side__color edge__top side__length" style="background-color: rgb(0, 0, 0);"></div>
+                                <div class="side edge side__color edge__right side__depth" style="background-color: rgb(0, 0, 0);"></div>
+                                <div class="side edge side__color edge__bottom side__length" style="background-color: rgb(0, 0, 0);"></div>
+                                <div class="side edge side__color edge__left side__depth" style="background-color: rgb(0, 0, 0);"></div>
+                              </div>
+                              <div class="table__legs">
+                                <div class="side leg side__color leg__front__left side__height" style="background-color: rgb(0, 0, 0);"></div>
+                                <div class="side leg side__color leg__front__right side__height" style="background-color: rgb(0, 0, 0);"></div>
+                                <div class="side leg side__color leg__back__left side__height" style="background-color: rgb(0, 0, 0);"></div>
+                                <div class="side leg side__color leg__back__right side__height" style="background-color: rgb(0, 0, 0);"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                      <div class="input__checkbox__color">
+                        <div class="checkbox__color__container">
+                          <input checked type="checkbox" id="input-checkbox-color" class="input__checkbox__color" name="same-color-louvers-pergola">
+                          <label for="input-checkbox-color" class="label__input">I want the louvers to be the same color</label>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="form__article article__color__louvers">
+                    <div class="color__base__container color__louver__container">
+                      <div class="color__louvers__title">
+                        <h2 class="louver__title">And what color would you like the louvers to be?</h2>
+                        <div class="color__louvers__title__svg">
+                          <svg class="form__title__icon" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff">
+                            <path d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+                          </svg>
+                        </div>
+                      </div>
+                      <div class="color__base__content">
+                        <div class="color__select__container">
+                          <label for="input-radio-color-louver-white" class="label__form label__color__louver color__select__content color__white" data-color="#fff">
+                            <article class="color__content">
+                              <span class="span__color">Traffic White</span>
+                              <div class="color__icon"></div>
+                              <span class="color__code">RAL-9016</span>
+                            </article>
+                          </label>
+                          <input type="radio" name="color-louver" id="input-radio-color-louver-white" class="input__radio__btn input__radio__color input__radio__black" value="#ffffff" />
+                          <label for="input-radio-color-louver-black" class="label__form label__color__louver color__select__content color__black color--selected" data-color="#000">
+                            <article class="color__content">
+                              <span class="span__color">Jet Black</span>
+                              <div class="color__icon"></div>
+                              <span class="color__code">RAL-9005</span>
+                            </article>
+                          </label>
+                          <input type="radio" name="color-louver" id="input-radio-color-louver-black" class="input__radio__color input__radio__btn input__radio__black" value="#000000" checked />
+                          <label for="input-radio-color-louver-grey" class="label__form label__color__louver color__select__content color__grey" data-color="#555">
+                            <article class="color__content">
+                              <span class="span__color">Anthracite Grey</span>
+                              <div class="color__icon"></div>
+                              <span class="color__code">RAL-7016</span>
+                            </article>
+                          </label>
+                          <input type="radio" name="color-louver" id="input-radio-color-louver-grey" class="input__radio__color input__radio__btn input__radio__grey" value="#555555" />
+                          <label for="input-radio-color-louver-custom" class="label__form label__color__louver color__select__content custom__color" data-color>
+                            <article class="color__content">
+                              <div class="flex-c-c custom__color__bg">
+                                <div class="color__icon custom__color__circle">
+                                  <div class="circle__color"></div>
+                                </div>
+                              </div>
+                              <div class="custom__color__container">
+                                <input type="color" name="custom-color-louver" id="color-picker-louver" class="input__color color__picker" />
+                                <label for="color-picker" class="label__color color__code">Custom</label>
+                              </div>
+                            </article>
+                          </label>
+                          <input type="radio" name="color-louver" id="input-radio-color-louver-custom" class="input__radio__color input__radio__btn input__radio__custom" value="custom" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="scene__table__color">
+                      <div class="table__color__container">
+                        <article class="table__color">
+                          <div class="scene__table">
+                            <div class="table">
+                              <div class="table__top">
+                                <div class="side edge side__color edge__top side__length" style="background-color: rgb(0, 0, 0);"></div>
+                                <div class="side edge side__color edge__right side__depth" style="background-color: rgb(0, 0, 0);"></div>
+                                <div class="side edge side__color edge__bottom side__length" style="background-color: rgb(0, 0, 0);"></div>
+                                <div class="side edge side__color edge__left side__depth" style="background-color: rgb(0, 0, 0);"></div>
+                                <div class="louvers">
+                                  <div class="louver louver__color louver__one" style="background-color: rgb(0, 0, 0);"></div>
+                                  <div class="louver louver__color louver__two" style="background-color: rgb(0, 0, 0);"></div>
+                                  <div class="louver louver__color louver__three" style="background-color: rgb(0, 0, 0);"></div>
+                                  <div class="louver louver__color louver__four" style="background-color: rgb(0, 0, 0);"></div>
+                                  <div class="louver louver__color louver__five" style="background-color: rgb(0, 0, 0);"></div>
+                                  <div class="louver louver__color louver__six" style="background-color: rgb(0, 0, 0);"></div>
+                                </div>
+                              </div>
+                              <div class="table__legs">
+                                <div class="side leg side__color leg__front__left side__height" style="background-color: rgb(0, 0, 0);"></div>
+                                <div class="side leg side__color leg__front__right side__height" style="background-color: rgb(0, 0, 0);"></div>
+                                <div class="side leg side__color leg__back__left side__height" style="background-color: rgb(0, 0, 0);"></div>
+                                <div class="side leg side__color leg__back__right side__height" style="background-color: rgb(0, 0, 0);"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                  </article>
+                </section>
+                <article class="form__article form__footer form__btns__footer element--show" id="form-footer-2">
+                  <div class="form__btns__footer">
+                    <div class="btns__footer__container">
+                      <div class="btns__footer__content btns__group--bg">
+                        <button type="button" class="action__btn btn__bg btn__footer action__btn-form-previous" id="btn-form-previous-2">Previous</button>
+                        <button type="button" class="action__btn btn__bg btn__footer action__btn--selected action__btn-form-continue" id="btn-form-continue-2">Continue</button>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </section>
+            <!-- Fin de la sección 2 -->
+
+            <!-- Inicio de la sección 3 -->
+            <section class="section__form section__form--3" id="form-3">
+              <div class="form__options">
+                <div class="options__step__3 options__table table__material__color">
+                  <section class="scene__table__accesory">
+                    <div class="accesory__table__container">
+                      <div class="scene__table">
+                        <div class="table">
+                          <div class="table__top">
+                            <div class="side edge edge__top side__length"></div>
+                            <div class="side edge edge__right side__depth"></div>
+                            <div class="side edge edge__bottom side__length"></div>
+                            <div class="side edge edge__left side__depth"></div>
+                          </div>
+                          <div class="table__legs">
+                            <div class="side leg leg__front__left side__height"></div>
+                            <div class="side leg leg__front__right side__height"></div>
+                            <div class="side leg leg__back__left side__height"></div>
+                            <div class="side leg leg__back__right side__height"></div>
+                          </div>
+                          <div class="flex-c-c table__attached table__attached__a1">A1</div>
+                          <div class="flex-c-c table__attached table__attached__a2">A2</div>
+                          <div class="flex-c-c table__attached table__attached__b1">B1</div>
+                          <div class="flex-c-c table__attached table__attached__b2">B2</div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <section class="section__accesory">
+                    <div class="accesory__container">
+                      <div class="accesory__content">
+                        <article class="choose__accesory choose__accesory--a1">
+                          <div class="choose__accesory__container">
+
+                            <!-- Accesorio A1 -->
+                          <div class="choose__accesory__content">
+                            <article class="choose__header choose__header--active">
+                              <div class="choose__header__container">
+                                <div class="choose__header__content">
+                                  <h3 class="choose__side">{{ section.settings.title_a1 }}</h3>
+                                  <div class="choose__btn">
+                                    <span class="choose__header__span">{{ section.settings.accessory_text }}</span>
+                                    <div class="choose__header__btn">
+                                      <figure class="choose__header__figure">
+                                        {% render 'c-play-icon' %}
+                                      </figure>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                            <article class="choose__accesory__options">
+                              <div class="choose__accesory__options__container">
+                                <div class="choose__accesory__options__content">
+                                  <article class="accesory__material">
+                                    <div class="accesory__cards__container">
+                                      <div class="accesory__card__content">
+                                        <label for="input-radio-material-private-a1" class="label__form accesory__card__material__element accesory__material__private accesory__element--selected" data-material="private">
+                                          <figure class="accesory__material__figure">
+                                            <img src="{{ section.settings.image_private | img_url: 'medium' }}" alt="{{ section.settings.material_private }}" alt="" class="accesory__material__img">
+                                          </figure>
+                                          <span class="accesory__material__span">{{ section.settings.material_private }}</span>
+                                        </label>
+                                        <input type="radio" name="material-pergola-a1" id="input-radio-material-private-a1" class="input__radio input__radio__btn" value="private" checked />
+                                        <label for="input-radio-material-glass-a1" class="label__form accesory__card__material__element accesory__material__glass" data-material="glass">
+                                          <figure class="accesory__material__figure">
+                                            <img  src="{{ section.settings.image_glass | img_url: 'medium' }}" alt="{{ section.settings.material_glass }}" class="accesory__material__img">
+                                          </figure>
+                                          <span class="accesory__material__span">{{ section.settings.material_glass }}</span>
+                                        </label>
+                                        <input type="radio" name="material-pergola-a1" id="input-radio-material-glass-a1" class="input__radio input__radio__btn" value="glass" />
+                                        <label for="input-radio-material-aluminium-a1" class="label__form accesory__card__material__element accesory__material__aliminium" data-material="aluminium">
+                                          <figure class="accesory__material__figure">
+                                            <img src="{{ section.settings.image_aluminium | img_url: 'medium' }}" alt="{{ section.settings.material_aluminium }}" class="accesory__material__img">
+                                          </figure>
+                                          <span class="accesory__material__span">{{ section.settings.material_aluminium }}</span>
+                                        </label>
+                                        
+                                        <input type="radio" name="material-pergola-a1" id="input-radio-material-glass-a1" class="input__radio input__radio__btn" value="glass" />
+                                        <label for="input-radio-material-aluminium-a1" class="label__form accesory__card__material__element accesory__material__aliminium" data-material="aluminium">
+                                          <figure class="accesory__material__figure">
+                                            <img src="{{ section.settings.image_aluminium | img_url: 'medium' }}" alt="{{ section.settings.material_aluminium }}" class="accesory__material__img">
+                                          </figure>
+                                          <span class="accesory__material__span">{{ section.settings.material_aluminium }}</span>
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </article>
+                                  <article class="accesory__options accesory__options__1">
+                                    <div class="accesory__card accesory__card__color accesory__private group__private group element--show" data-group="private">
+                                      <div class="accesory__card__container accesory__card__color__container">
+
+                                        <!-- Cards de colores -->
+                                        <label for="input-radio-color-private-d0ccc0-a1" class="label__form accesory__card__color__content accesory__element--selected">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Soft Sand</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #d0ccc0;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a1" id="input-radio-color-private-d0ccc0-a1" class="input__radio input__radio__btn" value="#d0ccc0" checked />
+
+                                        <label for="input-radio-color-private-c5c4bb-a1" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Mist Gray</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #c5c4bb;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a1" id="input-radio-color-private-c5c4bb-a1" class="input__radio input__radio__btn" value="#c5c4bb" />
+
+                                        <label for="input-radio-color-private-9a9b93-a1" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Lemon Grass</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #9a9b93;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a1" id="input-radio-color-private-9a9b93-a1" class="input__radio input__radio__btn" value="#9a9b93" />
+
+                                        <label for="input-radio-color-private-201b1b-a1" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Cold Gray</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #201b1b;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a1" id="input-radio-color-private-201b1b-a1" class="input__radio input__radio__btn" value="#201b1b" />
+
+                                        <label for="input-radio-color-private-d6d2ca-a1" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Timberwolf</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #d6d2ca;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a1" id="input-radio-color-private-d6d2ca-a1" class="input__radio input__radio__btn" value="#d6d2ca" />
+
+                                        <label for="input-radio-color-private-293133-a1" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Jet Black</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #293133;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-7016</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a1" id="input-radio-color-private-293133-a1" class="input__radio input__radio__btn" value="#293133" />
+
+                                        <label for="input-radio-color-private-cfc4b0-a1" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Soft Amber</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #cfc4b0;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a1" id="input-radio-color-private-cfc4b0-a1" class="input__radio input__radio__btn" value="#cfc4b0" />
+
+                                        <label for="input-radio-color-private-82857f-a1" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Bitter</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #82857f;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a1" id="input-radio-color-private-82857f-a1" class="input__radio input__radio__btn" value="#82857f" />
+
+                                      </div>
+                                    </div>
+                                    <div class="accesory__type accesory__glass group__glass group" data-group="glass">
+                                      <div class="accesory__type__container">
+                                        <div class="accesory__type__content">
+                                          <div class="accesory__type__btns form__btns btns__group--bg">
+                                            <label for="input-radio-glass-fixed-a1" class="label__action__btn action__btn btn__bg btn__glass glass__fixed action__btn--selected">Fixed</label>
+                                            <input type="radio" name="glass-type-a1" id="input-radio-glass-fixed-a1" class="input__radio__btn input__radio" value="fixed" />
+                                            <label for="input-radio-glass-sliding-a1" class="label__action__btn action__btn btn__bg btn__sliding glass__sliding">Sliding</label>
+                                            <input type="radio" name="glass-type-a1" id="input-radio-glass-sliding-a1" class="input__radio__btn input__radio" value="sliding" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="accesory__type accesory__aluminium group__aluminium group" data-group="aluminium">
+                                      <div class="accesory__type__container">
+                                        <div class="accesory__type__content">
+                                          <div class="accesory__type__btns form__btns btns__group--bg">
+                                            <label for="input-radio-aluminium-fixed-a1" class="label__action__btn action__btn btn__bg btn__aluminium aluminium__fixed action__btn--selected">Fixed</label>
+                                            <input type="radio" name="aluminium-type-a1" id="input-radio-aluminium-fixed-a1" class="input__radio__btn input__radio" value="fixed" />
+                                            <label for="input-radio-aluminium-sliding-a1" class="label__action__btn action__btn btn__bg btn__sliding aluminium__sliding">Sliding</label>
+                                            <input type="radio" name="aluminium-type-a1" id="input-radio-aluminium-sliding-a1" class="input__radio__btn input__radio" value="sliding" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                              
+                                  </article>
+                                </div>
+                              </div>
+                            </article>
+                          </div>
+                            <!-- Accesorio A1 -->
+
+                            <!-- Accesorio A2 -->
+                            <div class="choose__accesory__content">
+                            <article class="choose__header choose__header--active">
+                              <div class="choose__header__container">
+                                <div class="choose__header__content">
+                                  <h3 class="choose__side">{{ section.settings.title_a2 }}</h3>
+                                  <div class="choose__btn">
+                                    <span class="choose__header__span">{{ section.settings.accessory_text_02 }}</span>
+                                    <div class="choose__header__btn">
+                                      <figure class="choose__header__figure">
+                                        {% render 'c-play-icon' %}
+                                      </figure>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                            <article class="choose__accesory__options">
+                              <div class="choose__accesory__options__container">
+                                <div class="choose__accesory__options__content">
+                                  <article class="accesory__material">
+                                    <div class="accesory__cards__container">
+                                      <div class="accesory__card__content">
+                                        <label for="input-radio-material-private-a2" class="label__form accesory__card__material__element accesory__material__private accesory__element--selected" data-material="private">
+                                          <figure class="accesory__material__figure">
+                                            <img src="{{ section.settings.image_private | img_url: 'medium' }}" alt="{{ section.settings.material_private }}" class="accesory__material__img">
+                                          </figure>
+                                          <span class="accesory__material__span">{{ section.settings.material_private }}</span>
+                                        </label>
+                                        <input type="radio" name="material-pergola-a2" id="input-radio-material-private-a2" class="input__radio input__radio__btn" value="private" checked />
+                                        <label for="input-radio-material-glass-a2" class="label__form accesory__card__material__element accesory__material__glass" data-material="glass">
+                                          <figure class="accesory__material__figure">
+                                            <img src="{{ section.settings.image_glass | img_url: 'medium' }}" alt="{{ section.settings.material_glass }}" class="accesory__material__img">
+                                          </figure>
+                                          <span class="accesory__material__span">{{ section.settings.material_glass }}</span>
+                                        </label>
+                                        <input type="radio" name="material-pergola-a2" id="input-radio-material-glass-a2" class="input__radio input__radio__btn" value="glass" />
+                                        <label for="input-radio-material-aluminium-a2" class="label__form accesory__card__material__element accesory__material__aliminium" data-material="aluminium">
+                                          <figure class="accesory__material__figure">
+                                            <img src="{{ section.settings.image_aluminium | img_url: 'medium' }}" alt="{{ section.settings.material_aluminium }}" class="accesory__material__img">
+                                          </figure>
+                                          <span class="accesory__material__span">{{ section.settings.material_aluminium }}</span>
+                                        </label>
+                                        <input type="radio" name="material-pergola-a2" id="input-radio-material-aluminium-a2" class="input__radio input__radio__btn" value="aluminium" />
+                                      </div>
+                                    </div>
+                                  </article>
+                                  <article class="accesory__options accesory__options__2">
+                                    <div class="accesory__card accesory__card__color accesory__private group__private group element--show" data-group="private">
+                                      <div class="accesory__card__container accesory__card__color__container">
+
+                                        <!-- Cards de colores -->
+                                        <label for="input-radio-color-private-d0ccc0-a2" class="label__form accesory__card__color__content accesory__element--selected">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Soft Sand</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #d0ccc0;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a2" id="input-radio-color-private-d0ccc0-a2" class="input__radio input__radio__btn" value="#d0ccc0" checked />
+
+                                        <label for="input-radio-color-private-c5c4bb-a2" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Mist Gray</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #c5c4bb;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a2" id="input-radio-color-private-c5c4bb-a2" class="input__radio input__radio__btn" value="#c5c4bb" />
+
+                                        <label for="input-radio-color-private-9a9b93-a2" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Lemon Grass</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #9a9b93;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a2" id="input-radio-color-private-9a9b93-a2" class="input__radio input__radio__btn" value="#9a9b93" />
+
+                                        <label for="input-radio-color-private-201b1b-a2" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Cold Gray</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #201b1b;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a2" id="input-radio-color-private-201b1b-a2" class="input__radio input__radio__btn" value="#201b1b" />
+
+                                        <label for="input-radio-color-private-d6d2ca-a2" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Timberwolf</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #d6d2ca;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a2" id="input-radio-color-private-d6d2ca-a2" class="input__radio input__radio__btn" value="#d6d2ca" />
+
+                                        <label for="input-radio-color-private-293133-a2" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Jet Black</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #293133;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-7016</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a2" id="input-radio-color-private-293133-a2" class="input__radio input__radio__btn" value="#293133" />
+
+                                        <label for="input-radio-color-private-cfc4b0-a2" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Soft Amber</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #cfc4b0;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a2" id="input-radio-color-private-cfc4b0-a2" class="input__radio input__radio__btn" value="#cfc4b0" />
+
+                                        <label for="input-radio-color-private-82857f-a2" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Bitter</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #82857f;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-a2" id="input-radio-color-private-82857f-a2" class="input__radio input__radio__btn" value="#82857f" />
+
+                                      </div>
+                                    </div>
+                                    <div class="accesory__type accesory__glass group__glass group" data-group="glass">
+                                      <div class="accesory__type__container">
+                                        <div class="accesory__type__content">
+                                          <div class="accesory__type__btns form__btns btns__group--bg">
+                                            <label for="input-radio-glass-fixed-a2" class="label__action__btn action__btn btn__bg btn__glass glass__fixed action__btn--selected">Fixed</label>
+                                            <input type="radio" name="glass-type-a2" id="input-radio-glass-fixed-a2" class="input__radio__btn input__radio" value="fixed" />
+                                            <label for="input-radio-glass-sliding-a2" class="label__action__btn action__btn btn__bg btn__sliding glass__sliding">Sliding</label>
+                                            <input type="radio" name="glass-type-a2" id="input-radio-glass-sliding-a2" class="input__radio__btn input__radio" value="sliding" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="accesory__type accesory__aluminium group__aluminium group" data-group="aluminium">
+                                      <div class="accesory__type__container">
+                                        <div class="accesory__type__content">
+                                          <div class="accesory__type__btns form__btns btns__group--bg">
+                                            <label for="input-radio-aluminium-fixed" class="label__action__btn action__btn btn__bg btn__aluminium aluminium__fixed action__btn--selected">Fixed</label>
+                                            <input type="radio" name="aluminium-type-a2" id="input-radio-aluminium-fixed" class="input__radio__btn input__radio" value="fixed" />
+                                            <label for="input-radio-aluminium-sliding" class="label__action__btn action__btn btn__bg btn__sliding aluminium__sliding">Sliding</label>
+                                            <input type="radio" name="aluminium-type-a2" id="input-radio-aluminium-sliding" class="input__radio__btn input__radio" value="sliding" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </article>
+                                </div>
+                              </div>
+                            </article>
+                            </div>
+                            <!-- Accesorio A2 -->
+
+                            <!-- Accesorio B1 -->
+                            <div class="choose__accesory__content">
+                            <article class="choose__header choose__header--active">
+                              <div class="choose__header__container">
+                                <div class="choose__header__content">
+                                  <h3 class="choose__side">{{ section.settings.title_b1 }}</h3>
+                                  <div class="choose__btn">
+                                    <span class="choose__header__span">{{ section.settings.accessory_text_03 }}</span>
+                                    <div class="choose__header__btn">
+                                      <figure class="choose__header__figure">
+                                        {% render 'c-play-icon' %}
+                                      </figure>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                            <article class="choose__accesory__options">
+                              <div class="choose__accesory__options__container">
+                                <div class="choose__accesory__options__content">
+                                  <article class="accesory__material">
+                                    <div class="accesory__cards__container">
+                                      <div class="accesory__card__content">
+                                        <label for="input-radio-material-private-b1" class="label__form accesory__card__material__element accesory__material__private accesory__element--selected" data-material="private">
+                                          <figure class="accesory__material__figure">
+                                            <img src="{{ section.settings.image_private | img_url: 'medium' }}" alt="{{ section.settings.material_private }}" class="accesory__material__img">
+                                          </figure>
+                                          <span class="accesory__material__span">{{ section.settings.material_private }}</span>
+                                        </label>
+                                        <input type="radio" name="material-pergola-b1" id="input-radio-material-private-b1" class="input__radio input__radio__btn" value="private" checked />
+                                        <label for="input-radio-material-glass-b1" class="label__form accesory__card__material__element accesory__material__glass" data-material="glass">
+                                          <figure class="accesory__material__figure">
+                                            <img src="{{ section.settings.image_glass | img_url: 'medium' }}" alt="{{ section.settings.material_glass }}" class="accesory__material__img">
+                                          </figure>
+                                          <span class="accesory__material__span">{{ section.settings.material_glass }}</span>
+                                        </label>
+                                        <input type="radio" name="material-pergola-b1" id="input-radio-material-glass-b1" class="input__radio input__radio__btn" value="glass" />
+                                        <label for="input-radio-material-aluminium-b1" class="label__form accesory__card__material__element accesory__material__aliminium" data-material="aluminium">
+                                          <figure class="accesory__material__figure">
+                                            <img src="{{ section.settings.image_aluminium | img_url: 'medium' }}" alt="{{ section.settings.material_aluminium }}" class="accesory__material__img">
+                                          </figure>
+                                          <span class="accesory__material__span">{{ section.settings.material_aluminium }}</span>
+                                        </label>
+                                        <input type="radio" name="material-pergola-b1" id="input-radio-material-aluminium-b1" class="input__radio input__radio__btn" value="aluminium" />
+                                      </div>
+                                    </div>
+                                  </article>
+                                  <article class="accesory__options accesory__options__3">
+                                    <div class="accesory__card accesory__card__color accesory__private group__private group element--show" data-group="private">
+                                      <div class="accesory__card__container accesory__card__color__container">
+
+                                        <!-- Cards de colores -->
+                                        <label for="input-radio-color-private-d0ccc0-b1" class="label__form accesory__card__color__content accesory__element--selected">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Soft Sand</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #d0ccc0;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b1" id="input-radio-color-private-d0ccc0-b1" class="input__radio input__radio__btn" value="#d0ccc0" checked />
+
+                                        <label for="input-radio-color-private-c5c4bb-b1" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Mist Gray</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #c5c4bb;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b1" id="input-radio-color-private-c5c4bb-b1" class="input__radio input__radio__btn" value="#c5c4bb" />
+
+                                        <label for="input-radio-color-private-9a9b93-b1" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Lemon Grass</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #9a9b93;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b1" id="input-radio-color-private-9a9b93-b1" class="input__radio input__radio__btn" value="#9a9b93" />
+
+                                        <label for="input-radio-color-private-201b1b-b1" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Cold Gray</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #201b1b;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b1" id="input-radio-color-private-201b1b-b1" class="input__radio input__radio__btn" value="#201b1b" />
+
+                                        <label for="input-radio-color-private-d6d2ca-b1" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Timberwolf</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #d6d2ca;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b1" id="input-radio-color-private-d6d2ca-b1" class="input__radio input__radio__btn" value="#d6d2ca" />
+
+                                        <label for="input-radio-color-private-293133-b1" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Jet Black</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #293133;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-7016</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b1" id="input-radio-color-private-293133-b1" class="input__radio input__radio__btn" value="#293133" />
+
+                                        <label for="input-radio-color-private-cfc4b0-b1" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Soft Amber</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #cfc4b0;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b1" id="input-radio-color-private-cfc4b0-b1" class="input__radio input__radio__btn" value="#cfc4b0" />
+
+                                        <label for="input-radio-color-private-82857f-b1" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Bitter</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #82857f;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b1" id="input-radio-color-private-82857f-b1" class="input__radio input__radio__btn" value="#82857f" />
+
+                                      </div>
+                                    </div>
+                                    <div class="accesory__type accesory__glass group__glass group" data-group="glass">
+                                      <div class="accesory__type__container">
+                                        <div class="accesory__type__content">
+                                          <div class="accesory__type__btns form__btns btns__group--bg">
+                                            <label for="input-radio-glass-fixed-b1" class="label__action__btn action__btn btn__bg btn__glass glass__fixed action__btn--selected">Fixed</label>
+                                            <input type="radio" name="glass-type-b1" id="input-radio-glass-fixed-b1" class="input__radio__btn input__radio" value="fixed" />
+                                            <label for="input-radio-glass-sliding-b1" class="label__action__btn action__btn btn__bg btn__sliding glass__sliding">Sliding</label>
+                                            <input type="radio" name="glass-type-b1" id="input-radio-glass-sliding-b1" class="input__radio__btn input__radio" value="sliding" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="accesory__type accesory__aluminium group__aluminium group" data-group="aluminium">
+                                      <div class="accesory__type__container">
+                                        <div class="accesory__type__content">
+                                          <div class="accesory__type__btns form__btns btns__group--bg">
+                                            <label for="input-radio-aluminium-fixed-b1" class="label__action__btn action__btn btn__bg btn__aluminium aluminium__fixed action__btn--selected">Fixed</label>
+                                            <input type="radio" name="aluminium-type-b1" id="input-radio-aluminium-fixed-b1" class="input__radio__btn input__radio" value="fixed" />
+                                            <label for="input-radio-aluminium-sliding-b1" class="label__action__btn action__btn btn__bg btn__sliding aluminium__sliding">Sliding</label>
+                                            <input type="radio" name="aluminium-type-b1" id="input-radio-aluminium-sliding-b1" class="input__radio__btn input__radio" value="sliding" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </article>
+                                </div>
+                              </div>
+                            </article>
+                            </div>
+                            <!-- Accesorio B1 -->
+
+                            <!-- Accesorio B2 -->
+                            <div class="choose__accesory__content">
+                            <article class="choose__header choose__header--active">
+                              <div class="choose__header__container">
+                                <div class="choose__header__content">
+                                  <h3 class="choose__side">{{ section.settings.title_b2 }}</h3>
+                                  <div class="choose__btn">
+                                    <span class="choose__header__span">{{ section.settings.accessory_text_04 }}</span>
+                                    <div class="choose__header__btn">
+                                      <figure class="choose__header__figure">
+                                        {% render 'c-play-icon' %}
+                                      </figure>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </article>
+                            <article class="choose__accesory__options">
+                              <div class="choose__accesory__options__container">
+                                <div class="choose__accesory__options__content">
+                                  <article class="accesory__material">
+                                    <div class="accesory__cards__container">
+                                      <div class="accesory__card__content">
+                                        <label for="input-radio-material-private-b2" class="label__form accesory__card__material__element accesory__material__private accesory__element--selected" data-material="private">
+                                          <figure class="accesory__material__figure">
+                                            <img src="{{ section.settings.image_private | img_url: 'medium' }}" alt="{{ section.settings.material_private }}" class="accesory__material__img">
+                                          </figure>
+                                          <span class="accesory__material__span">{{ section.settings.material_private }}</span>
+                                        </label>
+                                        <input type="radio" name="material-pergola-b2" id="input-radio-material-private-b2" class="input__radio input__radio__btn" value="private" checked />
+                                        <label for="input-radio-material-glass-b2" class="label__form accesory__card__material__element accesory__material__glass" data-material="glass">
+                                          <figure class="accesory__material__figure">
+                                            <img src="{{ section.settings.image_glass | img_url: 'medium' }}" alt="{{ section.settings.material_glass }}" class="accesory__material__img">
+                                          </figure>
+                                          <span class="accesory__material__span">{{ section.settings.material_glass }}</span>
+                                        </label>
+                                        <input type="radio" name="material-pergola-b2" id="input-radio-material-glass-b2" class="input__radio input__radio__btn" value="glass" />
+                                        <label for="input-radio-material-aluminium-b2" class="label__form accesory__card__material__element accesory__material__aliminium" data-material="aluminium">
+                                          <figure class="accesory__material__figure">
+                                            <img src="{{ section.settings.image_aluminium | img_url: 'medium' }}" alt="{{ section.settings.material_aluminium }}" class="accesory__material__img">
+                                          </figure>
+                                          <span class="accesory__material__span">{{ section.settings.material_aluminium }}</span>
+                                        </label>
+                                        <input type="radio" name="material-pergola-b2" id="input-radio-material-aluminium-b2" class="input__radio input__radio__btn" value="aluminium" />
+                                      </div>
+                                    </div>
+                                  </article>
+                                  <article class="accesory__options accesory__options__4">
+                                    <div class="accesory__card accesory__card__color accesory__private group__private group element--show" data-group="private">
+                                      <div class="accesory__card__container accesory__card__color__container">
+
+                                        <!-- Cards de colores -->
+                                        <label for="input-radio-color-private-d0ccc0-b2" class="label__form accesory__card__color__content accesory__element--selected">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Soft Sand</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #d0ccc0;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b2" id="input-radio-color-private-d0ccc0-b2" class="input__radio input__radio__btn" value="#d0ccc0" checked />
+
+                                        <label for="input-radio-color-private-c5c4bb-b2" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Mist Gray</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #c5c4bb;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b2" id="input-radio-color-private-c5c4bb-b2" class="input__radio input__radio__btn" value="#c5c4bb" />
+
+                                        <label for="input-radio-color-private-9a9b93-b2" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Lemon Grass</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #9a9b93;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b2" id="input-radio-color-private-9a9b93-b2" class="input__radio input__radio__btn" value="#9a9b93" />
+
+                                        <label for="input-radio-color-private-201b1b-b2" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Cold Gray</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #201b1b;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b2" id="input-radio-color-private-201b1b-b2" class="input__radio input__radio__btn" value="#201b1b" />
+
+                                        <label for="input-radio-color-private-d6d2ca-b2" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Timberwolf</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #d6d2ca;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b2" id="input-radio-color-private-d6d2ca-b2" class="input__radio input__radio__btn" value="#d6d2ca" />
+
+                                        <label for="input-radio-color-private-293133-b2" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Jet Black</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #293133;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-7016</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b2" id="input-radio-color-private-293133-b2" class="input__radio input__radio__btn" value="#293133" />
+
+                                        <label for="input-radio-color-private-cfc4b0-b2" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Soft Amber</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #cfc4b0;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b2" id="input-radio-color-private-cfc4b0-b2" class="input__radio input__radio__btn" value="#cfc4b0" />
+
+                                        <label for="input-radio-color-private-82857f-b2" class="label__form accesory__card__color__content">
+                                          <div class="accesory__card__element">
+                                            <span class="color__span">Bitter</span>
+                                            <div class="color__icon__container">
+                                              <div class="color__icon color__mist__gray" style="--color-card: #82857f;"></div>
+                                            </div>
+                                            <span class="color__code">RAL-9005</span>
+                                          </div>
+                                        </label>
+                                        <input type="radio" name="color-material-private-b2" id="input-radio-color-private-82857f-b2" class="input__radio input__radio__btn" value="#82857f" />
+
+                                      </div>
+                                    </div>
+                                    <div class="accesory__type accesory__glass group__glass group" data-group="glass">
+                                      <div class="accesory__type__container">
+                                        <div class="accesory__type__content">
+                                          <div class="accesory__type__btns form__btns btns__group--bg">
+                                            <label for="input-radio-glass-fixed-b2" class="label__action__btn action__btn btn__bg btn__glass glass__fixed action__btn--selected">Fixed</label>
+                                            <input type="radio" name="glass-type-b2" id="input-radio-glass-fixed-b2" class="input__radio__btn input__radio" value="fixed" />
+                                            <label for="input-radio-glass-sliding-b2" class="label__action__btn action__btn btn__bg btn__sliding glass__sliding">Sliding</label>
+                                            <input type="radio" name="glass-type-b2" id="input-radio-glass-sliding-b2" class="input__radio__btn input__radio" value="sliding" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="accesory__type accesory__aluminium group__aluminium group" data-group="aluminium">
+                                      <div class="accesory__type__container">
+                                        <div class="accesory__type__content">
+                                          <div class="accesory__type__btns form__btns btns__group--bg">
+                                            <label for="input-radio-aluminium-fixed-b2" class="label__action__btn action__btn btn__bg btn__aluminium aluminium__fixed action__btn--selected">Fixed</label>
+                                            <input type="radio" name="aluminium-type-b2" id="input-radio-aluminium-fixed-b2" class="input__radio__btn input__radio" value="fixed" />
+                                            <label for="input-radio-aluminium-sliding-b2" class="label__action__btn action__btn btn__bg btn__sliding aluminium__sliding">Sliding</label>
+                                            <input type="radio" name="aluminium-type-b2" id="input-radio-aluminium-sliding-b2" class="input__radio__btn input__radio" value="sliding" />
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </article>
+                                </div>
+                              </div>
+                            </article>
+                            </div>
+                            <!-- Accesorio B2 -->
+
+                          </div>
+                        </article>
+                        <article class="form__article form__footer form__btns__footer element--show" id="form-footer-3">
+                          <div class="form__btns__footer element--show">
+                            <div class="btns__footer__container">
+                              <div class="btns__footer__content btns__group--bg">
+                                <button type="button" class="action__btn btn__bg btn__footer action__btn-form-previous" id="btn-form-previous-3">Previous</button>
+                                <button type="button" class="action__btn btn__bg btn__footer action__btn--selected action__btn-form-continue" id="btn-form-continue-3">Continue</button>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </section>
+            <!-- Fin de la sección 3 -->
+
+            <!-- Inicio de la sección 4 -->
+            <section class="section__form section__form--4" id="form-4">
+              <div class="form__options">
+                <div class="options__step__4 form__container__extras">
+                  <article class="form__article__extra">
+                    <section class="section__form__extra">
+                      <div class="form__extra">
+                        <div class="form__extra__title">
+                          <h2>Would you like to add a rain sensor to your pergola?</h2>
+                          <div class="form__extra__title__svg">
+                            {% render 'c-interrogation' %}
+                          </div>
+                        </div>
+                        <div class="form__extra__btns">
+                          <div class="btns__group--bg form__extra__btns__container form__btns">
+                            <label for="input-radio-rain-sensor-yes" class="label__form action__btn btn__bg btn__extra label__action__btn action__btn--selected">Yes</label>
+                            <input type="radio" name="sensor-rain" id="input-radio-rain-sensor-yes" class="input__radio__btn input__radio" value="yes" checked />
+                            <label for="input-radio-rain-sensor-no" class="label__form action__btn btn__bg btn__extra label__action__btn">No</label>
+                            <input type="radio" name="sensor-rain" id="input-radio-rain-sensor-no" class="input__radio__btn input__radio" value="no" />
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                    <section class="section__form__extra">
+                      <div class="form__extra">
+                        <div class="form__extra__container form__extra__long">
+                          <div class="form__extra__heaters">
+                            <div class="heater__container">
+                              <div class="heater__title">
+                                <h2 class="heater__title__text">How many heaters would you like to include in your pergola?</h2>
+                                <div class="heater__title__svg">
+                                  {% render 'c-interrogation' %}
+                                </div>
+                              </div>
+                              <div class="header__input__container">
+                                <div class="heater__input">
+                                  <label for="input-heater" class="label__form heater__label">Number of heaters</label>
+                                  <input type="text" name="heaters-count" class="form__input heater__input__count" id="input-heater" max="50" min="1" minlength="1" maxlength="2" placeholder="0" autocomplete="off" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form__extra__heaters__alert">
+                            <div class="heaters__alert__container">
+                              <div class="alert__title">
+                                <div class="alert__svg">
+                                  {% render 'c-exclamation-v2' %}
+                                </div>
+                                <h3 class="alert__title__text">Recommended Heater Placement</h3>
+                              </div>
+                              <div class="alert__paragraph">
+                                <p class="paragraph__text">
+                                  Based on your pergola's size, we recommend placing one heater per 100 square feet. This ensures even warmth and comfort throughout the space.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                    <section class="section__form__extra">
+                      <div class="form__extra">
+                        <div class="form__extra__title">
+                          <h2>Do you want to add a fan mounting beam?</h2>
+                          <div class="form__extra__title__svg">
+                            {% render 'c-interrogation' %}
+                          </div>
+                        </div>
+                        <div class="form__extra__btns">
+                          <div class="btns__group--bg form__extra__btns__container form__btns">
+                            <label for="input-radio-mounting-beam-yes" class="label__form action__btn btn__bg btn__extra label__action__btn action__btn--selected">Yes</label>
+                            <input type="radio" name="mounting-beam" id="input-radio-mounting-beam-yes" class="input__radio__btn input__radio" value="yes" checked />
+                            <label for="input-radio-mounting-beam-no" class="label__form action__btn btn__bg btn__extra label__action__btn">No</label>
+                            <input type="radio" name="mounting-beam" id="input-radio-mounting-beam-no" class="input__radio__btn input__radio" value="no" />
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+                  </article>
+                  <article class="form__article form__footer form__btns__footer element--show" id="form-footer-4">
+                    <div class="form__btns__footer">
+                      <div class="btns__footer__container">
+                        <div class="btns__footer__content btns__group--bg">
+                          <button type="button" class="action__btn btn__bg btn__footer action__btn-form-previous" id="btn-form-previous-4">Previous</button>
+                          <button type="button" class="action__btn btn__bg btn__footer action__btn--selected action__btn-form-continue" id="btn-form-continue-4">Continue</button>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </section>
+            <!-- Fin de la sección 4 -->
+
+            <!-- Inicio de la sección 5 -->
+            <section class="section__form section__form--5" id="form-5">
+              <div class="form__options">
+                <div class="options__step__5 form__container__resume">
+                  <article class="form__article__resume">
+                    <div class="resume__container">
+                      <section class="form__resume personal__information">
+                        <div class="form__resume__content">
+                          <h2 class="resume__title">Personal Information</h2>
+                          <div class="resume__inputs">
+                            <div class="resume__input">
+                              <label for="input-first-name" class="resume__label label__form">First Name</label>
+                              <input type="text" name="first-name" class="form__input form__input__first__name" id="input-first-name" autocomplete="new-password" />
+                            </div>
+                            <div class="resume__input">
+                              <label for="input-last-name" class="resume__label label__form">Last Name</label>
+                              <input type="text" name="last-name" class="form__input form__input__last__name" id="input-last-name" autocomplete="new-password" />
+                            </div>
+                            <div class="resume__input">
+                              <label for="input-email" class="resume__label label__form">Email</label>
+                              <input type="email" name="email" class="form__input form__input__email" id="input-email" autocomplete="new-password" />
+                            </div>
+                            <div class="resume__input">
+                              <label for="input-phone" class="resume__label label__form">Phone Number</label>
+                              <input type="text" name="phone-number" class="form__input form__input__first__name" id="input-phone" onkeypress="return event.charCode >= 48 && event.charCode <= 57" autocomplete="new-password" />
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      <section class="form__resume shipping__address">
+                        <div class="form__resume__content">
+                          <h2 class="resume__title">Shipping Address</h2>
+                          <div class="resume__inputs resume__inputs__shipping">
+                            <div class="shipping__line__1">
+                              <div class="inputs__shipping__container">
+                                <div class="resume__input">
+                                  <label for="input-address" class="resume__label label__form">Address</label>
+                                  <input type="text" name="shipping-address" class="form__input form__input__address" id="input-address" autocomplete="new-password" />
+                                </div>
+                                <div class="resume__input">
+                                  <label for="input-postal-code" class="resume__label label__form">Postal Code</label>
+                                  <input type="text" name="postal-code" class="form__input form__input__postal__code" id="input-postal-code" autocomplete="new-password" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="shipping__line__2">
+                              <div class="inputs__shipping__container">
+                                <div class="resume__input">
+                                  <label for="input-country" class="resume__label label__form">Country</label>
+                                  <input type="text" name="country" class="form__input form__input__country" id="input-country" autocomplete="new-password" />
+                                </div>
+                                <div class="resume__input">
+                                  <label for="input-city" class="resume__label label__form">City</label>
+                                  <input type="text" name="city" class="form__input form__input__city" id="input-city" autocomplete="new-password" />
+                                </div>
+                                <div class="resume__input">
+                                  <label for="input-state" class="resume__label label__form">State</label>
+                                  <input type="text" name="state" class="form__input form__input__state" id="input-state" autocomplete="new-password" />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      <section class="form__resume aditional__information">
+                        <div class="form__resume__content">
+                          <h2 class="resume__title">Is there any additional information?</h2>
+                          <div class="resume__inputs">
+                            <div class="resume__input">
+                              <label for="input-additional-information" class="resume__label label__form">Message</label>
+                              <textarea name="additional-information" id="input-additional-information" class="form__input form__input__additional__information" placeholder="Type your message"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </section>
+                      <section class="form__resume checkbox__terms">
+                        <div class="resume__checkbox">
+                          <input  type="checkbox" name="accept-terms" id="input-checkbox-terms" class="input__checkbox__terms">
+                          <label for="input-checkbox-terms" class="label__form">I accept the <a href="#" class="link__terms">terms</a></label>
+                        </div>
+                      </section>
+                    </div>
+                  </article>
+                  <article class="form__article form__footer element--show" id="form-footer-5">
+                    <div class="form__btns__footer">
+                      <div class="btns__footer__container">
+                        <div class="btns__footer__content btns__group--bg">
+                          <button type="button" class="action__btn btn__bg btn__footer action__btn-form-previous" id="btn-form-previous-5">Previous</button>
+                          <button type="submit" class="action__btn btn__bg btn__footer action__btn--selected action__btn-form-continue" id="btn-form-continue-5">Send Configuration</button>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </section>
+            <!-- Fin de la sección 5 -->
+
+            <!-- Ventana de alerta -->
+            <div class="alert__message" id="alert-message">
+              <div class="alert__message__container">
+                <p class="alert__message__text">
+                  Please fill out all required fields.
+                </p>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </section>
+  </section>
+</section>
+
+<script defer>
+  console.log("Corriendo en el puerto 5500");
+
+document.addEventListener("DOMContentLoaded", () => {
+  // DOM
+  const stepUno = document.querySelector(".step-1");
+  const sectionCalculatorForm = document.querySelector(".section__calculator__content");
+  const inputRadioBtns = document.querySelectorAll(".input__radio__btn"); 
+  const inputUnits = document.querySelectorAll(".input__unit");
+  const formInputs = document.querySelectorAll(".input__unit__text");
+  const sides = document.querySelectorAll(".side__color");
+  const btnsGroupBg = document.querySelectorAll(".btns__group--bg");
+  const btnsMeasure = document.querySelectorAll(".btn__measure");
+  const statusCount = document.querySelectorAll(".status__content");
+
+  const alertMessage = document.getElementById("alert-message");
+
+  const inputCheckboxContact = document.getElementById("input-checkbox-form-contact");
+  
+  const electionContact = document.querySelector(".election__contact");
+  const electionPergola = document.querySelector(".election__pergola");
+  const btnsFooter = document.querySelector(".form__btns__footer");
+
+  const attachedMeasures = document.querySelectorAll(".attached__measure__content");
+
+  const electionAttached = document.querySelector(".election__attached");
+  const btnAttached = document.querySelector('.btn__election[data-election="attached"]');
+
+  const colorSelects = document.querySelectorAll(".color__select__content");
+  const colorInput = document.querySelectorAll(".input__color");
+  const louvers = document.querySelectorAll(".louver__color");
+
+  const customColor = document.querySelectorAll("color__picker");
+
+  const btnFormPrevious = document.querySelectorAll(".btn-form-previous");
+  const btnFormContinue = document.querySelectorAll(".btn-form-continue");
+
+  const checkboxInputColor = document.getElementById("input-checkbox-color");
+  const colorLouverContainer = document.querySelector(".color__louver__container");
+
+  const previousBtn1 = document.getElementById("btn-form-previous-1");
+  const continueBtn1 = document.getElementById("btn-form-continue-1");
+
+  const previousBtn2 = document.getElementById("btn-form-previous-2");
+  const continueBtn2 = document.getElementById("btn-form-continue-2");
+
+  const previousBtn3 = document.getElementById("btn-form-previous-3");
+  const continueBtn3 = document.getElementById("btn-form-continue-3");
+
+  const previousBtn4 = document.getElementById("btn-form-previous-4");
+  const continueBtn4 = document.getElementById("btn-form-continue-4");
+
+  const previousBtn5 = document.getElementById("btn-form-previous-5");
+
+  const chooseHeaderAccesory = document.querySelectorAll(".choose__header");
+
+  const cardsMaterial = document.querySelectorAll(".accesory__card__material__element");
+
+  const cardsMaterialColor = document.querySelectorAll(".accesory__card__color__content");
+
+  const form = document.querySelector(".form");
+
+  // Confirmación de envío de formulario
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("success") === "true") {
+    const confirmation = document.createElement("div");
+    confirmation.className = "confirmation__container confirmation--show"
+    confirmation.innerHTML = `
+      <div class="confirmation__title">
+        <h3>Thank you for your submission!</h3>
+      </div>
+    `;
+    stepUno.appendChild(confirmation);
+
+    const confirmationContainer = document.querySelector(".confirmation__container");
+
+    setTimeout(() => confirmationContainer.classList.remove("confirmation--show"), 2500);
+  }
+
+  // Helper para togglear clases
+  const toggleClass = (element, className, condition) => {
+    element.classList.toggle(className, condition);
+  };
+
+  // Manejador de eventos
+  const handleRadioBtns = e => {
+    const btnsGroup = e.target.closest(".form__btns");
+    if (!btnsGroup) return;
+
+    const labels = btnsGroup.querySelectorAll(".action__btn");
+    if (!labels) return;
+
+    labels.forEach(label => label.classList.remove("action__btn--selected"));
+
+    const asociatedLabel = btnsGroup.querySelector(`label[for="${e.target.id}"]`);
+    // console.log("asociatedLabel", asociatedLabel);
+    if (asociatedLabel) asociatedLabel.classList.add("action__btn--selected");
+  }
+
+  const handleMeasureBtn = e => {
+    const unitText = e.target.textContent.toLowerCase();
+    const attachedMeasure = document.querySelectorAll(".attached__measure--text");
+    inputUnits.forEach(input => input.textContent = unitText);
+    attachedMeasure.forEach(measure => measure.textContent = ` ${unitText}`);
+  };
+
+  const handleInputFocus = (input, focus) => {
+    const span = input.nextElementSibling; // Span unit
+    span.style.opacity = 0;
+    const dataId = input.dataset.mesurance;
+
+    const articleContainer = input.closest(".form__article");
+
+    const sidesArticle = articleContainer.querySelectorAll(".side");
+
+    sidesArticle.forEach(side => toggleClass(side, `side__${dataId}--active`, focus && side.classList.contains(`side__${dataId}`)));
+
+    const bgElement = input.closest(".input__bg");
+    toggleClass(bgElement, "bg--active", focus);
+  };
+
+  const handleInputBlur = e => {
+    const span = e.target.nextElementSibling; // Span unit
+    span.style.opacity = 1;
+  }
+
+  const handleInputMeasure = e => {
+    const measure = e.target.dataset.mesurance;
+    const measureAttachedA1 = document.querySelector(".measure__attached__a1");
+    const measureAttachedA2 = document.querySelector(".measure__attached__a2");
+    const measureAttachedB1 = document.querySelector(".measure__attached__b1");
+    const measureAttachedB2 = document.querySelector(".measure__attached__b2");
+
+    if (measure === "length") {
+      if (e.target.value === "") {
+        measureAttachedA1.textContent = 0;
+        measureAttachedA2.textContent = 0;
+      }
+      measureAttachedA1.textContent = `${e.target.value} `;
+      measureAttachedA2.textContent = `${e.target.value} `;
+    } else if (measure === "depth") {
+      if (e.target.value === "") {
+        measureAttachedB1.textContent = 0;
+        measureAttachedB2.textContent = 0;
+      }
+      measureAttachedB1.textContent = `${e.target.value} `;
+      measureAttachedB2.textContent = `${e.target.value} `;
+    }
+  };
+
+  const handleGroupBtn = target => {
+    const showAttached = target.dataset.election === "attached";
+    toggleClass(electionAttached, "element--show", showAttached);
+  };
+
+  const handleCheckboxChange = checked => {
+    toggleClass(electionContact, "element--show", checked);
+    toggleClass(electionPergola, "element--show", !checked);
+    toggleClass(btnsFooter, "element--show", !checked);
+
+    if (!checked && btnAttached.classList.contains("action__btn--selected")) {
+      electionAttached.classList.add("element--show");
+    } else {
+      electionAttached.classList.remove("element--show");
+    }
+  };
+
+  const toggleCheckBox = container => {
+    const checkbox = container.querySelector(".input__checkbox__attached__measure");
+    checkbox.checked = !checkbox.checked;
+  };
+
+  const handleColorSelect = e => {
+    const parentColorPergola = e.target.closest(".article__color__base");
+    if (parentColorPergola) {
+      const pergolasColor = parentColorPergola.querySelectorAll(".label__color__pergola");
+      const radioColorPergolas = parentColorPergola.querySelectorAll(".input__radio__color");
+
+      radioColorPergolas.forEach(radio => radio.checked = false);
+
+      pergolasColor.forEach(label => label.classList.remove("color--selected"));
+
+      const colorSelected = e.target.matches(".label__color__pergola")
+        ? e.target
+        : e.target.closest(".label__color__pergola");
+
+      const inputSelected = colorSelected.nextElementSibling;
+      inputSelected.checked = true;
+
+      colorSelected.classList.add("color--selected");
+
+      const colorData = colorSelected.dataset.color;
+
+      if (!colorData) return;
+
+      updateColor(colorData);
+
+      if (checkboxInputColor.checked) {
+        updateColorLouvers(colorData);
+      }
+
+      inputSelected.classList.contains("input__radio__custom")
+        ? customColor.setAttribute("name", "custom-color")
+        : customColor.removeAttribute("name");
+
+    } else {
+      const parentColorLouver = e.target.closest(".article__color__louvers");
+      if (parentColorLouver) {
+        const louversColor = parentColorLouver.querySelectorAll(".label__color__louver");
+        const radioColorLouvers = parentColorLouver.querySelectorAll(".input__radio__color");
+
+        radioColorLouvers.forEach(radio => radio.checked = false);
+        louversColor.forEach(label => label.classList.remove("color--selected"));
+
+        const colorSelectedLouver = e.target.matches(".label__color__louver")
+          ? e.target
+          : e.target.closest(".label__color__louver");
+
+        const inputSelectedLouver = colorSelectedLouver.nextElementSibling;
+        inputSelectedLouver.checked = true;
+
+        colorSelectedLouver.classList.add("color--selected");
+
+        const colorData = colorSelectedLouver.dataset.color;
+
+        if (!colorData) return;
+
+        updateColorLouvers(colorData);
+
+        inputSelectedLouver.classList.contains("input__radio__custom")
+          ? customColorLouver.setAttribute("name", "custom-color-louver")
+          : customColorLouver.removeAttribute("name");
+      }
+    }
+
+  }
+
+  const updateColor = color => sides.forEach(side => side.style.backgroundColor = color);
+
+  const updateColorLouvers = color => louvers.forEach(louver => {
+    louver.style.backgroundColor = color;
+    const parentLouver = louver.closest(".article__color__louvers");
+
+    if (!parentLouver) return;
+
+    if (checkboxInputColor.checked) {
+      parentLouver.querySelectorAll(".input__radio__color").forEach(radio => radio.checked = false);
+    }
+  });
+  
+  const handleInputColor = e => {
+    const color = e.target.value;
+    const parent = e.target.closest(".form__article");
+    if (parent.classList.contains("article__color__louvers")) {
+      if (checkboxInputColor.checked) {
+        updateColorLouvers(color);
+        updateColor(color);
+      } else {
+        updateColorLouvers(color);
+      }
+    } else {
+      if (checkboxInputColor.checked) {
+        updateColorLouvers(color);
+        updateColor(color);
+      } else {
+        updateColor(color);
+      }
+    }
+
+    colorSelects.forEach(item => item.classList.remove("color--selected"));
+    colorInput.forEach(input => {
+      const customColor = input.closest(".color__select__content");
+      customColor.classList.add("color--selected");
+    });
+  }
+
+  const handleCheckboxColor = e => {
+    louvers.forEach(louver => {
+      louver.style.backgroundColor = e.target.checked ? sides[0].style.backgroundColor : "#000";
+    });
+
+    e.target.checked ? colorLouverContainer.classList.remove("element--show") : colorLouverContainer.classList.add("element--show");
+  }
+
+  const handleAccesoryBtn = e => {
+    const containerAccesory = e.target.closest(".choose__accesory__options__content");
+    if (!containerAccesory) return;
+
+    const card = e.target.closest(".accesory__card__material__element") || e.target;
+
+    const material = card.dataset.material;
+
+    containerAccesory.querySelectorAll(".accesory__card__material__element").forEach(element => element.classList.remove("accesory__element--selected"));
+    card.classList.add("accesory__element--selected");
+    
+    const groups = containerAccesory.querySelectorAll(".group");
+
+    groups.forEach(group => group.classList.toggle("element--show", group.dataset.group === material));
+
+    const typeMaterialContainer = containerAccesory.querySelector(".accesory__options");
+
+    const allInputs = typeMaterialContainer.querySelectorAll(".input__radio__btn");
+    allInputs.forEach(input => input.checked = false);
+
+    const group = Array.from(groups).find(g => g.dataset.group === material);
+    if (!group) return;
+
+    const firstRadioBtn = group.querySelector(".input__radio__btn");
+    if (!firstRadioBtn) return;
+    firstRadioBtn.checked = true;
+
+    if (material === "private") {
+      const firstColorBtn = typeMaterialContainer.querySelector(".accesory__card__color__content");
+      if (!firstColorBtn) return;
+      firstColorBtn.checked = true;
+    }
+  };
+
+  const handleColorAccesoryBtn = e => {
+    const parentColor = e.target.closest(".accesory__card__container");
+    if (!parentColor) return;
+
+    const cards = parentColor.querySelectorAll(".accesory__card__color__content");
+
+    cards.forEach(card => card.classList.remove("accesory__element--selected"));
+
+    const card = e.target.matches(".accesory__card__color__content")
+      ? e.target
+      : e.target.closest(".accesory__card__color__content");
+
+    if (!card) return;
+
+    card.classList.add("accesory__element--selected");
+  }
+
+  const showSectionForm = step => {
+    sectionCalculatorForm.className = `section__calculator__content step-${step}`;
+
+    statusCount.forEach((stat, index) => {
+      index < step ? stat.classList.add("status__content--active") : stat.classList.remove("status__content--active");
+    });
+
+    handleButtons(step);
+  }
+
+  const handleButtons = step => {
+    step === 1 ? previousBtn1.disabled = true : previousBtn1.disabled = false;
+  }
+
+  const validateSectionInputs = step => {
+    const currentSection = document.getElementById(`form-${step}`);
+    const inputs = currentSection.querySelectorAll("input[type='text'], input[type='number'], input[type='email'], input[type='tel'], input[type='url'], input[type='password']");
+
+    let isValid = true;
+
+    inputs.forEach(input => {
+      if (!input.value.trim()) {
+        isValid = false;
+        alertMessage.classList.add("alert__message--show");
+      } else {
+        alertMessage.classList.remove("alert__message--show");
+      }
+    });
+
+    return isValid;
+  }
+
+  const showAlertMessage = message => {
+    const p = alertMessage.querySelector("p");
+    p.textContent = message;
+    alertMessage.classList.add("alert__message--show");
+
+    setTimeout(() => alertMessage.classList.remove("alert__message--show"), 3000);
+  }
+
+  const handleValidationAndNextStep = setp => {
+    if (validateSectionInputs(setp - 1)) {
+      showSectionForm(setp);
+    } else {
+      showAlertMessage("Please fill out all required fields.");
+    }
+  };
+
+  // Eventos
+  btnsMeasure.forEach(btn => btn.addEventListener("click", e => handleMeasureBtn(e)));
+
+  inputRadioBtns.forEach(input => input.addEventListener("change", e => handleRadioBtns(e)));
+
+  formInputs.forEach(input => {
+    input.addEventListener("focus", e => handleInputFocus(e.target, true));
+    input.addEventListener("blur", e => {
+      handleInputFocus(e.target, false);
+      handleInputBlur(e);
+    });
+    input.addEventListener("input", e => handleInputMeasure(e));
+  });
+
+  btnsGroupBg.forEach(group => group.addEventListener("click", e => handleGroupBtn(e.target)));
+
+  inputCheckboxContact.addEventListener("change", e => handleCheckboxChange(e.target.checked));
+
+  attachedMeasures.forEach(measure => measure.addEventListener("click", e => toggleCheckBox(e.target.closest(".attached__measure"))));
+
+  colorSelects.forEach(select => select.addEventListener("click", e => handleColorSelect(e)));
+
+  colorInput.forEach(input => input.addEventListener("input", e => handleInputColor(e)));
+
+  checkboxInputColor.addEventListener("change", e => handleCheckboxColor(e));
+
+  customColor.forEach(color => {
+    const parent = color.closest(".color__select__container");
+
+    parent.querySelectorAll(".input__radio__color").forEach(radio => radio.checked = false);
+
+    const parentRadio = color.closest(".custom__color");
+    parentRadio.querySelector("#input-radio-color-louver-custom").checked = true;
+  })
+
+  btnFormPrevious.forEach(btn => {
+    btn.addEventListener("click", () => {
+      sectionCalculatorForm.classList.remove("step-two");
+    });
+  });
+
+  btnFormContinue.forEach(btn => {
+    btn.addEventListener("click", () => {
+      sectionCalculatorForm.classList.add("step-two");
+    });
+  });
+
+  previousBtn1.addEventListener("click", () => showSectionForm(1));
+
+  continueBtn1.addEventListener("click", () => handleValidationAndNextStep(2));
+
+  previousBtn2.addEventListener("click", () => showSectionForm(1));
+
+  continueBtn2.addEventListener("click", () => handleValidationAndNextStep(3));
+
+  previousBtn3.addEventListener("click", () => showSectionForm(2));
+
+  continueBtn3.addEventListener("click", () => handleValidationAndNextStep(4));
+
+  previousBtn4.addEventListener("click", () => showSectionForm(3));
+
+  continueBtn4.addEventListener("click", () => handleValidationAndNextStep(5));
+
+  previousBtn5.addEventListener("click", () => showSectionForm(4));
+
+  chooseHeaderAccesory.forEach(header => header.addEventListener("click", () => header.classList.toggle("choose__header--active")));
+
+  cardsMaterial.forEach(card => card.addEventListener("click", e => handleAccesoryBtn(e)));
+
+  cardsMaterialColor.forEach(card => card.addEventListener("click", e => handleColorAccesoryBtn(e)));
+
+  // Obtener los datos del formulario
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const terms = document.getElementById("input-checkbox-terms");
+
+    if (!terms.checked) {
+      showAlertMessage("Please accept the terms and conditions.");
+      return;
+    }
+
+    const data = Object.fromEntries(new FormData(e.target));
+
+    const data2 = {
+      "body": data
+    }
+
+    // console.log(data);
+    console.log(data2);
+
+    fetch('https://hook.us1.make.com/6aotgx2a8zeiqbx7vpf68vbq70it2udh', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+      },
+      body: JSON.stringify(data2),
+    })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = "thank-you/?success=true"
+        } else {
+          console.error('Error sending data');
+        }
+      })
+      .catch(error => console.error('Fetch error:', error));
+  }); 
+});
+</script>
+
+{% schema %}
+{
+  "name": "C Calculator",
+ 
+  "settings": [
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link for 'Book a Call' button",
+      
+    },
+    {
+      "type": "checkbox",
+      "id": "show_progress_bar",
+      "label": "Show Progress Bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title_a1",
+      "label": "Title for A1",
+      "default": "A1"
+    },
+    {
+      "type": "text",
+      "id": "accessory_text",
+      "label": "Text for 'Choose Accessory 01'",
+      "default": "Choose Accessory 01"
+    },
+
+    {
+      "type": "text",
+      "id": "title_a2",
+      "label": "Title for A2",
+      "default": "A2"
+    },
+    {
+      "type": "text",
+      "id": "accessory_text_02",
+      "label": "Text for 'Choose Accessory 02'",
+      "default": "Choose Accessory 02"
+    },
+
+    {
+      "type": "text",
+      "id": "title_b1",
+      "label": "Title for b1",
+      "default": "B1"
+    },
+    {
+      "type": "text",
+      "id": "accessory_text_03",
+      "label": "Text for 'Choose Accessory 03'",
+      "default": "Choose Accessory 03"
+    },
+
+    {
+      "type": "text",
+      "id": "title_b2",
+      "label": "Title for B2",
+      "default": "B2"
+    },
+    {
+      "type": "text",
+      "id": "accessory_text_04",
+      "label": "Text for 'Choose Accessory 04'",
+      "default": "Choose Accessory 04"
+    },
+          // Private Screens
+          {
+            "type": "image_picker",
+            "id": "image_private",
+            "label": "Private Screens Image"
+          },
+          {
+            "type": "text",
+            "id": "material_private",
+            "label": "Private Screens Material Name",
+            "default": "Private Screens"
+          },
+  
+          // Glass Panels
+          {
+            "type": "image_picker",
+            "id": "image_glass",
+            "label": "Glass Panels Image"
+          },
+          {
+            "type": "text",
+            "id": "material_glass",
+            "label": "Glass Panels Material Name",
+            "default": "Glass Panels"
+          },
+  
+          // Aluminium Shutter Panels
+          {
+            "type": "image_picker",
+            "id": "image_aluminium",
+            "label": "Aluminium Shutter Panels Image"
+          },
+          {
+            "type": "text",
+            "id": "material_aluminium",
+            "label": "Aluminium Shutter Panels Material Name",
+            "default": "Aluminium Shutter Panels"
+          },
+
+          
+          // vertical retractable shutter
+          {
+            "type": "image_picker",
+            "id": "image_vertical",
+            "label": "vertical retractable shutter Image"
+          },
+          {
+            "type": "text",
+            "id": "material_vertical",
+            "label": "vertical retractable shutter Name",
+            "default": "Vertical Retractable Shutter"
+          }
+  ],
+  "presets": [
+    {
+      "name": "C Calculator",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
