@@ -386,6 +386,11 @@ document.addEventListener("DOMContentLoaded", () => {
       index < step ? stat.classList.add("status__content--active") : stat.classList.remove("status__content--active");
     });
 
+    // Scroll arriba
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
 
     handleButtons(step);
   }
@@ -425,10 +430,7 @@ document.addEventListener("DOMContentLoaded", () => {
       showSectionForm(setp);
     } else {
       showAlertMessage("Please fill out all required fields.");
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+
     }
   };
 
