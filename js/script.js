@@ -27,11 +27,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const colorSelects = document.querySelectorAll(".color__select__content");
   const colorInput = document.querySelectorAll(".input__color");
+
+  const btnOpenModalCustomColor = document.querySelectorAll(".custom__color__modal__open");
+  const modalCustomColor = document.querySelectorAll(".modal__custom__color");
+
+  const checkboxModalPergola = document.querySelectorAll(".input__checkbox__custom");
+
   const louvers = document.querySelectorAll(".louver__color");
 
   const tableAccesory = document.querySelector(".scene__table__accesory");
 
-  const customColor = document.querySelectorAll(".color__picker");
+  const btnsDropdownAccesory = document.querySelectorAll(".btn__accesory__screens");
 
   const btnFormPrevious = document.querySelectorAll(".btn-form-previous");
   const btnFormContinue = document.querySelectorAll(".btn-form-continue");
@@ -103,6 +109,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const attachedMeasure = document.querySelectorAll(".attached__measure--text");
     inputUnits.forEach(input => input.textContent = unitText);
     attachedMeasure.forEach(measure => measure.textContent = ` ${unitText}`);
+
+    const parent = e.target.closest(".form__info");
+    const inputs = parent.querySelectorAll(".input__unit__text");
+
+    inputs.forEach(input => {
+      const value = input.value.trim();
+      if (value !== "" && !isNaN(value) && parseFloat(value) >= 0) {
+        console.log("input.value", input.value);
+        const maxValue = unitText === "feet" ? 140 : 11.67;
+        input.value = Math.min(parseFloat(input.value).toFixed(2), maxValue);
+        console.log("ajustando a valor máximo", input.value);
+      } else {
+        input.value = "";
+      }
+    });
   };
 
   const handleInputFocus = (input, focus) => {
@@ -147,6 +168,41 @@ document.addEventListener("DOMContentLoaded", () => {
       measureAttachedB1.textContent = `${e.target.value} `;
       measureAttachedB2.textContent = `${e.target.value} `;
     }
+
+    // Máximo valor
+    let input = e.target;
+    let value = input.value;
+    let cursorPosition = input.selectionStart;
+
+    value = value.replace(/[^0-9.]/g, "");
+
+    const parts = value.split(".");
+    if (parts.length > 1) {
+      value = `${parts[0]}.${parts[1].slice(0, 2)}`;
+    }
+
+    if (!isNaN(value) && value >= 0) {
+      const span = input.nextElementSibling.textContent;
+      const maxValue = span === "feet" ? 140 : 11.67;
+      // input.value = Math.min(value.toFixed(2), maxValue);
+
+      const newValue = Math.min(parseFloat(value).toFixed(2), maxValue);
+
+      if (parseFloat(value) > maxValue || parts[1]?.length > 2) {
+        input.value = newValue;
+        cursorPosition = input.value.length;
+
+        parseFloat(value) > maxValue
+          && showAlertMessage(`Value set to maximum: ${maxValue} ${span}`);
+
+      } else {
+        input.value = value;
+      }
+    } else {
+      input.value = "";
+    }
+
+    input.setSelectionRange(cursorPosition, cursorPosition);
   };
 
   const handleGroupBtn = target => {
@@ -186,8 +242,15 @@ document.addEventListener("DOMContentLoaded", () => {
         ? e.target
         : e.target.closest(".label__color__pergola");
 
+      if (!colorSelected) return;
+
       const inputSelected = colorSelected.nextElementSibling;
       inputSelected.checked = true;
+
+      if (inputSelected.checked) {
+        const checkbox = e.target.closest(".color__select__container").querySelector(".input__checkbox__custom");
+        checkbox.checked = false;
+      }
 
       colorSelected.classList.add("color--selected");
 
@@ -223,8 +286,14 @@ document.addEventListener("DOMContentLoaded", () => {
           ? e.target
           : e.target.closest(".label__color__louver");
 
+        if (!colorSelectedLouver) return;
+
         const inputSelectedLouver = colorSelectedLouver.nextElementSibling;
         inputSelectedLouver.checked = true;
+        if (inputSelectedLouver.checked) {
+          const checkbox = e.target.closest(".color__select__container").querySelector(".input__checkbox__custom");
+          checkbox.checked = false;
+        }
 
         colorSelectedLouver.classList.add("color--selected");
 
@@ -248,6 +317,70 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const updateColor = color => sides.forEach(side => side.style.backgroundColor = color);
+
+  const openModalCustomColor = e => {
+    if (e.target.matches(".custom__color__pergola")
+      || e.target.matches(".custom__color__bg")
+      || e.target.matches(".custom__color__circle")
+      || e.target.matches(".circle__color")
+      || e.target.matches(".span__color")) {
+
+      const parent = e.target.closest(".color__select__container");
+      const labels = parent.querySelectorAll(".label__form");
+        labels.forEach(label => {
+          label.classList.remove("color--selected");
+          label.nextElementSibling.checked = false;
+        });
+        const blackLabel = parent.querySelector(".color__black");
+        if (!e.target.checked) {
+          blackLabel.classList.add("color--selected");
+          blackLabel.nextElementSibling.checked = true;
+        } else {
+          blackLabel.classList.remove("color--selected");
+          blackLabel.nextElementSibling.checked = false;
+        }
+
+      const modalCustomColor = parent.querySelector(".modal");
+        
+      modalCustomColor.classList.add("modal--show");
+      const body = e.target.closest("body");
+      body.style.overflow = "hidden";
+      body.style.pointerEvents = "none";
+    }
+  };
+
+  const closeModalCustomColor = e => {;
+    const body = e.target.closest("body");
+    if (e.type === "change") {
+      console.log("evento: ", e.type);
+      const cardColors = e.target.closest(".color__select__container");
+      const labels = cardColors.querySelectorAll(".label__form");
+      labels.forEach(label => {
+        label.classList.remove("color--selected");
+        label.nextElementSibling.checked = false;
+      });
+      const blackLabel = cardColors.querySelector(".color__black");
+      if (!e.target.checked) {
+        blackLabel.classList.add("color--selected");
+        blackLabel.nextElementSibling.checked = true;
+      } else {
+        blackLabel.classList.remove("color--selected");
+        blackLabel.nextElementSibling.checked = false;
+      }
+      e.target.closest(".modal").classList.remove("modal--show");
+      body.style.overflow = "auto";
+      body.style.pointerEvents = "auto";
+      return;
+    }
+    const content = e.target.querySelector(".modal__container") || e.target.closest(".modal__container");
+    content.addEventListener("click", e => {
+      e.stopPropagation();
+    });
+
+    e.target.classList.remove("modal--show");
+    body.style.overflow = "auto";
+    body.style.pointerEvents = "auto";
+  };
 
   const updateColorLouvers = color => louvers.forEach(louver => {
     louver.style.backgroundColor = color;
@@ -299,6 +432,47 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (!e.target.checked) {
       colorLouverContainer.querySelector(".input__radio__black").checked = true;
       colorLouverContainer.classList.add("element--show");
+    }
+  }
+
+  const handleDropdownAccesory = e => {
+    const dropdownBtn = e.target.closest(".section__accesory__dropdown");
+    if (!dropdownBtn) return;
+
+    if (e.target.classList.contains("screen__yes")) {
+      dropdownBtn.classList.add("dropdown--active");
+      const chooseAccesory = dropdownBtn.querySelectorAll(".choose__accesory__options__content");
+      chooseAccesory.forEach(accesory => {
+        const cardsAccesory = accesory.querySelectorAll(".accesory__card__content");
+        cardsAccesory.forEach(card => {
+          const labels = card.querySelectorAll(".accesory__card__material__element");
+          labels.forEach(label => label.classList.remove("accesory__element--selected"));
+          const firstLabel = card.querySelector(".accesory__material__private");
+          firstLabel.classList.add("accesory__element--selected");
+          firstLabel.nextElementSibling.checked = true;
+        });
+      });
+
+      const extraAccesory = dropdownBtn.querySelectorAll(".accesory__options");
+      extraAccesory.forEach(accesory => {
+        const extra = accesory.querySelectorAll(".accesory__extra");
+        extra.forEach(ex => ex.classList.remove("element--show"));
+        const accesoryColorCard = accesory.querySelector(".accesory__private");
+        accesoryColorCard.classList.add("element--show");
+        const swipers = accesoryColorCard.querySelectorAll(".swiper-wrapper");
+        swipers.forEach(swiper => {
+          const sliders = swiper.querySelectorAll(".swiper-slide");
+          sliders.forEach(slider => slider.classList.remove("accesory__element--selected"));
+          const firstSlider = sliders[0];
+          firstSlider.classList.add("accesory__element--selected");
+          const firstInput = firstSlider.querySelector("input[type=radio]");
+          firstInput.checked = true;
+        })
+      });
+    } else {
+      dropdownBtn.classList.remove("dropdown--active");
+      const inputs = dropdownBtn.querySelectorAll("input[type=radio]");
+      inputs.forEach(input => input.checked = false);
     }
   }
 
@@ -387,10 +561,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Scroll arriba
-    window.scrollTo({
+    /* window.scrollTo({
       top: 0,
       behavior: 'smooth'
-    });
+    }); */
 
     handleButtons(step);
   }
@@ -413,6 +587,20 @@ document.addEventListener("DOMContentLoaded", () => {
         alertMessage.classList.remove("alert__message--show");
       }
     });
+
+    if (currentSection.classList.contains("section__form--2")) {
+      const inputCheckboxColor = currentSection.querySelector("#input-checkbox-color");
+      const colorSelectContainers = currentSection.querySelectorAll(".color__select__container");
+      colorSelectContainers.forEach(select => {
+        const checkbox = select.querySelector(".input__checkbox__custom");
+        const radios = select.querySelectorAll("input[type=radio]");
+        const someRadioChecked = Array.from(radios).some(radio => radio.checked);
+        if (!someRadioChecked && !checkbox.checked && !inputCheckboxColor.checked) {
+          isValid = false;
+          alertMessage.classList.add("alert__message--show");
+        }
+      });
+    }
 
     return isValid;
   }
@@ -458,7 +646,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   colorInput.forEach(input => input.addEventListener("input", e => handleInputColor(e)));
 
+  /* btnOpenModalCustomColor.addEventListener("click", e => openModalCustomColor(e));
+  modalCustomColor.addEventListener("click", e => closeModalCustomColor(e));
+  checkboxModalPergola.addEventListener("change", e => closeModalCustomColor(e)); */
+
+  btnOpenModalCustomColor.forEach(btn => btn.addEventListener("click", e => openModalCustomColor(e)));
+  modalCustomColor.forEach(modal => modal.addEventListener("click", e => closeModalCustomColor(e)));
+  checkboxModalPergola.forEach(checkbox => checkbox.addEventListener("change", e => closeModalCustomColor(e)));
+
   checkboxInputColor.addEventListener("change", e => handleCheckboxColor(e));
+
+  btnsDropdownAccesory.forEach(btn => btn.addEventListener("click", e => handleDropdownAccesory(e)));
 
   /* customColor.forEach(color => {
     const parent = color.closest(".color__select__container");
