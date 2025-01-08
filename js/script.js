@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputRadioBtns = document.querySelectorAll(".input__radio__btn"); 
   const inputUnits = document.querySelectorAll(".input__unit");
   const formInputs = document.querySelectorAll(".input__unit__text");
+  const inputHeight = document.getElementById("input-height");
   const sides = document.querySelectorAll(".side__color");
   const btnsGroupBg = document.querySelectorAll(".btns__group--bg");
   const btnsMeasure = document.querySelectorAll(".btn__measure");
@@ -109,21 +110,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const attachedMeasure = document.querySelectorAll(".attached__measure--text");
     inputUnits.forEach(input => input.textContent = unitText);
     attachedMeasure.forEach(measure => measure.textContent = ` ${unitText}`);
+    
 
     const parent = e.target.closest(".form__info");
-    const inputs = parent.querySelectorAll(".input__unit__text");
 
-    inputs.forEach(input => {
-      const value = input.value.trim();
-      if (value !== "" && !isNaN(value) && parseFloat(value) >= 0) {
-        console.log("input.value", input.value);
-        const maxValue = unitText === "feet" ? 140 : 11.67;
-        input.value = Math.min(parseFloat(input.value).toFixed(2), maxValue);
-        console.log("ajustando a valor máximo", input.value);
-      } else {
-        input.value = "";
-      }
-    });
+    const heightInput = parent.querySelector(".input__unit__height");
+    const heightValue = heightInput.value.trim();
+    if (heightValue !== "" && !isNaN(heightValue) && parseFloat(heightValue) >= 0) {
+      const maxValue = unitText === "feet" ? 140 : 11.67;
+      heightInput.value = Math.min(parseFloat(heightValue).toFixed(2), maxValue)
+    } else {
+      heightInput.value = "";
+    }
   };
 
   const handleInputFocus = (input, focus) => {
@@ -169,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
       measureAttachedB2.textContent = `${e.target.value} `;
     }
 
-    // Máximo valor
+    // Máximo valor solo en el input height
     let input = e.target;
     let value = input.value;
     let cursorPosition = input.selectionStart;
@@ -188,15 +186,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const newValue = Math.min(parseFloat(value).toFixed(2), maxValue);
 
-      if (parseFloat(value) > maxValue || parts[1]?.length > 2) {
-        input.value = newValue;
-        cursorPosition = input.value.length;
-
-        parseFloat(value) > maxValue
-          && showAlertMessage(`Value set to maximum: ${maxValue} ${span}`);
-
-      } else {
-        input.value = value;
+      if (e.target.dataset.mesurance === "height"){
+        if (parseFloat(value) > maxValue || parts[1]?.length > 2) {
+          input.value = newValue;
+          cursorPosition = input.value.length;
+  
+          parseFloat(value) > maxValue
+            && showAlertMessage(`Value set to maximum: ${maxValue} ${span}`);
+  
+        } else {
+          input.value = value;
+        }
       }
     } else {
       input.value = "";
@@ -327,18 +327,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const parent = e.target.closest(".color__select__container");
       const labels = parent.querySelectorAll(".label__form");
-        labels.forEach(label => {
-          label.classList.remove("color--selected");
-          label.nextElementSibling.checked = false;
-        });
-        const blackLabel = parent.querySelector(".color__black");
-        if (!e.target.checked) {
-          blackLabel.classList.add("color--selected");
-          blackLabel.nextElementSibling.checked = true;
-        } else {
-          blackLabel.classList.remove("color--selected");
-          blackLabel.nextElementSibling.checked = false;
-        }
+      labels.forEach(label => {
+        label.classList.remove("color--selected");
+        label.nextElementSibling.checked = false;
+      });
+      const blackLabel = parent.querySelector(".color__black");
+      if (!e.target.checked) {
+        blackLabel.classList.add("color--selected");
+        blackLabel.nextElementSibling.checked = true;
+      } else {
+        blackLabel.classList.remove("color--selected");
+        blackLabel.nextElementSibling.checked = false;
+      }
 
       const modalCustomColor = parent.querySelector(".modal");
         
@@ -352,7 +352,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeModalCustomColor = e => {;
     const body = e.target.closest("body");
     if (e.type === "change") {
-      console.log("evento: ", e.type);
       const cardColors = e.target.closest(".color__select__container");
       const labels = cardColors.querySelectorAll(".label__form");
       labels.forEach(label => {
@@ -360,12 +359,15 @@ document.addEventListener("DOMContentLoaded", () => {
         label.nextElementSibling.checked = false;
       });
       const blackLabel = cardColors.querySelector(".color__black");
+      const customCard = cardColors.querySelector(".custom__color__modal__open");
       if (!e.target.checked) {
         blackLabel.classList.add("color--selected");
         blackLabel.nextElementSibling.checked = true;
+        customCard.classList.remove("color--selected");
       } else {
         blackLabel.classList.remove("color--selected");
         blackLabel.nextElementSibling.checked = false;
+        customCard.classList.add("color--selected");
       }
       e.target.closest(".modal").classList.remove("modal--show");
       body.style.overflow = "auto";
