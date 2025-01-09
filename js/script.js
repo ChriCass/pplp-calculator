@@ -137,11 +137,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const bgElement = input.closest(".input__bg");
     toggleClass(bgElement, "bg--active", focus);
+
+    const parent = input.closest(".input__content");
+    const labelUnit = parent.querySelector(".label__input").textContent.toLowerCase();
+    const maxValue = labelUnit === "height" ? 140 : 11.67;
+    if (labelUnit === "height") {
+      if (input.value > maxValue) {
+        input.value = maxValue;
+      }
+    }
   };
 
   const handleInputBlur = e => {
     const span = e.target.nextElementSibling; // Span unit
     span.style.opacity = 1;
+
+    const parent = e.target.closest(".input__content");
+    const labelUnit = parent.querySelector(".label__input").textContent.toLowerCase();
+    const maxValue = labelUnit === "height" ? 140 : 11.67;
+    if (labelUnit === "height") {
+      if (e.target.value > maxValue) {
+        e.target.value = maxValue;
+      }
+    }
   }
 
   const handleInputMeasure = e => {
@@ -171,38 +189,61 @@ document.addEventListener("DOMContentLoaded", () => {
     let input = e.target;
     let value = input.value;
     let cursorPosition = input.selectionStart;
+    // const validationNumber = /^\d{0,2}(\.\d{0,2})?$/;
+    const validationNumber =
+      measure === "height"
+        ? /^\d{0,3}(\.\d{0,2})?$/
+        : /^\d{0,4}(\.\d{0,2})?$/;
 
-    value = value.replace(/[^0-9.]/g, "");
+    const previousValue = input.dataset.previousValue || "";
+
+    const span = input.nextElementSibling.textContent;
+    const maxValue = measure === "height" ? (span === "feet" ? 140 : 11.67) : null;
+
+    if (!validationNumber.test(value)) {
+      input.value = previousValue;
+      input.setSelectionRange(cursorPosition - 1, cursorPosition - 1);
+      return;
+    }
 
     const parts = value.split(".");
-    if (parts.length > 1) {
-      value = `${parts[0]}.${parts[1].slice(0, 2)}`;
+
+    if (measure === "height") {
+      if (parts[0].length > 3) parts[0] = parts[0].slice(0, 3);
+    } else {
+      if (parts[0].length > 2) parts[0] = parts[0].slice(0, 4);
     }
 
-    if (!isNaN(value) && value >= 0) {
+    if (parts[1] && parts[1].length > 2) parts[1] = parts[1].slice(0, 2);
+
+    input.value = parts[1] !== undefined ? `${parts[0]}.${parts[1]}` : parts[0];
+
+    if (input.value.endsWith(".0") || input.value.endsWith(".00")) input.value = input.value.split(".")[0];
+
+    if (measure === "height" && maxValue !== null) {
       const span = input.nextElementSibling.textContent;
       const maxValue = span === "feet" ? 140 : 11.67;
-      // input.value = Math.min(value.toFixed(2), maxValue);
 
-      const newValue = Math.min(parseFloat(value).toFixed(2), maxValue);
-
-      if (e.target.dataset.mesurance === "height"){
-        if (parseFloat(value) > maxValue || parts[1]?.length > 2) {
-          input.value = newValue;
-          cursorPosition = input.value.length;
-  
-          parseFloat(value) > maxValue
-            && showAlertMessage(`Value set to maximum: ${maxValue} ${span}`);
-  
-        } else {
-          input.value = value;
-        }
+      if (parseFloat(input.value) > maxValue) {
+        input.value = maxValue;
+        value = maxValue;
+        let stringValue = value.toString();
+        cursorPosition = stringValue.length; // 3
+        showAlertMessage(`Value set to maximum: ${maxValue} ${span}`);
       }
-    } else {
-      input.value = "";
     }
 
+    input.value = value;
+    input.dataset.previousValue = value;
     input.setSelectionRange(cursorPosition, cursorPosition);
+
+    if (measure === "length") {
+      measureAttachedA1.textContent = value || 0;
+      measureAttachedA2.textContent = value || 0;
+    } else if (measure === "depth") {
+      measureAttachedB1.textContent = value || 0;
+      measureAttachedB2.textContent = value || 0;
+    }
   };
 
   const handleGroupBtn = target => {
