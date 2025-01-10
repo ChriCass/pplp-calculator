@@ -146,6 +146,11 @@ document.addEventListener("DOMContentLoaded", () => {
         input.value = maxValue;
       }
     }
+
+    if (input.value === 0 || input.value === "0") {
+      showAlertMessage("0 is not a valid value"); 
+      input.value = "";
+    }
   };
 
   const handleInputBlur = e => {
@@ -625,11 +630,21 @@ document.addEventListener("DOMContentLoaded", () => {
     inputs.forEach(input => {
       if (!input.value.trim()) {
         isValid = false;
-        alertMessage.classList.add("alert__message--show");
-      } else {
-        alertMessage.classList.remove("alert__message--show");
+        showAlertMessage("Please fill out all required fields.");
+        return;
       }
     });
+
+    if (currentSection.classList.contains("section__form--1")){
+      const inputsMeasure = currentSection.querySelectorAll(".input__unit__text");
+      inputsMeasure.forEach(input => {
+        if (input.value.trim() === 0 || input.value.trim() === "0") {
+          showAlertMessage("0 is not a valid value");
+          isValid = false;
+          return;
+        }
+      });
+    }
 
     if (currentSection.classList.contains("section__form--2")) {
       const inputCheckboxColor = currentSection.querySelector("#input-checkbox-color");
@@ -639,8 +654,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const radios = select.querySelectorAll("input[type=radio]");
         const someRadioChecked = Array.from(radios).some(radio => radio.checked);
         if (!someRadioChecked && !checkbox.checked && !inputCheckboxColor.checked) {
+          showAlertMessage("Please select at least one color");
           isValid = false;
-          alertMessage.classList.add("alert__message--show");
+          return;
         }
       });
     }
@@ -656,12 +672,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => alertMessage.classList.remove("alert__message--show"), 3000);
   }
 
-  const handleValidationAndNextStep = setp => {
-    if (validateSectionInputs(setp - 1)) {
-      showSectionForm(setp);
-    } else {
-      showAlertMessage("Please fill out all required fields.");
-
+  const handleValidationAndNextStep = step => {
+    if (validateSectionInputs(step - 1)) {
+      showSectionForm(step);
     }
   };
 
