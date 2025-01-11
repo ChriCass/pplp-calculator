@@ -66,6 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const cardsMaterialColor = document.querySelectorAll(".accesory__card__color__content");
 
+  const inputHeater = document.getElementById("input-heater");
+
   const form = document.querySelector(".form");
 
   // Confirmación de envío de formulario
@@ -732,6 +734,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   btnsDropdownAccesory.forEach(btn => btn.addEventListener("click", e => handleDropdownAccesory(e)));
 
+  inputHeater.addEventListener("input", e => {
+    let input = e.target;
+    let value = input.value;
+    input.value = formatInput(value);
+  });
   /* customColor.forEach(color => {
     const parent = color.closest(".color__select__container");
 
