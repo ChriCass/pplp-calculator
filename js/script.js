@@ -146,11 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
         input.value = maxValue;
       }
     }
-
-    if (input.value === 0 || input.value === "0") {
-      showAlertMessage("0 is not a valid value"); 
-      input.value = "";
-    }
   };
 
   const handleInputBlur = e => {
@@ -165,6 +160,30 @@ document.addEventListener("DOMContentLoaded", () => {
         e.target.value = maxValue;
       }
     }
+
+    const parts = e.target.value.split(".");
+    if (parts[0] === "0" && (parts[1] === "0" || parts[1] === "00")) {
+      showAlertMessage("0 is not a valid value");
+      e.target.value = "";
+    }
+
+    if (parts[0] !== "0" && (parts[1] === "0" || parts[1] === "00")) e.target.value = parts[0];
+
+    if (e.target.value === "0" || e.target.value === "0." || e.target.value === "0.00") {
+      showAlertMessage("0 is not a valid value"); 
+      e.target.value = "";
+    }
+  }
+
+  const formatInput = (value) => {
+    // value = value.replace(/^0+(?!\.)/, "");
+    // value = value.replace(/^\./, "0.");
+    // value = value.replace(/(\.\d{2})\d+/, "$1");
+    if (value[0] === "0" && (value[1] !== "." && value[1] > "0")) value = value.slice(-1);
+    if (value === ".") value = "0.";
+    if (value === "00") value = "0";
+    // if (value.endsWith(".") || value.endsWith(".0") || value.endsWith(".00")) value = value.split(".")[0];
+    return value;
   }
 
   const handleInputMeasure = e => {
@@ -223,8 +242,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     input.value = parts[1] !== undefined ? `${parts[0]}.${parts[1]}` : parts[0];
 
-    if (input.value.endsWith(".0") || input.value.endsWith(".00")) input.value = input.value.split(".")[0];
-
     if (measure === "height" && maxValue !== null) {
       const span = input.nextElementSibling.textContent;
       const maxValue = span === "feet" ? 140 : 11.67;
@@ -238,8 +255,9 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-    input.value = value;
-    input.dataset.previousValue = value;
+    input.value = formatInput(value);
+    input.dataset.previousValue = formatInput(value);
+    cursorPosition = input.value.length;
     input.setSelectionRange(cursorPosition, cursorPosition);
 
     if (measure === "length") {
